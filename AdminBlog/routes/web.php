@@ -30,3 +30,5 @@ Route::post('/addproject','ProjectController@addproject');
 
 //mesasges
 Route::get('/messages','MessageController@showMessagePage');
+Route::get('/getMessageList','MessageController@getMessageList');
+Route::post('/deleteMessage','MessageController@deleteMessage');
