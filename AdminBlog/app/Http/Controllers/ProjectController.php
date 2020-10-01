@@ -28,4 +28,11 @@ class ProjectController extends Controller
  function deleteService(Request $request){
      return projectModel::where('id','=',$request->id)->delete();
  }
+ function addproject(Request $request){
+     $addProjectName =  $request->input('addProjectName');
+     $addProjectDes =   $request->input('addProjectDes');
+     $addProjectLink =  $request->input('addProjectLink');
+     $addProjectImage = $request->input('addProjectImage');
+     return DB::table('projects')->insert(['project_name'=>$addProjectName,'project_des'=>$addProjectDes,'project_link'=>$addProjectLink,'project_image'=>$addProjectImage]);
+ }
 }

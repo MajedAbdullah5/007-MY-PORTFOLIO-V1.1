@@ -26,3 +26,7 @@ Route::get('/getProjectsList','ProjectController@getProjectsList');
 Route::post('/populateProjectData','ProjectController@populateProjectData');
 Route::post('/updateProjectData','ProjectController@updateProjectData');
 Route::post('/deleteService','ProjectController@deleteService');
+Route::post('/addproject','ProjectController@addproject');
+
+//mesasges
+Route::get('/messages','MessageController@showMessagePage');

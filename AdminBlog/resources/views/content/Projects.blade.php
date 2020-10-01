@@ -1,6 +1,7 @@
 @extends('Layout.app')
 @section('content')
     <table class="table-bordered" id="myTable">
+        <a id="addProjectButton" class="btn btn-info">ADD PROJECT</a>
         <thead>
             <th>ID</th>
             <th>NAME</th>
@@ -73,6 +74,49 @@
             </div>
         </div>
     </div>
+
+{{--Add project--}}
+    <div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="addProjectModalStatus"></h1>
+                <div class="modal-body">
+                    <h1 id="projectStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+                    <input type="text" id="addProjectName" class="form-control mb-4" placeholder="Name">
+                    <textarea          id="addProjectDes" class="form-control mb-4" placeholder="Desc"></textarea>
+                    <input type="text" id="addProjectLink" class="form-control mb-4" placeholder="Project link">
+                    <input type="text" id="addProjectImage" class="form-control mb-4" placeholder="Image link">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addProjectModalButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--    add confirm modal--}}
+    <div class="modal fade" id="addProjectConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 class="p-5">Are you sure?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addProjectConfirmButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @section('script')
     <script>
@@ -128,12 +172,38 @@
                     });
                 }
 
+                //Add project data
+                $('#addProjectButton').click(function (){
+                    $('#addProjectModal').modal('show');
+                });
+                $('#addProjectModalButton').click(function (){
+                    $('#addProjectConfirmModal').modal('show');
+                });
+                $('#addProjectConfirmButton').click(function (){
+                    let addProjectName  = $('#addProjectName').val();
+                    let addProjectDes   = $('#addProjectDes').val();
+                    let addProjectLink  = $('#addProjectLink').val();
+                    let addProjectImage = $('#addProjectImage').val();
+                    addProject(addProjectName,addProjectDes,addProjectLink,addProjectImage);
+                });
 
-
-
-
-
-
+                function addProject(addProjectName,addProjectDes,addProjectLink,addProjectImage){
+                    axios.post('/addproject',{
+                        addProjectName:addProjectName,
+                        addProjectDes:addProjectDes,
+                        addProjectLink:addProjectLink,
+                        addProjectImage:addProjectImage
+                    }).then(function(response){
+                       if(response.data == 1){
+                           alert('Project has been added!');
+                       }
+                       else{
+                           alert('Project failed to added!');
+                       }
+                    }).catch(function(){
+                        console.log(response.data);
+                    });
+                }
 
                 //Update project data
                 $('#updateProjectButton').click(function (){

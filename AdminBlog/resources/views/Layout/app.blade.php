@@ -29,6 +29,7 @@
                 <li><a href="{{url('/services')}}"><i class="fas fa-globe"></i>&emsp;SERVICES</a></li>
                 <li><a href="{{url('/courses')}}"><i class="fas fa-book-open"></i>&emsp;COURSES</a></li>
                 <li><a href="{{url('/project')}}"><i class="fas fa-code"></i>&emsp;PROJECTS</a></li>
+                <li><a href="{{url('/messages')}}"><i class="fas fa-envelope"></i>&emsp;MESSAGES</a></li>
             </ul>
         </div>
     </div>
