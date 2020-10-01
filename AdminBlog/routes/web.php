@@ -19,3 +19,10 @@ Route::post('/populateCourseId','CourseController@populateCourseId');
 Route::post('/updateCourseData','CourseController@updateCourseData');
 Route::post('/courseDelete','CourseController@courseDelete');
 Route::post('/addCoursesData','CourseController@addCoursesData');
+
+//projects
+Route::get('/project','ProjectController@showProjectPage');
+Route::get('/getProjectsList','ProjectController@getProjectsList');
+Route::post('/populateProjectData','ProjectController@populateProjectData');
+Route::post('/updateProjectData','ProjectController@updateProjectData');
+Route::post('/deleteService','ProjectController@deleteService');

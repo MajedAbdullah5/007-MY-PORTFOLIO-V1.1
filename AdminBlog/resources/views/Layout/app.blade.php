@@ -24,10 +24,11 @@
         <div class="sidebar">
             <header>DASHBOARD</header>
             <ul class="list-ul">
-                <li><a href="{{url('/')}}"><i class="fas fa-home"></i>HOME</a></li>
-                <li><a href="{{url('/visitors')}}"><i class="fas fa-users"></i>VISITORS</a></li>
-                <li><a href="{{url('/services')}}"><i class="fas fa-globe"></i>SERVICES</a></li>
-                <li><a href="{{url('/courses')}}"><i class="fas fa-book-open"></i>COURSES</a></li>
+                <li><a href="{{url('/')}}"><i class="fas fa-home"></i>&emsp;HOME</a></li>
+                <li><a href="{{url('/visitors')}}"><i class="fas fa-users"></i>&emsp;VISITORS</a></li>
+                <li><a href="{{url('/services')}}"><i class="fas fa-globe"></i>&emsp;SERVICES</a></li>
+                <li><a href="{{url('/courses')}}"><i class="fas fa-book-open"></i>&emsp;COURSES</a></li>
+                <li><a href="{{url('/project')}}"><i class="fas fa-code"></i>&emsp;PROJECTS</a></li>
             </ul>
         </div>
     </div>

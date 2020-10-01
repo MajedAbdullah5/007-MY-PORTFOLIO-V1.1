@@ -20,76 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="403ceed6-f007-419a-be77-2cf087fcc38b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/CourseModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/CourseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ServiceController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/ServiceModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_09_30_152405_service_migration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_01_040132_course_migration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/css/all.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/js/all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/js/datatables-select.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/js/datatables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/js/owl.carousel.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/Home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Course.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Services.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/app/projectModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/database/migrations/2020_09_29_073050_project_migration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/public/css/owl.carousel.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/public/css/owl.theme.default.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/public/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/public/js/owl.carousel.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/resources/views/content/course.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/resources/views/content/project.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ProjectController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/app/ProjectModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_01_091414_project_migration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Projects.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/AdminController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/app/serviceModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app/courseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/css/jquery.dataTables.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/css/responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/css/sidenav.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/js/customJs.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/public/js/customJs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/js/mdb.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/public/js/mdb.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/public/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/public/js/popper.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/Layout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/Layout/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/adminpanel.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/addCourse.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/editService.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/services.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/datatables-select.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/datatables.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/jquery.dataTables.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/sidenav.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/524cab2802.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/custom.min-2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/datatables-select.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/datatables.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/jquery-3.4.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/jquery-3.5.1.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/jquery.dataTables.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/jquery.slimscroll.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/mdb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/mdb.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/js/mdb.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/js/popper.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/scrollbooster.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/sidebarmenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/public/js/sticky-kit.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/Home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/Home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/Layout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/Layout/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/content/banner.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/content/banner.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/content/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/content/service.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,6 +223,7 @@
       <workItem from="1601478122180" duration="1908000" />
       <workItem from="1601480046025" duration="9573000" />
       <workItem from="1601521654501" duration="13249000" />
+      <workItem from="1601540044582" duration="5913000" />
     </task>
     <servers />
   </component>
@@ -364,10 +302,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="388" y="23" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1601478674516" />
-    <state x="557" y="317" key="NewPhpFileDialog" timestamp="1601524147370">
+    <state x="557" y="317" key="NewPhpFileDialog" timestamp="1601543442125">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="557" y="317" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1601524147370" />
+    <state x="557" y="317" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1601543442125" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1601399606266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -376,10 +314,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="746" height="596" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1601448596246" />
-    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601533164412">
+    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601547912197">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1601533164412" />
+    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1601547912197" />
     <state x="358" y="127" width="1483" height="786" key="dock-window-1" timestamp="1601094129275">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
