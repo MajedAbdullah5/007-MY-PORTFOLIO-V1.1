@@ -32,3 +32,16 @@ Route::post('/addproject','ProjectController@addproject');
 Route::get('/messages','MessageController@showMessagePage');
 Route::get('/getMessageList','MessageController@getMessageList');
 Route::post('/deleteMessage','MessageController@deleteMessage');
+
+//Portfolio Page---------------------------------------------------------------------------------
+
+//portfolio
+Route::get('/portfolio','PortfolioController@showPortfolioPage');
+
+//objectives
+Route::get('/getObjetiveList','PortfolioController@getObjetiveList');
+Route::post('/populateObjectives','PortfolioController@populateObjectives');
+Route::post('/updateObjectives','PortfolioController@updateObjectives');
+
+//education
+
