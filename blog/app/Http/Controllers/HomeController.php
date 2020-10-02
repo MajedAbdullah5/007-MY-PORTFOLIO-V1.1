@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\visitorsModel;
-use App\serviceModel;
-use App\courseModel;
-use App\projectModel;
+use App\CourseModel;
+use App\MessageModel;
+use App\ProjectModel;
+use App\ServiceModel;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
        $user_ip = $_SERVER['REMOTE_ADDR'];
        date_default_timezone_set('Asia/Dhaka');
        $getDate = date('Y-m-d h:i:sa');
-       visitorsModel::insert(['ip_Address'=>$user_ip,'visit_time'=>$getDate]);
+       VisitorsModel::insert(['ip_Address'=>$user_ip,'visit_time'=>$getDate]);
 
 
        $service = json_decode(serviceModel::all());

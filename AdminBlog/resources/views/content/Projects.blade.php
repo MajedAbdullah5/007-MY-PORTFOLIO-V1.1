@@ -3,19 +3,19 @@
     <table class="table-bordered" id="myTable">
         <a id="addProjectButton" class="btn btn-info">ADD PROJECT</a>
         <thead>
-            <th>ID</th>
-            <th>NAME</th>
-            <th>DESCRIPTION</th>
-            <th>LINK</th>
-            <th>IMAGE</th>
-            <th>EDIT</th>
-            <th>DELETE</th>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>DESCRIPTION</th>
+        <th>LINK</th>
+        <th>IMAGE</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
         </thead>
         <tbody id="projectTableBody">
         </tbody>
     </table>
 
-{{--project edit model--}}
+    {{--project edit model--}}
 
     <div class="modal fade" id="projectEditModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -32,7 +32,7 @@
                     <h1 id="projectStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="projectnameId" class="form-control mb-4" placeholder="Name">
-                    <textarea          id="projectdesId" class="form-control mb-4" placeholder="Desc"></textarea>
+                    <textarea id="projectdesId" class="form-control mb-4" placeholder="Desc"></textarea>
                     <input type="text" id="projectLinkId" class="form-control mb-4" placeholder="Project link">
                     <input type="text" id="projectimageLinkId" class="form-control mb-4" placeholder="Image link">
                 </div>
@@ -61,7 +61,8 @@
     </div>
     <!--delete Confirm Modal -->
 
-    <div class="modal fade" id="deleteProjectConfrimModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="deleteProjectConfrimModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -75,7 +76,7 @@
         </div>
     </div>
 
-{{--Add project--}}
+    {{--Add project--}}
     <div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -91,7 +92,7 @@
                     <h1 id="projectStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="addProjectName" class="form-control mb-4" placeholder="Name">
-                    <textarea          id="addProjectDes" class="form-control mb-4" placeholder="Desc"></textarea>
+                    <textarea id="addProjectDes" class="form-control mb-4" placeholder="Desc"></textarea>
                     <input type="text" id="addProjectLink" class="form-control mb-4" placeholder="Project link">
                     <input type="text" id="addProjectImage" class="form-control mb-4" placeholder="Image link">
                 </div>
@@ -124,24 +125,23 @@
     </script>
 @endsection
 <script>
-    function getProjectsList(){
-        axios.get('/getProjectsList').
-        then(function(response){
-            if(response.status == 200){
+    function getProjectsList() {
+        axios.get('/getProjectsList').then(function (response) {
+            if (response.status == 200) {
                 let result = response.data;
-                $.each(result,function (i){
+                $.each(result, function (i) {
                     $('<tr>').html(
-                        "<td>"+result[i].id+"</td>"+
-                        "<td>"+result[i].project_name+"</td>"+
-                        "<td>"+result[i].project_des+"</td>"+
-                        "<td>"+result[i].project_link+"</td>"+
-                        "<td>"+result[i].project_image+"</td>"+
-                        "<td>"+"<a data-id="+result[i].id+" class='btn btn-primary btn-sm projectEditButton'>Edit<a/>"+"</td>"+
-                        "<td>"+"<a data-id="+result[i].id+" class='btn btn-danger btn-sm projectDeleteButton'>Delete</a>"+"</td>"
+                        "<td>" + result[i].id + "</td>" +
+                        "<td>" + result[i].project_name + "</td>" +
+                        "<td>" + result[i].project_des + "</td>" +
+                        "<td>" + result[i].project_link + "</td>" +
+                        "<td>" + result[i].project_image + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-primary btn-sm projectEditButton'>Edit<a/>" + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger btn-sm projectDeleteButton'>Delete</a>" + "</td>"
                     ).appendTo('#projectTableBody');
                 });
                 //Edit Button
-                $('.projectEditButton').click(function (){
+                $('.projectEditButton').click(function () {
                     let id = $(this).data('id');
                     populateProjectData(id);
                     $('#projectModalStatus').html(id);
@@ -149,135 +149,120 @@
                 });
 
                 //DeleteButton
-                $('.projectDeleteButton').click(function (){
-                   let id = $(this).data('id');
-                   $('#deleteProjectConfrimModal').modal('show');
-                   $('#deleteProjectConfrimModalStatus').html(id);
+                $('.projectDeleteButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#deleteProjectConfrimModal').modal('show');
+                    $('#deleteProjectConfrimModalStatus').html(id);
                 });
-                $('#confirmProjectDeleteButton').click(function (){
+                $('#confirmProjectDeleteButton').click(function () {
                     let id = $('#deleteProjectConfrimModalStatus').html();
                     deleteService(id);
                 });
+
                 //Delete Service
-                function deleteService(id){
-                    axios.post('/deleteService',{
-                        id:id
-                    }).
-                    then(function(response){
-                       if(response.data == 1){
-                           alert("Service has been deleted!");
-                       }
-                    }).catch(function(error){
+                function deleteService(id) {
+                    axios.post('/deleteService', {
+                        id: id
+                    }).then(function (response) {
+                        if (response.data == 1) {
+                            alert("Service has been deleted!");
+                        }
+                    }).catch(function (error) {
                         alert("Service failed to delete!");
                     });
                 }
 
                 //Add project data
-                $('#addProjectButton').click(function (){
+                $('#addProjectButton').click(function () {
                     $('#addProjectModal').modal('show');
                 });
-                $('#addProjectModalButton').click(function (){
+                $('#addProjectModalButton').click(function () {
                     $('#addProjectConfirmModal').modal('show');
                 });
-                $('#addProjectConfirmButton').click(function (){
-                    let addProjectName  = $('#addProjectName').val();
-                    let addProjectDes   = $('#addProjectDes').val();
-                    let addProjectLink  = $('#addProjectLink').val();
+                $('#addProjectConfirmButton').click(function () {
+                    let addProjectName = $('#addProjectName').val();
+                    let addProjectDes = $('#addProjectDes').val();
+                    let addProjectLink = $('#addProjectLink').val();
                     let addProjectImage = $('#addProjectImage').val();
-                    addProject(addProjectName,addProjectDes,addProjectLink,addProjectImage);
+                    addProject(addProjectName, addProjectDes, addProjectLink, addProjectImage);
                 });
 
-                function addProject(addProjectName,addProjectDes,addProjectLink,addProjectImage){
-                    axios.post('/addproject',{
-                        addProjectName:addProjectName,
-                        addProjectDes:addProjectDes,
-                        addProjectLink:addProjectLink,
-                        addProjectImage:addProjectImage
-                    }).then(function(response){
-                       if(response.data == 1){
-                           alert('Project has been added!');
-                       }
-                       else{
-                           alert('Project failed to added!');
-                       }
-                    }).catch(function(){
+                function addProject(addProjectName, addProjectDes, addProjectLink, addProjectImage) {
+                    axios.post('/addproject', {
+                        addProjectName: addProjectName,
+                        addProjectDes: addProjectDes,
+                        addProjectLink: addProjectLink,
+                        addProjectImage: addProjectImage
+                    }).then(function (response) {
+                        if (response.data == 1) {
+                            alert('Project has been added!');
+                        } else {
+                            alert('Project failed to added!');
+                        }
+                    }).catch(function () {
                         console.log(response.data);
                     });
                 }
 
                 //Update project data
-                $('#updateProjectButton').click(function (){
+                $('#updateProjectButton').click(function () {
                     let id = $('#projectModalStatus').html();
                     $('#editProjectConfrimModalStatus').html(id);
                     $('#editProjectConfrimModal').modal('show');
                 });
-                $('#confirmProjectChangeButton').click(function (){
+                $('#confirmProjectChangeButton').click(function () {
 
 
                     let id = $('#projectModalStatus').html();
                     $('#editProjectConfrimModalStatus').html(id);
-                    let projectnameId= $('#projectnameId').val();
-                    let projectdesId= $('#projectdesId').val();
-                    let projectLinkId= $('#projectLinkId').val();
-                    let projectimageLinkId= $('#projectimageLinkId').val();
-                    updateProjectData(id,projectnameId,projectdesId,projectLinkId,projectimageLinkId);
+                    let projectnameId = $('#projectnameId').val();
+                    let projectdesId = $('#projectdesId').val();
+                    let projectLinkId = $('#projectLinkId').val();
+                    let projectimageLinkId = $('#projectimageLinkId').val();
+                    updateProjectData(id, projectnameId, projectdesId, projectLinkId, projectimageLinkId);
 
                 });
 
-                function updateProjectData(id,projectnameId,projectdesId,projectLinkId,projectimageLinkId){
-                    axios.post('/updateProjectData',{
-                        id:id,
-                        projectnameId:projectnameId,
-                        projectdesId:projectdesId,
-                        projectLinkId:projectLinkId,
-                        projectimageLinkId:projectimageLinkId
-                    }).
-                    then(function(response){
-                        if(response.status== 200){
+                function updateProjectData(id, projectnameId, projectdesId, projectLinkId, projectimageLinkId) {
+                    axios.post('/updateProjectData', {
+                        id: id,
+                        projectnameId: projectnameId,
+                        projectdesId: projectdesId,
+                        projectLinkId: projectLinkId,
+                        projectimageLinkId: projectimageLinkId
+                    }).then(function (response) {
+                        if (response.status == 200) {
                             alert("Data has been updated!");
-                        }
-                        else{
+                        } else {
                             alert("Data failed to update!");
                         }
-                    }).catch(function(){
+                    }).catch(function () {
 
                     });
                 }
 
 
-
-
-
-
-
-
-
-
-
-
                 //Populate Data
-                function populateProjectData(id){
-                    axios.post('/populateProjectData',{
-                        id:id
-                    }).then(function(response){
-                        if(response.status == 200){
+                function populateProjectData(id) {
+                    axios.post('/populateProjectData', {
+                        id: id
+                    }).then(function (response) {
+                        if (response.status == 200) {
                             let result = response.data;
                             $('#projectnameId').val(result.project_name);
                             $('#projectdesId').val(result.project_des);
                             $('#projectLinkId').val(result.project_link);
                             $('#projectimageLinkId').val(result.project_image);
-                        }
-                        else{
+                        } else {
                             alert('data failed to fetch');
                         }
-                    }).catch(function(error){
+                    }).catch(function (error) {
 
                     });
                 }
 
             }
-        }).
-        catch(function(){
+        }).catch(function () {
 
         });
     }

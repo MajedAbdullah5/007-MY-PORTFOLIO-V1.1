@@ -1,4 +1,4 @@
-<h1 class="text-center p-5">Project</h1>
+<h3 class="text-center p-5">PROJECT</h3>
 <div id="testimonial">
 
     <div class="owl-carousel owl-theme">

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class serviceModel extends Model
+class education_model extends Model
 {
-    public $table =  'services';
+    public $table =  'education';
     public $primaryKey ='id';
     public $incrementing = true;
     public $keyType ='int';

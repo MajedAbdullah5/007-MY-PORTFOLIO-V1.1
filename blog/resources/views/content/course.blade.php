@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="text-center p-5">Courses</h1>
+    <h3 class="text-center p-2">COURSES</h3>
     <div class="row">
        @foreach($courseKey as $course)
         <div class="col col-md-4">

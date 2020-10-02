@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@home');
 Route::get('/app', 'HomeController@app');
 
+//Portfolio
+Route::get('/portfolio','PortfolioController@portfolioShowPage');
 
 

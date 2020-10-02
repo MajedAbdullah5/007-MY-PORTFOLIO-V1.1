@@ -153,7 +153,7 @@
                         $('#populateModal').modal('show');
                     });
                     //Delete Button
-                    $('.deleteButton').click(function (){
+                    $('.deleteButton').click(function () {
                         let id = $(this).data('id');
                         $('#serviceHiddenInput').html(id);
                         $('#deleteServiceModal').modal('show');
@@ -167,72 +167,62 @@
         });
 
         //Add Services
-        $('#addServices').click(function (){
+        $('#addServices').click(function () {
             $('#addServiceModal').modal('show');
         });
 
-        $('#addServiceButton').click(function (){
+        $('#addServiceButton').click(function () {
 
             $('#addServiceConfirmModal').modal('show');
         });
-        $('#confirmServiceAdd').click(function (){
-            let addServiceName     =  $('#addServiceName').val();
-            let addServiceDes      =  $('#addServiceDes').val();
-            let addServiceLink     =  $('#addServiceLink').val();
-            let addServiceImage    =  $('#addServiceImage').val();
-            addServices(addServiceName,addServiceDes,addServiceLink,addServiceImage);
+        $('#confirmServiceAdd').click(function () {
+            let addServiceName = $('#addServiceName').val();
+            let addServiceDes = $('#addServiceDes').val();
+            let addServiceLink = $('#addServiceLink').val();
+            let addServiceImage = $('#addServiceImage').val();
+            addServices(addServiceName, addServiceDes, addServiceLink, addServiceImage);
         });
 
 
         // Add Services Method
-        function addServices(addServiceName,addServiceDes,addServiceLink,addServiceImage){
-            axios.post('/addServices',{
-            addServiceName:addServiceName,
-            addServiceDes:addServiceDes,
-            addServiceLink:addServiceLink,
-            addServiceImage:addServiceImage
-        }).
-        then(function (response){
-                if(response.data == 1){
+        function addServices(addServiceName, addServiceDes, addServiceLink, addServiceImage) {
+            axios.post('/addServices', {
+                addServiceName: addServiceName,
+                addServiceDes: addServiceDes,
+                addServiceLink: addServiceLink,
+                addServiceImage: addServiceImage
+            }).then(function (response) {
+                if (response.data == 1) {
                     alert('Data has been added');
-                }
-                else{
+                } else {
                     alert('Data failed  to delete');
                 }
-        })
-        .catch(function (error){
+            })
+                .catch(function (error) {
 
-        });
+                });
 
-}
-
-
-
-
-
+        }
 
 
         //Delete Confrim Service
-        $('#confirmServiceDelete').click(function (){
-            let id =  $('#serviceHiddenInput').html();
-           deleteServiceData(id);
+        $('#confirmServiceDelete').click(function () {
+            let id = $('#serviceHiddenInput').html();
+            deleteServiceData(id);
         });
 
         //Delete Service Method
-        function deleteServiceData(id){
-            axios.post('/deleteServiceData',{
-                id:id
-            }).
-            then(function (response){
+        function deleteServiceData(id) {
+            axios.post('/deleteServiceData', {
+                id: id
+            }).then(function (response) {
 
-                       if(response.data == 1){
-                           alert('Data Successfully Deleted');
-                       }
-                       else{
-                           alert('Data failed to delete');
-                       }
-            }).
-            catch(function (error){
+                if (response.data == 1) {
+                    alert('Data Successfully Deleted');
+                } else {
+                    alert('Data failed to delete');
+                }
+            }).catch(function (error) {
 
             })
         }

@@ -1,51 +1,67 @@
 body{
     font-family: 'Hind Siliguri', sans-serif;
+    width: 99%;
     padding: 0;
     margin: 0;
 }
-html{
- display: block;
-}
-.image{
+#image{
     text-align: center;
+    width: 400px;
 }
 .titleBox{
-    padding-left: 10px;
 }
-.divContainer{
-    padding-top: 70px;
-    height: 100vh;
+.mainDiv{
     background-color: #aeaeae;
-}
-.Servicecontainer{
+    height: 65vh;
 
+}
+.titlePageRow{
+    padding-top: 120px;
 }
 .servicecard{
     width: 100%;
     height: 220px;
     text-align: center;
-    padding: 15px;
 
 }
 
 .card{
-    width: 300px;
     border-radius: 0;
     text-align: center;
     margin: 10px;
 
-}
-img{
-    width: 200px;
 }
 .item{
     display: inline-block;
 }
 #testimonial{
     background-color: #f63854;
-    padding: 70px;
+    padding: 40px;
 }
-.container{
-    max-width: 1140px;
-    margin: auto;
+/*Message Layout*/
+.messagePage{
+    background-image: url('../image/banner/contact.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+/*Footer Layout*/
+.footerPage{
+    background-color: #0e2231;
+}
+.footerClass{
+    color: white;
+    list-style: none;
+    line-height: 40px;
+}
+.footerHeader{
+    color: #d54855;
+}
+.copyright{
+    background-color: #d54855;
+}
+.copyright p{
+    padding-top: 15px;
+}
+
+/*Portfolio*/
+
