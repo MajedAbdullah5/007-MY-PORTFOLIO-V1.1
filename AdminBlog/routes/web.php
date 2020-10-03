@@ -72,3 +72,10 @@ Route::post('/populateJobSkills', 'PortfolioController@populateJobSkills');
 Route::post('/updateJobSkills', 'PortfolioController@updateJobSkills');
 Route::post('/deleteJobSkills', 'PortfolioController@deleteJobSkills');
 Route::post('/addJobSkills', 'PortfolioController@addJobSkills');
+
+//personal information
+Route::get('/getPersonalInformationList', 'PortfolioController@getPersonalInformationList');
+Route::post('/populatePersonalInformation', 'PortfolioController@populatePersonalInformation');
+Route::post('/updatePersonalInformation', 'PortfolioController@updatePersonalInformation');
+Route::post('/deletePersonalInformation', 'PortfolioController@deletePersonalInformation');
+Route::post('/addPersonalInformation', 'PortfolioController@addPersonalInformation');

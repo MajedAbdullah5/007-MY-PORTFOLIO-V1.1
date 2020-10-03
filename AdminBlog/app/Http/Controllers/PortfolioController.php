@@ -9,6 +9,7 @@ use App\education_model;
 use App\language_model;
 use App\programming_skill_model;
 use App\jobSkillModel;
+use App\personal_informationModel;
 
 class PortfolioController extends Controller
 {
@@ -166,8 +167,38 @@ class PortfolioController extends Controller
         $jobSkillsAddInstitute = $request->input('jobSkillsAddInstitute');
         $jobSkillsAddPosition = $request->input('jobSkillsAddPosition');
         return DB::table('job_skill')->insert(['job' => $jobSkillsAddJob, 'workplace' => $jobSkillsAddInstitute, 'position' => $jobSkillsAddPosition]);
+    }
+
+//    personal information
+    function getPersonalInformationList()
+    {
+        return personal_informationModel::all();
+    }
+
+    function populatePersonalInformation(Request $request)
+    {
+        return personal_informationModel::where('id', '=', $request->id)->first();
+    }
+
+    function updatePersonalInformation(Request $request)
+    {
+        $personalInformationStatus = $request->input('personalInformationStatus');
+        $personalInformation = $request->input('personalInformation');
+        return DB::table('personal_infomation')->where('id', '=', $request->id)->update(['information_status' => $personalInformationStatus, 'information' => $personalInformation]);
+    }
+
+    function deletePersonalInformation(Request $request)
+    {
+        return personal_informationModel::where('id', '=', $request->id)->delete();
 
     }
 
+    function addPersonalInformation(Request $request)
+    {
+        $addInformationStatus = $request->input('addInformationStatus');
+        $addInformation = $request->input('addInformation');
+        return DB::table('personal_infomation')->insert(['information_status' => $addInformationStatus, 'information' => $addInformation]);
+
+    }
 
 }

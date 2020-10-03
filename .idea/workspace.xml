@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="403ceed6-f007-419a-be77-2cf087fcc38b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/jobSkillModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/app/personal_informationModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/PortfolioController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Portfolio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Portfolio.blade.php" afterDir="false" />
@@ -226,7 +226,7 @@
       <workItem from="1601609065552" duration="12747000" />
       <workItem from="1601646061599" duration="14643000" />
       <workItem from="1601697144180" duration="19732000" />
-      <workItem from="1601727362752" duration="13274000" />
+      <workItem from="1601727362752" duration="17638000" />
     </task>
     <servers />
   </component>
@@ -317,10 +317,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="746" height="596" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1601448596246" />
-    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601740401586">
+    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601744849989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1601740401586" />
+    <state x="181" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1601744849989" />
     <state x="358" y="127" width="1483" height="786" key="dock-window-1" timestamp="1601094129275">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

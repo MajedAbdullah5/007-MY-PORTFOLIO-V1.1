@@ -492,7 +492,7 @@
     </div>
 
 
-    <!--Job Skills Confirm Modal -->
+    <!--Job Skills update Confirm Modal -->
     <div class="modal fade" id="jobSkillsConfirmModal" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -572,9 +572,106 @@
             </div>
         </div>
     </div>
+{{-----------------------------------------------PERSONAL INFORMATION----------------------------------}}
+    <table id="myTable" class="table-bordered">
+        <h6 class="pt-5" style="font-weight: bold;">PERSONAL INFORMATION</h6>
+        <h6 class="p-3"><a id="addPersonalInformationButton" class="btn btn-outline-deep-purple">ADD PERSONAL INFORMATION</a></h6>
+        <thead>
+        <th>INFORMATION STATUS</th>
+        <th>INFORMATION</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+        </thead>
+        <tbody id="personalInformationTableBody">
+        </tbody>
+    </table>
 
+    {{--    personal Information populate modal--}}
+    <div class="modal fade" id="populatePersonalInformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="populatePersonalInformationModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
 
+                    <input type="text" id="personalInformationStatus" class="form-control mb-4" placeholder="Type Your Status (ex:Father)"/>
+                    <input type="text" id="personalInformation" class="form-control mb-4" placeholder="Type Your Institute (ex:Fakhrul Islam)"/>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="populatePersonalInformationModalButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--personal information update Confirm Modal -->
+    <div class="modal fade" id="informationUpdateConfirmationModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="informationUpdateConfirmationModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Change?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="informationUpdateConfirmationModalButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--    personal information delete Confirm modal--}}
+    <div class="modal fade" id="personalDeleteConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <input id="hiddenInput" type="hidden"/>
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="personalDeleteConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Delete?</h4>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">No</button>
+                    <button id="personalDeleteConfirmButton" type="button" class="btn btn-danger btn-sm">Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--    personal Information add modal--}}
+    <div class="modal fade" id="addPersonalInformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="addPersonalInformationModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+
+                    <input type="text" id="addInformationStatus" class="form-control mb-4" placeholder="Type Your Status (ex:Father)"/>
+                    <input type="text" id="addInformation" class="form-control mb-4" placeholder="Type Your Institute (ex:Fakhrul Islam)"/>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addPersonalInformationModalButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 @section('script')
@@ -584,10 +681,143 @@
         getLanguageList();
         getSkillsList();
         getJobSkillsList();
+        getPersonalInformationList();
     </script>
 @endsection
 <script>
-    // -------------------------------------------------JOB SKILLS----------------------------------------
+    // -------------------------------------------------PERSONAL INFORMATION-----------------------------
+function getPersonalInformationList(){
+    axios.get('/getPersonalInformationList').
+    then(function(response){
+        if(response.status == 200){
+            let result = response.data;
+            $.each(result,function (i){
+                $("<tr>").html(
+                    "<td>"+result[i].information_status+"</td>"+
+                    "<td>"+result[i].information+"</td>"+
+                    "<td>"+"<a class='btn btn-sm btn-outline-info informationEditButton'   data-id="+result[i].id+">Edit</a>"+"</td>"+
+                    "<td>"+"<a class='btn btn-sm btn-outline-danger informationDeleteButton' data-id="+result[i].id+">Delete</a>"+"</td>"
+                ).appendTo('#personalInformationTableBody');
+            });
+            $('.informationEditButton').click(function(){
+                let id = $(this).data('id');
+                $('#populatePersonalInformationModalStatus').html(id);
+                $('#populatePersonalInformationModal').modal('show');
+                populatePersonalInformation(id);
+            });
+            $('#populatePersonalInformationModalButton').click(function(){
+                let id = $('#populatePersonalInformationModalStatus').html();
+                $('#informationUpdateConfirmationModalStatus').html(id);
+                $('#informationUpdateConfirmationModal').modal('show');
+                });
+            $('#informationUpdateConfirmationModalButton').click(function (){
+                let id = $('#informationUpdateConfirmationModalStatus').html();
+                let personalInformationStatus = $('#personalInformationStatus').val();
+                let personalInformation = $('#personalInformation').val();
+                updatePersonalInformation(id,personalInformationStatus,personalInformation);
+            });
+            //delete information
+            $('.informationDeleteButton').click(function(){
+                let id = $(this).data('id');
+                $('#personalDeleteConfirmModalStatus').html(id);
+                $('#personalDeleteConfirmModal').modal('show');
+            });
+            $('#personalDeleteConfirmButton').click(function(){
+                let id = $('#personalDeleteConfirmModalStatus').html();
+                deletePersonalInformation(id);
+            });
+            //Add Data
+            $('#addPersonalInformationButton').click(function (){
+                $('#addPersonalInformationModal').modal('show');
+            });
+            $('#addPersonalInformationModalButton').click(function(){
+                let addInformationStatus= $('#addInformationStatus').val();
+                let addInformation = $('#addInformation').val();
+                addPersonalInformation(addInformationStatus,addInformation);
+            });
+
+
+        }
+    }).catch(function(){
+
+    });
+}
+//add information
+    function  addPersonalInformation(addInformationStatus,addInformation){
+    axios.post('/addPersonalInformation',{
+        addInformationStatus:addInformationStatus,
+        addInformation:addInformation
+    }).
+    then(function(response){
+        if(response.status == 200){
+            alert("Data has been added!");
+        }
+        else{
+            alert("Data failed to add!");
+        }
+
+    }).catch(function(error){
+
+    });
+    }
+// delete information
+function deletePersonalInformation(id){
+    axios.post('/deletePersonalInformation',{
+        id:id
+    }).then(function(response){
+        console.log(response.data);
+        if(response.data == 1){
+            alert('Data has been deleted!');
+        }
+        else{
+            alert('Data failed to delete!');
+        }
+    }).catch(function(){
+
+    });
+}
+//update information
+    function updatePersonalInformation(id,personalInformationStatus,personalInformation){
+    axios.post('/updatePersonalInformation',{
+        id:id,
+        personalInformationStatus:personalInformationStatus,
+        personalInformation:personalInformation
+    }).
+    then(function(response){
+        if(response.data == 1){
+            alert("Data has been updated successfully!")
+        }
+        else{
+            alert("Data failed to update!")
+        }
+
+    }).catch(function(){
+
+    });
+    }
+
+//populate information
+function  populatePersonalInformation(id){
+    axios.post('/populatePersonalInformation',{
+        id:id
+    }).
+    then(function(response){
+        if(response.status == 200){
+            let result = response.data;
+            $('#personalInformationStatus').val(result.information_status);
+            $('#personalInformation').val(result.information);
+        }
+
+
+    }).catch(function(){
+
+    });
+}
+
+
+
+
+    // -------------------------------------------------JOB SKILLS---------------------------------------
 
     function getJobSkillsList() {
         axios.get('/getJobSkillsList').then(function (response) {
@@ -645,25 +875,7 @@
                     let jobSkillsAddPosition = $('#jobSkillsAddPosition').val();
                     addJobSkills(jobSkillsAddJob, jobSkillsAddInstitute, jobSkillsAddPosition);
                 });
-
-
             }
-        }).catch(function () {
-
-        });
-    }
-
-    //delete
-    function deleteJobSkills(id) {
-        axios.post('/deleteJobSkills', {
-            id: id
-        }).then(function (response) {
-            if (response.data == 1) {
-                alert("Data has been deleted!");
-            } else {
-                alert("Data failed to delete!");
-            }
-
         }).catch(function () {
 
         });
@@ -681,6 +893,23 @@
             } else {
                 alert("Data failed to add");
             }
+        }).catch(function () {
+
+        });
+    }
+
+
+    //delete
+    function deleteJobSkills(id) {
+        axios.post('/deleteJobSkills', {
+            id: id
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert("Data has been deleted!");
+            } else {
+                alert("Data failed to delete!");
+            }
+
         }).catch(function () {
 
         });
