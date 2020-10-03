@@ -56,3 +56,10 @@ Route::post('/languagePopulateModal','PortfolioController@languagePopulateModal'
 Route::post('/updateLanguage','PortfolioController@updateLanguage');
 Route::post('/deleteLanguage','PortfolioController@deleteLanguage');
 Route::post('/addLanguage','PortfolioController@addLanguage');
+
+//skills
+Route::get('/getSkillsList','PortfolioController@getSkillsList');
+Route::post('/populateSkills','PortfolioController@populateSkills');
+Route::post('/updateSkills','PortfolioController@updateSkills');
+Route::post('/deleteSkills','PortfolioController@deleteSkills');
+Route::post('/addSkills','PortfolioController@addSkills');

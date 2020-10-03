@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\career_objectives;
 use App\education_model;
 use App\language_model;
-
+use App\programming_skill_model;
 class PortfolioController extends Controller
 {
     //Career Objectives
@@ -83,6 +83,27 @@ class PortfolioController extends Controller
         $AddLanguage =  $request->input('AddLanguage');
         $AddLanguageProficiency =  $request->input('AddLanguageProficiency');
         return DB::table('language')->insert(['language'=>$AddLanguage,'language_proficiency'=>$AddLanguageProficiency]);
+    }
+    function getSkillsList(){
+        return programming_skill_model::all();
+    }
+    function populateSkills(Request $request){
+        return programming_skill_model::where('id','=',$request->id)->first();
+    }
+    function updateSkills (Request $request){
+        $id  = $request->input('id');
+        $skillsProgrammingLanguage  = $request->input('skillsProgrammingLanguage');
+        $skillsProgrammingLanguageLevel  = $request->input('skillsProgrammingLanguageLevel');
+        return DB::table('programming_skills')->where('id','=',$id)->update(['programming_language'=>$skillsProgrammingLanguage,'programming_level'=>$skillsProgrammingLanguageLevel]);
+    }
+    function deleteSkills(Request $request){
+        return programming_skill_model::where('id','=',$request->id)->delete();
+    }
+    function addSkills(Request $request){
+        $skillsProgrammingLanguage = $request->input('skillsProgrammingLanguage');
+        $skillsProgrammingLanguageLevel = $request->input('skillsProgrammingLanguageLevel');
+        return DB::table('programming_skills')->insert(['programming_language'=>$skillsProgrammingLanguage,'programming_level'=>$skillsProgrammingLanguageLevel]);
+
     }
 
 }

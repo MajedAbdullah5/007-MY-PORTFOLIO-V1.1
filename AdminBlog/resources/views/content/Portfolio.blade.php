@@ -328,6 +328,118 @@
             </div>
         </div>
     </div>
+{{---------------------------------------------------SKILLS-------------------------------------------}}
+    <table id="myTable" class="table-bordered">
+        <h6 class="pt-5" style="font-weight: bold;">ADD SKILLS</h6>
+        <h6 class="p-3"><a id="addSkillButton" class="btn btn-outline-deep-purple">ADD SKILLS</a></h6>
+        <thead>
+        <th>PROGRAMMING LANGUAGE</th>
+        <th>LANGUAGE LEVEL</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+        </thead>
+        <tbody id="skillTableBody">
+        </tbody>
+    </table>
+
+    {{--Skills populate Modal--}}
+    <div class="modal fade" id="skillsPopulateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="skillsPopulateModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+
+                    <input type="text" id="skillsProgrammingLanguage" class="form-control mb-4" placeholder="Type Language (ex:Java)">
+                    <input type="text" id="skillsProgrammingLanguageLevel" class="form-control mb-4" placeholder="Type Level (ex: 70% )">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="skillsPopulateButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--skills Confirm Modal -->
+
+    <div class="modal fade" id="skillsConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="skillsConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Change?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="skillsConfirmButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--skills delete confrim modal--}}
+    <div class="modal fade" id="skillsDeleteConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <input id="hiddenInput" type="hidden"/>
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="skillsDeleteConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Delete?</h4>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">No</button>
+                    <button id="skillsDeleteConfirmButton" type="button" class="btn btn-danger btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--Skills Add Modal--}}
+    <div class="modal fade" id="addSkillsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="addSkillsModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+                    <input type="text" id="addSkillsProgrammingLanguage" class="form-control mb-4" placeholder="Type Language (ex:Java)">
+                    <input type="text" id="addSkillsProgrammingLanguageLevel" class="form-control mb-4" placeholder="Type Level (ex: 70% )">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addSkillsModalButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--    add confirm modal--}}
+    <div class="modal fade" id="addSkillsConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 class="p-5">Are you sure?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addSkillsConfirmModalButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 @endsection
@@ -336,9 +448,167 @@
         getObjetiveList();
         getEducationList();
         getLanguageList();
+        getSkillsList();
     </script>
 @endsection
 <script>
+// ------------------------------------------------------SKILLS--------------------------------------------
+function getSkillsList(){
+    axios.get('/getSkillsList').
+    then(function(response){
+      if(response.status ==200){
+          let result = response.data;
+          $.each(result,function (i){
+              $("<tr>").html(
+                  "<td>"+result[i].programming_language+"</td>"+
+                  "<td>"+result[i].programming_level+"</td>"+
+                  "<td>"+"<a data-id="+result[i].id+" class='btn btn-sm btn-outline-info skillsEditButton'>Edit</a>"+"</td>"+
+                  "<td>"+"<a data-id="+result[i].id+" class='btn btn-sm btn-outline-danger skillsDeleteButton'>Delete</a>"+"</td>"
+              ).appendTo('#skillTableBody');
+          });
+          //populate
+          $('.skillsEditButton').click(function (){
+              let id = $(this).data('id');
+              $('#skillsPopulateModalStatus').html(id);
+              $('#skillsPopulateModal').modal('show');
+              populateSkills(id);
+
+          });
+          //Delete
+          $('.skillsDeleteButton').click(function (){
+              let id =  $(this).data('id');
+               $('#skillsDeleteConfirmModalStatus').html(id);
+              $('#skillsDeleteConfirmModal').modal('show');
+          });
+          $('#skillsDeleteConfirmButton').click(function (){
+             let id = $('#skillsDeleteConfirmModalStatus').html();
+             deleteSkills(id);
+          });
+
+          //update
+          $('#skillsPopulateButton').click(function (){
+             let id =  $('#skillsPopulateModalStatus').html();
+             $('#skillsConfirmModalStatus').html(id);
+             $('#skillsConfirmModal').modal('show');
+          });
+          $('#skillsConfirmButton').click(function (){
+             let id =  $('#skillsConfirmModalStatus').html();
+             let skillsProgrammingLanguage =  $('#skillsProgrammingLanguage').val();
+             let skillsProgrammingLanguageLevel =  $('#skillsProgrammingLanguageLevel').val();
+             updateSkills(id,skillsProgrammingLanguage,skillsProgrammingLanguageLevel);
+          });
+          //Add skill Button
+          $('#addSkillButton').click(function (){
+              $('#addSkillsModal').modal('show');
+          });
+          $('#addSkillsModalButton').click(function (){
+            $('#addSkillsConfirmModal').modal('show');
+          });
+          $('#addSkillsConfirmModalButton').click(function (){
+              let skillsProgrammingLanguage =  $('#addSkillsProgrammingLanguage').val();
+              let skillsProgrammingLanguageLevel =  $('#addSkillsProgrammingLanguageLevel').val();
+              addSkills(skillsProgrammingLanguage,skillsProgrammingLanguageLevel);
+          });
+      }
+    }).catch(function(error){
+
+    });
+}
+//Add Skills
+function addSkills(skillsProgrammingLanguage,skillsProgrammingLanguageLevel){
+    axios.post('/addSkills',{
+        skillsProgrammingLanguage:skillsProgrammingLanguage,
+        skillsProgrammingLanguageLevel:skillsProgrammingLanguageLevel
+    }).
+    then(function(response){
+        if(response.data == 1){
+            alert('Data has been added!');
+        }
+        else{
+            alert('Data failed to add!');
+        }
+
+    }).catch(function(){
+
+    });
+}
+
+
+
+
+
+
+
+
+
+//Delete Skills
+function deleteSkills(id){
+    axios.post('/deleteSkills',{
+        id:id
+    }).then(function(response){
+        console.log(response.data);
+        if(response.data == 1){
+            alert("Data has been deleted!");
+        }
+        else{
+            alert("Data failed to delete!");
+        }
+    }).catch(function(){
+
+    });
+}
+
+
+
+//Populate Skills
+function populateSkills(id){
+    axios.post('/populateSkills',{
+        id:id
+    }).then(function(response){
+        if(response.status == 200){
+            let result = response.data;
+            $('#skillsProgrammingLanguage').val(result.programming_language);
+            $('#skillsProgrammingLanguageLevel').val(result.programming_level);
+        }
+        else{
+            alert('Data failed to fetched');
+        }
+
+}).catch(function(){
+
+});
+}
+//Update Skills
+function updateSkills(id,skillsProgrammingLanguage,skillsProgrammingLanguageLevel){
+    axios.post('/updateSkills',{
+        id:id,
+        skillsProgrammingLanguage:skillsProgrammingLanguage,
+        skillsProgrammingLanguageLevel:skillsProgrammingLanguageLevel
+    }).
+    then(function(response){
+        if(response.data == 1){
+            alert('Data has been updated successfully!');
+        }
+        else{
+            alert('Data failed to update!');
+        }
+
+    }).catch(function(){
+
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
     // --------------------------------------------LANGUAGE-------------------------------------------
     function getLanguageList() {
         axios.get('/getLanguageList').then(function (response) {
@@ -558,7 +828,7 @@
 
         });
     }
-    
+
     //Delete Education
     function deleteEducation(id) {
         axios.post('/deleteEducation', {
