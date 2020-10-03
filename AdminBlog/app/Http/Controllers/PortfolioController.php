@@ -64,9 +64,25 @@ class PortfolioController extends Controller
     }
 
     //Language
-    function PortfolioController(){
-       return language_model::all();
+    function getLanguageList(){
+        return language_model::all();
     }
-
+    function languagePopulateModal(Request $request){
+        return language_model::where('id','=',$request->id)->first();
+    }
+    function updateLanguage(Request $request){
+        $populateLanguage=      $request->input('populateLanguage');
+        //How do i print $populateLanguage variable in console in order to see whether the expected result is coming or not
+        $languageProficiency=   $request->input('languageProficiency');
+        return DB::table('language')->where('id','=',$request->id)->update(['language'=>$populateLanguage,'language_proficiency'=>$languageProficiency]);
+    }
+    function deleteLanguage(Request $request){
+        return language_model::where('id','=',$request->id)->delete();
+    }
+    function addLanguage(Request $request){
+        $AddLanguage =  $request->input('AddLanguage');
+        $AddLanguageProficiency =  $request->input('AddLanguageProficiency');
+        return DB::table('language')->insert(['language'=>$AddLanguage,'language_proficiency'=>$AddLanguageProficiency]);
+    }
 
 }

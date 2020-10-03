@@ -52,3 +52,7 @@ Route::post('/addEducation','PortfolioController@addEducation');
 
 //language
 Route::get('/getLanguageList','PortfolioController@getLanguageList');
+Route::post('/languagePopulateModal','PortfolioController@languagePopulateModal');
+Route::post('/updateLanguage','PortfolioController@updateLanguage');
+Route::post('/deleteLanguage','PortfolioController@deleteLanguage');
+Route::post('/addLanguage','PortfolioController@addLanguage');

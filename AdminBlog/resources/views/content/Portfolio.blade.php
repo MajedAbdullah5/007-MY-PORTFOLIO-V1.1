@@ -130,10 +130,11 @@
 
 
     {{--delete confrim modal--}}
-    <div class="modal fade" id="educationDeleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="educationDeleteConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <h2 id="educationDeleteConfirmModalStatus" ></h2>
+            <h2 id="educationDeleteConfirmModalStatus"></h2>
             <div class="modal-content">
                 <div class="modal-body text-center">
                     <h4 class="p-5">Do you want to Delete?</h4>
@@ -193,7 +194,7 @@
             </div>
         </div>
     </div>
-{{---------------------------------------------LANGUAGE-------------------------------------------}}
+    {{---------------------------------------------LANGUAGE-------------------------------------------}}
     <table id="myTable" class="table-bordered">
         <h6 class="pt-5" style="font-weight: bold;">LANGUAGE</h6>
         <h6 class="p-3"><a id="addLanguageButton" class="btn btn-outline-deep-purple">ADD LANGUAGE</a></h6>
@@ -208,7 +209,125 @@
     </table>
 
 
+    {{--Language populate Modal--}}
+    <div class="modal fade" id="languagePopulateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="languagePopulateModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
 
+                    <input type="text" id="populateLanguage" class="form-control mb-4"
+                           placeholder="Type Language (ex:Chinese)">
+                    <select class="form-control mb-4" name="proficiency" id="languageProficiency">
+                        <option value="Select">Select Proficiency</option>
+                        <option value="Native">Native</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Good">Good</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="languagePopulateButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Edit language Confirm Modal -->
+
+    <div class="modal fade" id="editLanguageConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="editLanguageConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Change?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="editLanguageConfirmButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--language delete confrim modal--}}
+    <div class="modal fade" id="languageDeleteConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <input id="hiddenInput" type="hidden"/>
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="languageDeleteConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Delete?</h4>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">No</button>
+                    <button id="languageDeleteConfirmButton" type="button" class="btn btn-danger btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{--Language Add Modal--}}
+    <div class="modal fade" id="addLanguageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="addLanguageModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+
+                    <input type="text" id="addLanguageInputId" class="form-control mb-4"
+                           placeholder="Type Language (ex:Chinese)"/>
+                    <select class="form-control mb-4" name="proficiency" id="addLanguageProficiency">
+                        <option value="Select" {{ old('proficiency') =='Select' ? selected: '' }}>Select Proficiency
+                        </option>
+                        <option value="Native" {{ old('proficiency') =='Native' ? selected: '' }}>Native</option>
+                        <option value="Intermediate" {{ old('proficiency') =='Intermediate' ? selected: '' }}>
+                            Intermediate
+                        </option>
+                        <option value="Good" {{ old('proficiency') =='Good' ? selected: '' }}>Good</option>
+                        <option value="Poor" {{ old('proficiency') =='Poor' ? selected: '' }}>Poor</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addLanguageSubmitButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--    add confirm modal--}}
+    <div class="modal fade" id="addLanguageConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 class="p-5">Are you sure?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addLanguageConfirmButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 @endsection
@@ -221,22 +340,129 @@
 @endsection
 <script>
     // --------------------------------------------LANGUAGE-------------------------------------------
-function getLanguageList(){
-    axios.get('/getLanguageList').
-    then(function(response){
-        console.log(response.data);
+    function getLanguageList() {
+        axios.get('/getLanguageList').then(function (response) {
+            if (response.status == 200) {
+                let result = response.data;
+                $.each(result, function (i) {
+                    $("<tr>").html(
+                        "<td>" + result[i].language + "</td>" +
+                        "<td>" + result[i].language_proficiency + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-outline-info btn-sm languageEditButton'>Edit</a>" + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-outline-danger btn-sm languageDeleteButton'>Delete</a>" + "</td>"
+                    ).appendTo('#languageTableBody');
+                });
+                //Edit and Update
+                $('.languageEditButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#languagePopulateModal').modal('show');
+                    $('#languagePopulateModalStatus').html(id);
+                    languagePopulateModal(id);
+                });
+                $('#languagePopulateButton').click(function () {
+                    let id = $('#languagePopulateModalStatus').html();
+                    $('#editLanguageConfirmModalStatus').html(id);
+                    $('#editLanguageConfirmModal').modal('show');
+                });
+                $('#editLanguageConfirmButton').click(function () {
+                    let id = $('#editLanguageConfirmModalStatus').html();
+                    let populateLanguage = $('#populateLanguage').val();
+                    let languageProficiency = $('#languageProficiency').val();
+                    updateLanguage(id, populateLanguage, languageProficiency);
+                });
+                //Delete Button
+                $('.languageDeleteButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#languageDeleteConfirmModalStatus').html(id);
+                    $('#languageDeleteConfirmModal').modal('show');
+                });
+                $('#languageDeleteConfirmButton').click(function () {
+                    let id = $('#languageDeleteConfirmModalStatus').html();
+                    deleteLanguage(id);
+                });
 
-    }).catch(function(){
+                //Add Button
+                $('#addLanguageButton').click(function () {
+                    $('#addLanguageModal').modal('show');
+                });
+                $('#addLanguageSubmitButton').click(function () {
+                    $('#addLanguageConfirmModal').modal('show');
+                });
+                $('#addLanguageConfirmButton').click(function () {
+                    let AddLanguage = $('#addLanguageInputId').val();
+                    let AddLanguageProficiency = $('#addLanguageProficiency').val();
+                    addLanguage(AddLanguage, AddLanguageProficiency);
+                });
 
-    });
-}
+            }
+        }).catch(function (error) {
 
+        });
 
+    }
 
+    //Add Language
+    function addLanguage(AddLanguage, AddLanguageProficiency) {
+        axios.post('/addLanguage', {
+            AddLanguage: AddLanguage,
+            AddLanguageProficiency: AddLanguageProficiency
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert("Data has been added!");
+            } else {
+                alert("Data failed to add!");
+            }
+        }).catch(function () {
 
+        });
+    }
 
+    //Delete Language
+    function deleteLanguage(id) {
+        axios.post('/deleteLanguage', {
+            id: id
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert("Data has been deleted!");
+            } else {
+                alert("Data failed to delete!");
+            }
+        }).catch(function () {
 
+        });
+    }
 
+    //Update Language
+    function updateLanguage(id, populateLanguage, languageProficiency) {
+        axios.post('/updateLanguage', {
+            id: id,
+            populateLanguage: populateLanguage,
+            languageProficiency: languageProficiency
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert('Language has been updated!');
+            } else {
+                alert('Language failed to update!');
+            }
+        }).catch(function () {
+
+        });
+    }
+
+    //Populate Language
+    function languagePopulateModal(id) {
+        axios.post('/languagePopulateModal', {
+            id: id
+        }).then(function (response) {
+            if (response.status == 200) {
+                let result = response.data;
+                $('#populateLanguage').val(result.language);
+                $('#languageProficiency').val(result.language_proficiency);
+            }
+        }).catch(function (error) {
+
+        });
+    }
 
 
     // ---------------------------------------------EDUCATION-------------------------------------------
@@ -253,18 +479,18 @@ function getLanguageList(){
                         "<td>" + result[i].education_gpa + "</td>" +
                         "<td>" + result[i].education_board + "</td>" +
                         "<td>" + "<a data-id=" + result[i].id + " class='btn btn-outline-info btn-sm educationEditButton'>Edit</a>" + "</td>" +
-                        "<td>" + "<a data-id=" + result[i].id+  " class='btn btn-outline-danger btn-sm educationDeleteButton'>Delete</a>" + "</td>"
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-outline-danger btn-sm educationDeleteButton'>Delete</a>" + "</td>"
                     ).appendTo('#educationTableBody');
                 });
                 //Delete Button
-                $('.educationDeleteButton').click(function (){
+                $('.educationDeleteButton').click(function () {
                     let id = $(this).data('id');
                     $('#educationDeleteConfirmModalStatus').html(id);
                     $('#educationDeleteConfirmModal').modal('show');
                 });
-                $('#educationDeleteConfirmButton').click(function (){
-                  let id = $('#educationDeleteConfirmModalStatus').html();
-                  deleteEducation(id);
+                $('#educationDeleteConfirmButton').click(function () {
+                    let id = $('#educationDeleteConfirmModalStatus').html();
+                    deleteEducation(id);
                 });
 
                 //Edit Button
@@ -292,67 +518,59 @@ function getLanguageList(){
                 });
 
                 //Add Education Button
-                $('#addEducationButton').click(function (){
+                $('#addEducationButton').click(function () {
                     $('#educationAddModal').modal('show');
                 });
-                $('#educationAddButton').click(function (){
+                $('#educationAddButton').click(function () {
                     $('#addConfrimModal').modal('show');
                 });
-                $('#addConfirmButton').click(function (){
+                $('#addConfirmButton').click(function () {
                     let educationDuration = $('#educationAddDuration').val();
                     let educationInstitute = $('#educationAddInstitute').val();
                     let educationCertificate = $('#educationAddCertificate').val();
                     let educationMajor = $('#educationAddMajor').val();
                     let educationCgpa = $('#educationAddCgpa').val();
                     let educationBoard = $('#educationAddBoard').val();
-                    addEducation(educationDuration,educationInstitute,educationCertificate,educationMajor,educationCgpa,educationBoard);
+                    addEducation(educationDuration, educationInstitute, educationCertificate, educationMajor, educationCgpa, educationBoard);
                 });
             }
         }).catch(function () {
 
         });
     }
+
     //Add Education
-    function addEducation(educationDuration,educationInstitute,educationCertificate,educationMajor,educationCgpa,educationBoard){
-        axios.post('/addEducation',{
-            educationDuration:educationDuration,
-            educationInstitute:educationInstitute,
-            educationCertificate:educationCertificate,
-            educationMajor:educationMajor,
-            educationCgpa:educationCgpa,
-            educationBoard:educationBoard
-        }).
-        then(function (response){
-            if(response.data ==1 ){
+    function addEducation(educationDuration, educationInstitute, educationCertificate, educationMajor, educationCgpa, educationBoard) {
+        axios.post('/addEducation', {
+            educationDuration: educationDuration,
+            educationInstitute: educationInstitute,
+            educationCertificate: educationCertificate,
+            educationMajor: educationMajor,
+            educationCgpa: educationCgpa,
+            educationBoard: educationBoard
+        }).then(function (response) {
+            if (response.data == 1) {
                 alert('Data Added successfully!');
-            }
-            else{
+            } else {
                 alert('Data failed to add!');
             }
-        }).catch(function (){
+        }).catch(function () {
 
         });
     }
-
-
-
-
-
-
-//Delete Education
-    function deleteEducation(id){
-        axios.post('/deleteEducation',{
-            id:id
-        }).
-        then(function(response){
-            if(response.data ==1 ){
+    
+    //Delete Education
+    function deleteEducation(id) {
+        axios.post('/deleteEducation', {
+            id: id
+        }).then(function (response) {
+            if (response.data == 1) {
                 alert('Data deleted successfully!');
-            }
-            else{
+            } else {
                 alert('Data failed to delete!');
             }
 
-        }).catch(function(){
+        }).catch(function () {
 
         });
     }
