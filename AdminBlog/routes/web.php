@@ -44,4 +44,11 @@ Route::post('/populateObjectives','PortfolioController@populateObjectives');
 Route::post('/updateObjectives','PortfolioController@updateObjectives');
 
 //education
+Route::get('/getEducationList','PortfolioController@getEducationList');
+Route::post('/populateEducationId','PortfolioController@populateEducationId');
+Route::post('/educationUpdate','PortfolioController@educationUpdate');
+Route::post('/deleteEducation','PortfolioController@deleteEducation');
+Route::post('/addEducation','PortfolioController@addEducation');
 
+//language
+Route::get('/getLanguageList','PortfolioController@getLanguageList');
