@@ -79,3 +79,9 @@ Route::post('/populatePersonalInformation', 'PortfolioController@populatePersona
 Route::post('/updatePersonalInformation', 'PortfolioController@updatePersonalInformation');
 Route::post('/deletePersonalInformation', 'PortfolioController@deletePersonalInformation');
 Route::post('/addPersonalInformation', 'PortfolioController@addPersonalInformation');
+
+//address
+Route::get('/getAddressList','PortfolioController@getAddressList');
+Route::post('/populateAddress','PortfolioController@populateAddress');
+Route::post('/updateAddress','PortfolioController@updateAddress');
+Route::post('/deleteAddress','PortfolioController@deleteAddress');

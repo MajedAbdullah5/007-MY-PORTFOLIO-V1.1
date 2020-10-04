@@ -16,7 +16,7 @@ class AddressMigration extends Migration
        Schema::create('address',function (Blueprint $blueprint){
            $blueprint->increments('id');
            $blueprint->string('address_status');
-           $blueprint->string('address');
+           $blueprint->string('Address');
        });
     }
 

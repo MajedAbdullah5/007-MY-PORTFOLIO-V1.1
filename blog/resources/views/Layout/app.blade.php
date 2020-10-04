@@ -23,6 +23,7 @@
 <script src="https://kit.fontawesome.com/9216278261.js" crossorigin="anonymous"></script>
     @yield('script')
     @include('content.Footer')
+    @include('content.Copyright')
 </div>
 </body>
 </html>

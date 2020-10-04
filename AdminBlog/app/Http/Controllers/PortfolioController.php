@@ -10,6 +10,7 @@ use App\language_model;
 use App\programming_skill_model;
 use App\jobSkillModel;
 use App\personal_informationModel;
+use App\AddressModel;
 
 class PortfolioController extends Controller
 {
@@ -199,6 +200,22 @@ class PortfolioController extends Controller
         $addInformation = $request->input('addInformation');
         return DB::table('personal_infomation')->insert(['information_status' => $addInformationStatus, 'information' => $addInformation]);
 
+    }
+
+    //Address
+    function getAddressList(){
+        return AddressModel::all();
+    }
+    function populateAddress(Request $request){
+        return AddressModel::where('id','=',$request->id)->first();
+    }
+    function updateAddress(Request $request){
+            $addressInformationStatus = $request->input('addressInformationStatus');
+            $addressInformation = $request->input('addressInformation') ;
+            return DB::table('address')->where('id','=',$request->id)->update(['address_status'=>$addressInformationStatus,'Address'=>$addressInformation]);
+    }
+    function deleteAddress(Request $request){
+       return AddressModel::where('id','=',$request->id)->delete();
     }
 
 }

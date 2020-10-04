@@ -8,7 +8,5 @@
     @include('content.project')
     <hr>
     @include('content.Message')
-    @include('content.Footer')
-    @include('content.Copyright')
 @endsection
 
