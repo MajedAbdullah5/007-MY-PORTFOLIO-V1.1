@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2020 at 07:42 PM
+-- Generation Time: Oct 05, 2020 at 07:53 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -30,16 +30,37 @@ SET time_zone = "+00:00";
 CREATE TABLE `address` (
   `id` int(10) UNSIGNED NOT NULL,
   `address_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `Address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `address`
 --
 
-INSERT INTO `address` (`id`, `address_status`, `address`) VALUES
-(1, 'Current address             ', 'Nanjing university of information science and technology, 219\r\nningliu road, pukou 210044.\r\nJiangsu, Nanjing, China\r\n'),
-(2, 'Permanent address        ', 'Ward no 5, Uttar alipur, Dagonbhuiyan, 3920\r\nFeni, Bangladesh  \r\nAbdulla al jaber\r\n');
+INSERT INTO `address` (`id`, `address_status`, `Address`) VALUES
+(1, 'Current address', 'Nanjing university of information science and technology, 219\nningliu road, pukou 210044.d\nJiangsu, Nanjing, China'),
+(2, 'Permanent address', 'Ward no 5, Uttar alipur, Dagonbhuiyan, 3920\nFeni, Bangladesh');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_table`
+--
+
+CREATE TABLE `admin_table` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admin_table`
+--
+
+INSERT INTO `admin_table` (`id`, `name`, `password`, `username`, `email`) VALUES
+(1, 'Majed', 'Majed123', 'MajedAbdullah', 'Majedabdullah635@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -86,7 +107,7 @@ INSERT INTO `courses` (`id`, `course_name`, `course_des`, `course_fee`, `course_
 (4, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeg', 'asdasasa'),
 (8, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeg', 'asdasasa'),
 (9, 'Java', 'Learn for the best', '2000', '300', '200', 'java.png', 'sadasasasasasasas'),
-(10, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeg', 'asdasasa');
+(10, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeghg', 'asdasasa');
 
 -- --------------------------------------------------------
 
@@ -98,10 +119,10 @@ CREATE TABLE `education` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `education_duration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `education_institute` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `education_certificate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `education_certificate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `education_major` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `education_gpa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `education_board` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `education_board` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -109,8 +130,8 @@ CREATE TABLE `education` (
 --
 
 INSERT INTO `education` (`id`, `education_duration`, `education_institute`, `education_certificate`, `education_major`, `education_gpa`, `education_board`) VALUES
-(1, 'Since 2017/09- Running..', 'Nanjing University of Information Science and Technology Nanjing, China', '', 'B.sc in Software Engineering', 'Current CGPA: 3:00', ''),
-(2, 'Since 2014/07-2016/08', 'Government Iqbal Memorial College', ' Higher Secondary Certificate', 'Group of science', 'GPA 3.78 out of 5', ' Board of Comilla'),
+(1, 'Since 2017/09- Running..', 'Nanjing University of Information Science and Technology Nanjing, China', NULL, 'B.sc in Software Engineering', 'Current CGPA: 3:00', NULL),
+(2, 'Since 2014/07-2016/08', 'Government Iqbal Memorial College', 'Higher Secondary Certificate', 'Group of science', 'GPA 3.78 out of 5', 'Board of Comilla'),
 (3, 'Since 2014/07-2016/08', 'Uttar Alipur School and College', 'Secondary School Certificate', 'Group of science', 'GPA 4.38 out of 5', 'Board of Comilla');
 
 -- --------------------------------------------------------
@@ -120,19 +141,20 @@ INSERT INTO `education` (`id`, `education_duration`, `education_institute`, `edu
 --
 
 CREATE TABLE `emergency_contact` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `emergency_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emergency_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emergency_mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emergency_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `contactStatus` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contactInformation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `emergency_contact`
 --
 
-INSERT INTO `emergency_contact` (`id`, `emergency_name`, `emergency_address`, `emergency_mobile`, `emergency_email`) VALUES
-(1, 'Abdulla al jaber', 'North Alipur, Ward no 5, Dagonbhuiyan,Feni', '019890312202', 'Majedabdullah635@gmail.com\r\n');
+INSERT INTO `emergency_contact` (`id`, `contactStatus`, `contactInformation`) VALUES
+(5, 'Name', 'Abdulla al jaber'),
+(6, 'Phone', '01890312202'),
+(7, 'Address', 'North Alipur, Ward no 5, Beker bazar, Dagonbhuiyan,Feni'),
+(8, 'School', 'Nanjing university of information science and technology');
 
 -- --------------------------------------------------------
 
@@ -180,8 +202,8 @@ INSERT INTO `job_skill` (`id`, `job`, `workplace`, `position`) VALUES
 
 CREATE TABLE `language` (
   `id` int(10) UNSIGNED NOT NULL,
-  `language` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `language_proficiency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `language` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `language_proficiency` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -264,7 +286,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (23, '2020_10_02_134611_job_skill_migration', 17),
 (24, '2020_10_02_140546_personal_information', 18),
 (25, '2020_10_02_145353_personal__infomation', 19),
-(26, '2020_10_02_151259_address_migration', 20);
+(26, '2020_10_02_151259_address_migration', 20),
+(27, '2020_10_04_161625_emergency_migration', 21),
+(28, '2020_10_04_161456_emergency_migration', 22),
+(29, '2020_10_05_142852_admin_table', 22);
 
 -- --------------------------------------------------------
 
@@ -294,7 +319,8 @@ INSERT INTO `personal_infomation` (`id`, `information_status`, `information`) VA
 (18, 'Height', '5’-9’’'),
 (21, 'Phone No          ', '+8615651730150'),
 (22, 'National ID       ', '19983012556000091'),
-(23, 'Blood Group   ', 'O+');
+(23, 'Blood Group', 'O+'),
+(27, 'wsw', 'ws');
 
 -- --------------------------------------------------------
 
@@ -304,8 +330,8 @@ INSERT INTO `personal_infomation` (`id`, `information_status`, `information`) VA
 
 CREATE TABLE `programming_skills` (
   `id` int(10) UNSIGNED NOT NULL,
-  `programming_language` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `programming_level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `programming_language` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `programming_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -313,15 +339,16 @@ CREATE TABLE `programming_skills` (
 --
 
 INSERT INTO `programming_skills` (`id`, `programming_language`, `programming_level`) VALUES
-(1, 'Java [core, intermediate, advanced(Spring Framework, Hibernate, JSP, Spring Boot, Spring Security, ) ]', '40%'),
-(2, 'Python', '50%'),
+(1, 'Java 			[core, intermediate, advanced(Spring Framework, Hibernate, JSP, Spring Boot, Spring Security,  ) ]', '70%'),
+(2, 'Python', '30%'),
 (5, 'Pure JavaScript', '60%'),
-(6, 'ReactJs', '70%'),
+(6, 'JavaScript', '60%'),
 (9, 'Php(Learning laravel)', '80%'),
-(10, 'Html', '90%'),
+(10, 'ReactJs', '30%'),
 (13, 'css', '100%'),
 (14, 'MySql', '100%'),
-(17, 'JQuery', '40%');
+(17, 'JQuery', '40%'),
+(20, 'Laravel', '50%');
 
 -- --------------------------------------------------------
 
@@ -602,7 +629,15 @@ INSERT INTO `visitors` (`id`, `ip_Address`, `visit_time`) VALUES
 (166, '127.0.0.1', '2020-10-02 09:30:26am'),
 (167, '127.0.0.1', '2020-10-02 09:35:23am'),
 (168, '127.0.0.1', '2020-10-02 07:42:55pm'),
-(169, '127.0.0.1', '2020-10-02 10:23:11pm');
+(169, '127.0.0.1', '2020-10-02 10:23:11pm'),
+(170, '127.0.0.1', '2020-10-03 10:06:28am'),
+(171, '127.0.0.1', '2020-10-03 08:49:08pm'),
+(172, '127.0.0.1', '2020-10-04 11:40:53am'),
+(173, '127.0.0.1', '2020-10-04 11:42:37am'),
+(174, '127.0.0.1', '2020-10-05 01:00:45am'),
+(175, '127.0.0.1', '2020-10-05 01:24:12am'),
+(176, '127.0.0.1', '2020-10-05 01:39:48am'),
+(177, '127.0.0.1', '2020-10-05 01:55:11am');
 
 --
 -- Indexes for dumped tables
@@ -612,6 +647,12 @@ INSERT INTO `visitors` (`id`, `ip_Address`, `visit_time`) VALUES
 -- Indexes for table `address`
 --
 ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin_table`
+--
+ALTER TABLE `admin_table`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -713,7 +754,13 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `admin_table`
+--
+ALTER TABLE `admin_table`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `career_objectives`
@@ -731,13 +778,13 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `emergency_contact`
 --
 ALTER TABLE `emergency_contact`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -749,13 +796,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `job_skill`
 --
 ALTER TABLE `job_skill`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -767,19 +814,19 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `personal_infomation`
 --
 ALTER TABLE `personal_infomation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `programming_skills`
 --
 ALTER TABLE `programming_skills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -803,7 +850,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

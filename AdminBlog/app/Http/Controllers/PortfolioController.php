@@ -11,6 +11,7 @@ use App\programming_skill_model;
 use App\jobSkillModel;
 use App\personal_informationModel;
 use App\AddressModel;
+use App\emergency_contact;
 
 class PortfolioController extends Controller
 {
@@ -20,7 +21,28 @@ class PortfolioController extends Controller
     {
         return view('/content/Portfolio');
     }
+    function getEmergencyContactList(){
+        return emergency_contact::all();
+    }
+    function populateContact(Request $request){
+        return emergency_contact::where('id','=',$request->id)->get()->first();
+    }
+    function updateContact(Request $request){
+          $id=$request->input('id');
+          $contactStatus=$request->input('contactStatus'); 
+          $contactInformation=$request->input('contactInformation'); 
+          return DB::table('emergency_contact')->where('id', '=', $id)->update(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
 
+    }
+    function deleteContact(Request $request){
+        return emergency_contact::where('id','=',$request->id)->delete();
+    }
+    function addContact(Request $request){
+        $contactStatus= $request->input('contactStatus');
+        $contactInformation= $request->input('contactInformation');
+        return DB::table('emergency_contact')->insert(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
+ 
+    }
     function getObjetiveList()
     {
         return career_objectives::get()->first();
@@ -216,6 +238,13 @@ class PortfolioController extends Controller
     }
     function deleteAddress(Request $request){
        return AddressModel::where('id','=',$request->id)->delete();
+    }
+
+    function addAddress(Request $request){
+           $addressInformationStatus=$request->input('addressInformationStatus');
+           $addressInformation=$request->input('addressInformation');
+            return DB::table('address')->where('id','=',$request->id)->insert(['address_status'=>$addressInformationStatus,'Address'=>$addressInformation]);
+
     }
 
 }

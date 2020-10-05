@@ -11,31 +11,38 @@
 
             <h6 style="font-weight: bold;">EMERGENCY CONTACT</h6>
             <hr>
-            <div class="row">
-
-                <div class="col col-md-2">
-                    <h6>Name</h6>
-                    <h6>Address</h6>
-                    <h6>Mobile</h6>
-                    <h6>Email</h6>
+            <!-- <div class="row">
+                @foreach($emergencyKey as $data)
+                <div class="col col-md-4">
+                    <h6>{{$data->contactStatus}}</h6>
                 </div>
                 <div class="col col-md-2">
                     <h6>:</h6>
-                    <h6>:</h6>
-                    <h6>:</h6>
-                    <h6>:</h6>
                 </div>
-                <div class="col col-md-6">
-                    @foreach($emergencyKey as $data)
-                        <h6>{{$data->emergency_name}}</h6>
-                        <h6>{{$data->emergency_address}}</h6>
-                        <h6>{{$data->emergency_mobile}}</h6>
-                        <h6>{{$data->emergency_email}}</h6>
+                <div class="col col-md-4">
+                        <h6>{{$data->contactInformation}}</h6>
                     @endforeach
                 </div>
-                <div class="col col-md-2">
+                <div class="col ">
                     <img height="150px" width="180px" src="{{asset('/image/banner/classroom.png')}}" alt="">
                 </div>
+            </div> -->
+            <div class="row p-3">
+             @foreach($emergencyKey as $data)
+            <div class="col col-md-4 p-1">
+            <h6>{{$data->contactStatus}}</h6>
+            </div>
+            <div class="col col-md-1 p-1">
+            <h6>:</h6>
+            </div>
+            <div class="col col-md-4 p-1">
+            <h6>{{$data->contactInformation}}</h6>
+            </div>
+            @endforeach
+            <div class="col col-md-2">
+                <img height="150px" width="180px" src="{{asset('/image/banner/classroom.png')}}" alt="">
+            </div>
+             
             </div>
             <h6 style="font-weight: bold;">CAREER OBJECTIVES</h6>
             <hr>

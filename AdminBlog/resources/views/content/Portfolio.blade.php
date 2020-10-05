@@ -1,9 +1,134 @@
 @extends('Layout.app')
 @section('content')
+<!-- ------------------------------------------------------EMERGENCY CONTACT---------------------------------------- -->
+  <table id="myTable" class="table-bordered ">
+        <h6 class="p-3" style="font-weight: bold;">EMERGENCY CONTACT</h6>
+        <h6 class="p-3"><a id="addContactButton" class="btn btn-outline-deep-purple">ADD EMERGENCY CONTACT</a></h6>
+        <thead>
+        <th>CONTACT STATUS</th>
+        <th>INFORMATION</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+        </thead>
+        <tbody id="emergencyContactTableBody">
+        </tbody>
+    </table>
+    <!-- contact populate modal -->
+        <div class="modal fade" id="contactPopulateModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <h1 id="editId"></h1>
+            <div class="modal-body">
+                <h1 id="contactPopulateModalStatus" class="p-3"></h1>
+                <div id="header" class="mb-2"></div>
 
-    {{----------------------------------------------CAREER OBJECTIVES---------------------------------------------}}
+                <input type="text" id="contactStatus" class="form-control mb-4"
+                       placeholder="Contact Status (ex:Phone)"/>
+                <textarea type="text" id="contactInformation" class="form-control mb-4"
+                          placeholder="Type Address (ex:01890312202)"></textarea>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <button id="contactPopulateModalButton" type="button" class="btn btn-primary btn-sm">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--contact update Confirm Modal -->
+<div class="modal fade" id="contactUpdateConfirmModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h1 id="contactUpdateConfirmModalStatus"></h1>
+                <h4 class="p-5">Do you want to Change?</h4>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                <button id="contactUpdateConfirmModalButton" type="button" class="btn btn-primary btn-sm">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{--    contact delete Confirm modal--}}
+<div class="modal fade" id="contactDeleteConfirmModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <input id="hiddenInput" type="hidden"/>
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h1 id="contactDeleteConfirmModalStatus"></h1>
+                <h4 class="p-5">Do you want to Delete?</h4>
+                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">No</button>
+                <button id="contactDeleteConfirmModalButton" type="button" class="btn btn-danger btn-sm">Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ {{--Education Add Modal--}}
+    <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="addContactModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+                    <input type="text" id="contactAddStatus" class="form-control mb-4"
+                       placeholder="Contact Status (ex:Phone)">
+                <textarea type="text" id="contactAddInformation" class="form-control mb-4"
+                          placeholder="Type Address (ex:01890312202)"></textarea>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addContactModalButton" type="button" class="btn btn-primary btn-sm">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+{{-- address add confirm modal--}}
+<div class="modal fade" id="addAddressConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h4 class="p-5">Are you sure?</h4>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                <button id="addAddressConfirmModalButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{----------------------------------------------CAREER OBJECTIVES---------------------------------------------}}
     <table id="myTable" class="table-bordered ">
         <h6 class="p-3" style="font-weight: bold;">CAREER OBJECTIVES</h6>
         <thead>
@@ -111,14 +236,12 @@
         </div>
     </div>
 
-    <!--Education Edit Confirm Modal -->
-    <div class="modal fade" id="educationUpdateConfirmModal" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalLabel"
+    <!-- Education Edit Confirm Modal -->
+       <div class="modal fade" id="educationUpdateConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <h3 id="educationUpdateConfirmModalStatus"></h3>
                     <h4 class="p-5">Do you want to Change?</h4>
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
                     <button id="educationUpdateConfirmButton" type="button" class="btn btn-primary btn-sm">Yes</button>
@@ -126,8 +249,6 @@
             </div>
         </div>
     </div>
-
-
 
     {{--delete confrim modal--}}
     <div class="modal fade" id="educationDeleteConfirmModal" tabindex="-1" role="dialog"
@@ -244,7 +365,6 @@
     </div>
 
     <!--Edit language Confirm Modal -->
-
     <div class="modal fade" id="editLanguageConfirmModal" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -690,10 +810,10 @@
         <h6 class="pt-5" style="font-weight: bold;">ADDRESS</h6>
         <h6 class="p-3"><a id="addAddressButton" class="btn btn-outline-deep-purple">ADD ADDRESS</a></h6>
         <thead>
-        <th>ADDRESS STATUS</th>
-        <th>ADDRESS</th>
-        <th>EDIT</th>
-        <th>DELETE</th>
+            <th>ADDRESS STATUS</th>
+            <th>ADDRESS</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
         </thead>
         <tbody id="addressTableBody">
         </tbody>
@@ -769,6 +889,51 @@
         </div>
     </div>
 
+    {{--    address  populate modal--}}
+    <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="addAddressModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+
+                    <input type="text" id="addAddressInformationStatus" class="form-control mb-4"
+                           placeholder="Address Status (ex:Present Address)"/>
+                    <textarea type="text" id="addAddressInformation" class="form-control mb-4"
+                              placeholder="Type Address (ex:Dagonbhuiyan,Feni,Bangladesh)"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addAddressModalButton" type="button" class="btn btn-primary btn-sm">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- address add confirm modal--}}
+    <div class="modal fade" id="addAddressConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 class="p-5">Are you sure?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addAddressConfirmModalButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 @endsection
 @section('script')
@@ -780,9 +945,140 @@
         getJobSkillsList();
         getPersonalInformationList();
         getAddressList();
+        getEmergencyContactList();
     </script>
 @endsection
 <script>
+    // -------------------------------------EMERGENCY CONTACT---------------------------------------
+    function getEmergencyContactList(){
+        axios.get('/getEmergencyContactList').
+        then(function(response){
+                if(response.status == 200){
+                    let result = response.data;
+                    $.each(result,function (i){
+                        $("<tr>").html(
+                            "<td>"+result[i].contactStatus+"</td>"+
+                            "<td>"+result[i].contactInformation+"</td>"+
+                            "<td>"+"<a class='btn btn-sm btn-outline-info contactEditButton' data-id="+result[i].id +">Edit</a>"+"</td>"+
+                            "<td>"+"<a class='btn btn-sm btn-outline-danger contactDeleteButton' data-id="+result[i].id +">Delete</a>"+"</td>"
+                        ).appendTo('#emergencyContactTableBody');
+                    });
+                    $('.contactEditButton').click(function (){
+                        let id = $(this).data('id'); 
+                        $('#contactPopulateModalStatus').html(id);
+                        $('#contactPopulateModal').modal('show');
+                         populateContact(id);
+                    });
+                    $('#contactPopulateModalButton').click(function(){
+                        let id =  $('#contactPopulateModalStatus').html();
+                        $('#contactUpdateConfirmModalStatus').html(id);
+                        $('#contactUpdateConfirmModal').modal('show');
+                    });
+                    $('#contactUpdateConfirmModalButton').click(function(){     
+                        let id =  $('#contactUpdateConfirmModalStatus').html();                  
+                        let contactStatus =    $('#contactStatus').val();
+                        let contactInformation = $('#contactInformation').val();
+                        updateContact(id,contactStatus,contactInformation);
+                     });
+                     $('.contactDeleteButton').click(function(){
+                         let id = $(this).data('id');
+                         $('#contactDeleteConfirmModalStatus').html(id);
+                         $('#contactDeleteConfirmModal').modal('show');
+                     });
+                      $('#contactDeleteConfirmModalButton').click(function(){
+                            let id =  $('#contactDeleteConfirmModalStatus').html();
+                            deleteContact(id);
+                      });
+                      $('#addContactButton').click(function(){
+                          $('#addContactModal').modal('show');
+                      });
+                      $('#addContactModalButton').click(function(){  
+                        $('#addAddressConfirmModal').modal('show');
+                      });
+                       $('#addAddressConfirmModalButton').click(function(){
+                        let contactStatus =    $('#contactAddStatus').val();
+                        let contactInformation = $('#contactAddInformation').val();
+                        addContact(contactStatus,contactInformation);
+                       });
+                      
+                }
+        }).catch(function(error){
+
+        });
+    }
+    // Add Contact
+    function  addContact(contactStatus,contactInformation){
+        axios.post('/addContact',{
+            contactStatus:contactStatus,
+            contactInformation:contactInformation
+        }).then(function(response){
+                    if(response.data == 1){
+                        alert("Data has been added!");
+                    }
+                    else{
+                        alert("Data failed to delete!");
+                    }
+        }).catch(function(error){
+
+        });
+    }
+
+    //delete contact
+    function   deleteContact(id){
+        axios.post('/deleteContact',{
+            id:id
+        }).
+        then(function(response){
+            if(response.data == 1){
+                alert("Data has been deleted!");
+            }
+            else{
+                alert("Data failed to delete!");
+            }
+
+        }).catch(function(error){
+
+        });
+    }
+    //update Contact
+    function updateContact(id,contactStatus,contactInformation){
+        axios.post('/updateContact',{
+            id: id,
+          contactStatus: contactStatus,
+          contactInformation: contactInformation
+        }).
+        then(function(response){
+if(response.data == 1){
+    alert('Data has been updated!');
+}
+else{
+    alert("Data failed to update!");
+}
+        }).catch(function(error){
+
+        });
+    }
+    //populate Contact
+    function populateContact(id){
+        axios.post('/populateContact',{
+            id:id
+        }).
+        then(function(response){
+            if(response.status == 200){
+                let result = response.data;
+                $('#contactStatus').val(result.contactStatus);
+                $('#contactInformation').val(result.contactInformation);
+            }
+        }).catch(function(error){
+
+        });
+    }
+
+
+
+
+
+
     // ----------------------------------------------------ADDRESS-------------------------------------
     function getAddressList() {
         axios.get('/getAddressList').then(function (response) {
@@ -826,12 +1122,44 @@
                     let addressInformation = $('#addressInformation').val();
                     updateAddress(id, addressInformationStatus, addressInformation);
                 });
+                $('#addAddressButton').click(function(){
+
+                    $('#addAddressModal').modal('show');
+
+                });
+                $('#addAddressModalButton').click(function(){
+                    $('#addAddressConfirmModal').modal('show');
+                });
+                $('#addAddressConfirmModalButton').click(function(){
+                    let addressInformationStatus = $('#addAddressInformationStatus').val();
+                    let addressInformation = $('#addAddressInformation').val();
+                    addAddress( addressInformationStatus, addressInformation);
+                });
 
             }
         }).catch(function (error) {
 
         });
     }
+
+    // add address
+    function addAddress( addressInformationStatus, addressInformation){
+        axios.post('/addAddress',{
+           addressInformationStatus: addressInformationStatus,
+           addressInformation:addressInformation
+        }).
+        then(function(response){
+            if(response.data == 1){
+                alert("Data has been added!");
+            }
+            else{
+                alert("Data failed to add!");
+            }
+        }).catch(function(error){
+
+        });
+    }
+
     //delete
     function deleteAddress(id){
         axios.post('/deleteAddress',{

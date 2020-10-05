@@ -3,85 +3,100 @@
 use Illuminate\Support\Facades\Route;
 
 //HomePage
-Route::get('/', 'HomeController@homePage');
+Route::get('/', 'HomeController@homePage')->middleware('loginMiddleware');
 
 //Services
-Route::get('/services', 'ServiceController@showServicePage');
-Route::get('/getServicesList', 'ServiceController@getServicesList');
-Route::post('/populateData', 'ServiceController@populateData');
-Route::post('/updateServiceData', 'ServiceController@updateServiceData');
-Route::post('/deleteServiceData', 'ServiceController@deleteServiceData');
-Route::post('/addServices', 'ServiceController@addServices');
+Route::get('/services', 'ServiceController@showServicePage')->middleware('loginMiddleware');
+Route::get('/getServicesList', 'ServiceController@getServicesList')->middleware('loginMiddleware');
+Route::post('/populateData', 'ServiceController@populateData')->middleware('loginMiddleware');
+Route::post('/updateServiceData', 'ServiceController@updateServiceData')->middleware('loginMiddleware');
+Route::post('/deleteServiceData', 'ServiceController@deleteServiceData')->middleware('loginMiddleware');
+Route::post('/addServices', 'ServiceController@addServices')->middleware('loginMiddleware');
 
 //Courses
-Route::get('/courses', 'CourseController@showCoursePage');
-Route::get('/getCourseList', 'CourseController@getCourseList');
-Route::post('/populateCourseId', 'CourseController@populateCourseId');
-Route::post('/updateCourseData', 'CourseController@updateCourseData');
-Route::post('/courseDelete', 'CourseController@courseDelete');
-Route::post('/addCoursesData', 'CourseController@addCoursesData');
+Route::get('/courses', 'CourseController@showCoursePage')->middleware('loginMiddleware');
+Route::get('/getCourseList', 'CourseController@getCourseList')->middleware('loginMiddleware');
+Route::post('/populateCourseId', 'CourseController@populateCourseId')->middleware('loginMiddleware');
+Route::post('/updateCourseData', 'CourseController@updateCourseData')->middleware('loginMiddleware');
+Route::post('/courseDelete', 'CourseController@courseDelete')->middleware('loginMiddleware');
+Route::post('/addCoursesData', 'CourseController@addCoursesData')->middleware('loginMiddleware');
 
 //projects
-Route::get('/project', 'ProjectController@showProjectPage');
-Route::get('/getProjectsList', 'ProjectController@getProjectsList');
-Route::post('/populateProjectData', 'ProjectController@populateProjectData');
-Route::post('/updateProjectData', 'ProjectController@updateProjectData');
-Route::post('/deleteService', 'ProjectController@deleteService');
-Route::post('/addproject', 'ProjectController@addproject');
+Route::get('/project', 'ProjectController@showProjectPage')->middleware('loginMiddleware');
+Route::get('/getProjectsList', 'ProjectController@getProjectsList')->middleware('loginMiddleware');
+Route::post('/populateProjectData', 'ProjectController@populateProjectData')->middleware('loginMiddleware');
+Route::post('/updateProjectData', 'ProjectController@updateProjectData')->middleware('loginMiddleware');
+Route::post('/deleteService', 'ProjectController@deleteService')->middleware('loginMiddleware');
+Route::post('/addproject', 'ProjectController@addproject')->middleware('loginMiddleware');
 
 //mesasges
-Route::get('/messages', 'MessageController@showMessagePage');
-Route::get('/getMessageList', 'MessageController@getMessageList');
-Route::post('/deleteMessage', 'MessageController@deleteMessage');
+Route::get('/messages', 'MessageController@showMessagePage')->middleware('loginMiddleware');
+Route::get('/getMessageList', 'MessageController@getMessageList')->middleware('loginMiddleware');
+Route::post('/deleteMessage', 'MessageController@deleteMessage')->middleware('loginMiddleware');
 
 //Portfolio Page---------------------------------------------------------------------------------
 
 //portfolio
-Route::get('/portfolio', 'PortfolioController@showPortfolioPage');
+Route::get('/portfolio', 'PortfolioController@showPortfolioPage')->middleware('loginMiddleware');
+
+//Emergency Contact
+Route::get('/getEmergencyContactList','PortfolioController@getEmergencyContactList')->middleware('loginMiddleware');
+Route::post('/populateContact','PortfolioController@populateContact')->middleware('loginMiddleware');
+Route::post('/updateContact','PortfolioController@updateContact')->middleware('loginMiddleware');
+Route::post('/deleteContact','PortfolioController@deleteContact')->middleware('loginMiddleware');
+Route::post('/addContact','PortfolioController@addContact')->middleware('loginMiddleware');
 
 //objectives
-Route::get('/getObjetiveList', 'PortfolioController@getObjetiveList');
-Route::post('/populateObjectives', 'PortfolioController@populateObjectives');
-Route::post('/updateObjectives', 'PortfolioController@updateObjectives');
+Route::get('/getObjetiveList', 'PortfolioController@getObjetiveList')->middleware('loginMiddleware');
+Route::post('/populateObjectives', 'PortfolioController@populateObjectives')->middleware('loginMiddleware');
+Route::post('/updateObjectives', 'PortfolioController@updateObjectives')->middleware('loginMiddleware');
 
 //education
-Route::get('/getEducationList', 'PortfolioController@getEducationList');
-Route::post('/populateEducationId', 'PortfolioController@populateEducationId');
-Route::post('/educationUpdate', 'PortfolioController@educationUpdate');
-Route::post('/deleteEducation', 'PortfolioController@deleteEducation');
-Route::post('/addEducation', 'PortfolioController@addEducation');
+Route::get('/getEducationList', 'PortfolioController@getEducationList')->middleware('loginMiddleware');
+Route::post('/populateEducationId', 'PortfolioController@populateEducationId')->middleware('loginMiddleware');
+Route::post('/educationUpdate', 'PortfolioController@educationUpdate')->middleware('loginMiddleware');
+Route::post('/deleteEducation', 'PortfolioController@deleteEducation')->middleware('loginMiddleware');
+Route::post('/addEducation', 'PortfolioController@addEducation')->middleware('loginMiddleware');
 
 //language
-Route::get('/getLanguageList', 'PortfolioController@getLanguageList');
-Route::post('/languagePopulateModal', 'PortfolioController@languagePopulateModal');
-Route::post('/updateLanguage', 'PortfolioController@updateLanguage');
-Route::post('/deleteLanguage', 'PortfolioController@deleteLanguage');
-Route::post('/addLanguage', 'PortfolioController@addLanguage');
+Route::get('/getLanguageList', 'PortfolioController@getLanguageList')->middleware('loginMiddleware');
+Route::post('/languagePopulateModal', 'PortfolioController@languagePopulateModal')->middleware('loginMiddleware');
+Route::post('/updateLanguage', 'PortfolioController@updateLanguage')->middleware('loginMiddleware');
+Route::post('/deleteLanguage', 'PortfolioController@deleteLanguage')->middleware('loginMiddleware');
+Route::post('/addLanguage', 'PortfolioController@addLanguage')->middleware('loginMiddleware');
 
 //skills
-Route::get('/getSkillsList', 'PortfolioController@getSkillsList');
-Route::post('/populateSkills', 'PortfolioController@populateSkills');
-Route::post('/updateSkills', 'PortfolioController@updateSkills');
-Route::post('/deleteSkills', 'PortfolioController@deleteSkills');
-Route::post('/addSkills', 'PortfolioController@addSkills');
+Route::get('/getSkillsList', 'PortfolioController@getSkillsList')->middleware('loginMiddleware');
+Route::post('/populateSkills', 'PortfolioController@populateSkills')->middleware('loginMiddleware');
+Route::post('/updateSkills', 'PortfolioController@updateSkills')->middleware('loginMiddleware');
+Route::post('/deleteSkills', 'PortfolioController@deleteSkills')->middleware('loginMiddleware');
+Route::post('/addSkills', 'PortfolioController@addSkills')->middleware('loginMiddleware');
 
 //job skills
-
-Route::get('/getJobSkillsList', 'PortfolioController@getJobSkillsList');
-Route::post('/populateJobSkills', 'PortfolioController@populateJobSkills');
-Route::post('/updateJobSkills', 'PortfolioController@updateJobSkills');
-Route::post('/deleteJobSkills', 'PortfolioController@deleteJobSkills');
-Route::post('/addJobSkills', 'PortfolioController@addJobSkills');
+Route::get('/getJobSkillsList', 'PortfolioController@getJobSkillsList')->middleware('loginMiddleware');
+Route::post('/populateJobSkills', 'PortfolioController@populateJobSkills')->middleware('loginMiddleware');
+Route::post('/updateJobSkills', 'PortfolioController@updateJobSkills')->middleware('loginMiddleware');
+Route::post('/deleteJobSkills', 'PortfolioController@deleteJobSkills')->middleware('loginMiddleware');
+Route::post('/addJobSkills', 'PortfolioController@addJobSkills')->middleware('loginMiddleware');
 
 //personal information
-Route::get('/getPersonalInformationList', 'PortfolioController@getPersonalInformationList');
-Route::post('/populatePersonalInformation', 'PortfolioController@populatePersonalInformation');
-Route::post('/updatePersonalInformation', 'PortfolioController@updatePersonalInformation');
-Route::post('/deletePersonalInformation', 'PortfolioController@deletePersonalInformation');
-Route::post('/addPersonalInformation', 'PortfolioController@addPersonalInformation');
+Route::get('/getPersonalInformationList', 'PortfolioController@getPersonalInformationList')->middleware('loginMiddleware');
+Route::post('/populatePersonalInformation', 'PortfolioController@populatePersonalInformation')->middleware('loginMiddleware');
+Route::post('/updatePersonalInformation', 'PortfolioController@updatePersonalInformation')->middleware('loginMiddleware');
+Route::post('/deletePersonalInformation', 'PortfolioController@deletePersonalInformation')->middleware('loginMiddleware');
+Route::post('/addPersonalInformation', 'PortfolioController@addPersonalInformation')->middleware('loginMiddleware');
 
 //address
-Route::get('/getAddressList','PortfolioController@getAddressList');
-Route::post('/populateAddress','PortfolioController@populateAddress');
-Route::post('/updateAddress','PortfolioController@updateAddress');
-Route::post('/deleteAddress','PortfolioController@deleteAddress');
+Route::get('/getAddressList','PortfolioController@getAddressList')->middleware('loginMiddleware');
+Route::post('/populateAddress','PortfolioController@populateAddress')->middleware('loginMiddleware');
+Route::post('/updateAddress','PortfolioController@updateAddress')->middleware('loginMiddleware');
+Route::post('/deleteAddress','PortfolioController@deleteAddress')->middleware('loginMiddleware');
+Route::post('/addAddress','PortfolioController@addAddress')->middleware('loginMiddleware');
+
+
+//Admin login page
+Route::get('/adminLoginPage','AdminController@adminLoginPage');
+Route::post('/login','AdminController@login');
+Route::get('/logout','AdminController@logout');
+
+

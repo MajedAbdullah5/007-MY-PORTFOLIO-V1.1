@@ -48,3 +48,27 @@
 #myTable tr{
     height: 40px;
 }
+
+.messagePage{
+    background-image: url('../image/banner/contact.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/* Admin login */
+.hi{
+    color: aqua;
+}
+.adminContainer{
+    padding-top: 150px;
+
+}
+.adminSecondContainer{
+    border:1px solid red;
+    padding:60px;
+}
+
+/*logout app.blade.php*/
+.signout{
+    font-weight: bold;
+    font-size: 30px;
+}
