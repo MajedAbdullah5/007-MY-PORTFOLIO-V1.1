@@ -34,7 +34,8 @@
                     <input type="text" id="projectnameId" class="form-control mb-4" placeholder="Name">
                     <textarea id="projectdesId" class="form-control mb-4" placeholder="Desc"></textarea>
                     <input type="text" id="projectLinkId" class="form-control mb-4" placeholder="Project link">
-                    <input type="text" id="projectimageLinkId" class="form-control mb-4" placeholder="Image link">
+                    <input type="file" id="projectimageLinkId" class="form-control mb-4" placeholder="Image link">
+                    <img  id="projectImageReview" src="{{asset('/image/loader/default-image.jpg')}}" class="form-control mb-4 imagePreview">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -235,8 +236,6 @@
                     $('#editProjectConfrimModal').modal('show');
                 });
                 $('#confirmProjectChangeButton').click(function () {
-
-
                     let id = $('#projectModalStatus').html();
                     $('#editProjectConfrimModalStatus').html(id);
                     let projectnameId = $('#projectnameId').val();
@@ -248,13 +247,19 @@
                 });
 
                 function updateProjectData(id, projectnameId, projectdesId, projectLinkId, projectimageLinkId) {
-                    axios.post('/updateProjectData', {
-                        id: id,
-                        projectnameId: projectnameId,
-                        projectdesId: projectdesId,
-                        projectLinkId: projectLinkId,
-                        projectimageLinkId: projectimageLinkId
-                    }).then(function (response) {
+                    let file = $('#projectimageLinkId').prop('files')[0];
+                    let formData = new FormData();
+                    formData.append('id',id);
+                    formData.append('file',file);
+                    formData.append('projectnameId',projectnameId);
+                    formData.append('projectdesId',projectdesId);
+                    formData.append('projectLinkId',projectLinkId);
+                    formData.append('projectimageLinkId',projectimageLinkId);
+                    let config = {headers:{
+                        'content-type':'multipart/form-data'
+                        }};
+                    axios.post('/updateProjectData',formData,config).
+                    then(function (response) {
                         if (response.status == 200) {
                             $('#editProjectConfrimModal').modal('hide');
                             $('#projectEditModel').modal('hide');
@@ -268,6 +273,15 @@
 
                     });
                 }
+                //image review
+                $('#projectimageLinkId').change(function (){
+                  let reader = new FileReader();
+                  reader.readAsDataURL(this.files[0]);
+                  reader.onload = function (event){
+                      let source = event.target.result;
+                      $('#projectImageReview').attr('src',source);
+                  }
+                });
 
 
                 //Populate Data
@@ -280,7 +294,7 @@
                             $('#projectnameId').val(result.project_name);
                             $('#projectdesId').val(result.project_des);
                             $('#projectLinkId').val(result.project_link);
-                            $('#projectimageLinkId').val(result.project_image);
+                            $('#projectImageReview').attr('src',result.project_image);
                         } else {
                             alert('data failed to fetch');
                         }
