@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 //HomePage
 Route::get('/', 'HomeController@homePage')->middleware('loginMiddleware');
-
+//Profile Picture
+Route::get('/showProfilePic','PortfolioController@showProfilePic');
+Route::post('/populateProfilePicture','PortfolioController@populateProfilePicture');
+Route::post('/updateProfilepicture','PortfolioController@updateProfilepicture');
 //Services
 Route::get('/services', 'ServiceController@showServicePage')->middleware('loginMiddleware');
 Route::get('/getServicesList', 'ServiceController@getServicesList')->middleware('loginMiddleware');

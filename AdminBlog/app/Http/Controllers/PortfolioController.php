@@ -12,6 +12,7 @@ use App\jobSkillModel;
 use App\personal_informationModel;
 use App\AddressModel;
 use App\emergency_contact;
+use App\PortfolioPhotoModel;
 
 class PortfolioController extends Controller
 {
@@ -21,6 +22,21 @@ class PortfolioController extends Controller
     {
         return view('/content/Portfolio');
     }
+    function showProfilePic(){
+        return PortfolioPhotoModel::all();
+    }
+    function populateProfilePicture(Request $request){
+        return PortfolioPhotoModel::where('id','=',$request->id)->get();
+    }
+    function updateProfilepicture(Request $request){
+        $id = $request->input('id');
+        $file = $request->file('file')->store('public');
+        $host = $_SERVER['HTTP_HOST'];
+        $fileName = (explode('/',$file))[1];
+        $photo = 'http://'.$host.'/storage/'.$fileName;
+        DB::table('portfolio_photo')->where('id','=',$id)->update(['photo'=>$photo]);
+    }
+
     function getEmergencyContactList(){
         return emergency_contact::all();
     }
@@ -29,8 +45,8 @@ class PortfolioController extends Controller
     }
     function updateContact(Request $request){
           $id=$request->input('id');
-          $contactStatus=$request->input('contactStatus'); 
-          $contactInformation=$request->input('contactInformation'); 
+          $contactStatus=$request->input('contactStatus');
+          $contactInformation=$request->input('contactInformation');
           return DB::table('emergency_contact')->where('id', '=', $id)->update(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
 
     }
@@ -41,7 +57,7 @@ class PortfolioController extends Controller
         $contactStatus= $request->input('contactStatus');
         $contactInformation= $request->input('contactInformation');
         return DB::table('emergency_contact')->insert(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
- 
+
     }
     function getObjetiveList()
     {

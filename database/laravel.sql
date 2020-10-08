@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2020 at 06:34 PM
+-- Generation Time: Oct 08, 2020 at 08:30 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -285,7 +285,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (27, '2020_10_04_161625_emergency_migration', 21),
 (28, '2020_10_04_161456_emergency_migration', 22),
 (29, '2020_10_05_142852_admin_table', 22),
-(30, '2020_10_06_162449_photo_migration', 23);
+(30, '2020_10_06_162449_photo_migration', 23),
+(31, '2020_10_08_165600_portfolio_photo_migration', 24);
 
 -- --------------------------------------------------------
 
@@ -374,6 +375,24 @@ INSERT INTO `photo_gallery` (`id`, `location`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `portfolio_photo`
+--
+
+CREATE TABLE `portfolio_photo` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `portfolio_photo`
+--
+
+INSERT INTO `portfolio_photo` (`id`, `photo`) VALUES
+(2, 'http://127.0.0.1:8000/storage/xnz48iITO7GQw4BQ6rDdTZIN6ZDHKG5c3mqUihhH.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `programming_skills`
 --
 
@@ -421,8 +440,7 @@ INSERT INTO `projects` (`id`, `project_name`, `project_des`, `project_link`, `pr
 (38, 'Majed', 'Hello', 'Does it work?', 'http://127.0.0.1:8000/storage/qA5rs3970eUscb8gBsxgfagVcI9IPChuJxqgL0Tj.png'),
 (39, 'Java', 'Hello', 'dsd', 'http://127.0.0.1:8000/storage/Asw11JAsxZmmm5THZ5nfl1txAGF6qKdPQUnhDDDC.png'),
 (40, 'Majed', 'ww', 'wsw', 'http://127.0.0.1:8000/storage/HHLPyqb0DoT6SKXSsRRBPmVibEcjufvdclazZcCS.png'),
-(41, 'Majed', 'Hei', 'as', 'http://127.0.0.1:8000/storage/fBOrLJrbWaAL7MLqT33ZkOToleGbIw8yxO6bpv75.png'),
-(42, 'Majed', 'erere', 'sws', 'http://127.0.0.1:8000/storage/QaPimpSVEUrIbQAnBAYVgD2eGqGR3teWn1VX31Ti.png');
+(41, 'Majed', 'Hei', 'as', 'http://127.0.0.1:8000/storage/fBOrLJrbWaAL7MLqT33ZkOToleGbIw8yxO6bpv75.png');
 
 -- --------------------------------------------------------
 
@@ -807,6 +825,12 @@ ALTER TABLE `photo_gallery`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `portfolio_photo`
+--
+ALTER TABLE `portfolio_photo`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `programming_skills`
 --
 ALTER TABLE `programming_skills`
@@ -905,7 +929,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `personal_infomation`
@@ -918,6 +942,12 @@ ALTER TABLE `personal_infomation`
 --
 ALTER TABLE `photo_gallery`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `portfolio_photo`
+--
+ALTER TABLE `portfolio_photo`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `programming_skills`

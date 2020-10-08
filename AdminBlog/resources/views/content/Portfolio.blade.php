@@ -1,8 +1,69 @@
 @extends('Layout.app')
 @section('content')
+    {{--    ---------------------------------------------------PROFILE PICTURE-------------------------------}}
+    <h6 class="p-3" style="font-weight: bold;">UPDATE PROFILE PICTURE</h6>
+    <table id="myTable" class="table-bordered">
+        <thead>
+        <th>PHOTO</th>
+        <th>ACTION</th>
+        </thead>
+        <tbody id="profilePictureTableBody">
+        </tbody>
+    </table>
+
+    {{--    populate profile picture Modal --}}
+    <div class="modal fade" id="updateProfilePictureModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Profile Picture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
+                    <h1 id="updateProfilePictureModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+
+                    <input type="file" id="updateProfilePicture" class="form-control mb-4"/>
+                    <img id="updateProfilePicturePreview" src="{{asset('/image/loader/default-image.jpg')}}"
+                         class="imagePreview">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="updateProfilePictureModalButton" type="button" class="btn btn-primary btn-sm">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--profile picture update Confirm Modal -->
+    <div class="modal fade" id="profilePictureUpdateConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="profilePictureUpdateConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Change?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="profilePictureUpdateConfirmModalButton" type="button" class="btn btn-primary btn-sm">
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ------------------------------------------------------EMERGENCY CONTACT---------------------------------------- -->
     <table id="myTable" class="table-bordered ">
-        ` <h6 class="p-3" style="font-weight: bold;">EMERGENCY CONTACT</h6>`
+        <h6 class="p-3" style="font-weight: bold;">EMERGENCY CONTACT</h6>
         <h6 class="p-3"><a id="addContactButton" class="btn btn-outline-deep-purple">ADD EMERGENCY CONTACT</a></h6>
         <thead>
         <th>CONTACT STATUS</th>
@@ -950,7 +1011,6 @@
         </div>
     </div>
 
-
 @endsection
 @section('script')
     <script>
@@ -962,9 +1022,89 @@
         getPersonalInformationList();
         getAddressList();
         getEmergencyContactList();
+        showProfilePic();
     </script>
 @endsection
 <script>
+    // ---------------------------------------PROFILE PICTURE-------------------------
+    function showProfilePic() {
+        axios.get('/showProfilePic').then(function (response) {
+            if (response.status == 200) {
+                let result = response.data;
+                $.each(result, function (i) {
+                    $("<tr>").html(
+                        "<td>" + "<img  height='100px' width='120px' src=" + result[i].photo + ">" + "</td>" +
+                        "<td>" + "<a id='profilePictureButton' class='btn btn-outline-deep-purple btn-sm' data-id=" + result[i].id + ">UPDATE</a>" + "</td>"
+                    ).appendTo('#profilePictureTableBody');
+
+                });
+                $('#profilePictureButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#updateProfilePictureModalStatus').html(id);
+                    $('#updateProfilePictureModal').modal('show');
+                    populateProfilePicture(id);
+                });
+                $('#updateProfilePictureModalButton').click(function () {
+                    let id = $('#updateProfilePictureModalStatus').html();
+                    $('#profilePictureUpdateConfirmModalStatus').html(id);
+                    $('#profilePictureUpdateConfirmModal').modal('show');
+
+                });
+                $('#profilePictureUpdateConfirmModalButton').click(function () {
+                    let id = $('#profilePictureUpdateConfirmModalStatus').html();
+                    updateProfilepicture(id);
+                });
+            }
+        }).catch(function (error) {
+            alert('Server Error!');
+        });
+
+        // populate image
+        function populateProfilePicture(id) {
+            axios.post('/populateProfilePicture', {
+                id: id
+            }).then(function (response) {
+                if (response.status == 200) {
+                    let result = response.data;
+                    $('#updateProfilePicturePreview').attr('src', result[0].photo);
+                }
+            }).catch(function (response) {
+                alert('Server Error!');
+            });
+        }
+        //Image preview
+        $('#updateProfilePicture').change(function () {
+            let reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function (event) {
+                let src = event.target.result;
+                $('#updateProfilePicturePreview').attr('src', src);
+            }
+        });
+
+        //Update profile pic
+        function updateProfilepicture(id) {
+            let file = $('#updateProfilePicture').prop('files')[0];
+            let formData = new FormData();
+            formData.append('id', id);
+            formData.append('file', file);
+            axios.post('/updateProfilepicture', formData).then(function (response) {
+                if (response.status == 200) {
+                    alert('Picture has been updated!');
+                    $('#updateProfilePictureModal').modal('hide');
+                    $('#profilePictureUpdateConfirmModal').modal('hide');
+                } else {
+                    alert('Picture failed to update!');
+                    $('#updateProfilePictureModal').modal('hide');
+                    $('#profilePictureUpdateConfirmModal').modal('hide');
+                }
+            }).catch(function (error) {
+                alert("Server Error!");
+            });
+        }
+    }
+
+
     // -------------------------------------EMERGENCY CONTACT---------------------------------------
     function getEmergencyContactList() {
         axios.get('/getEmergencyContactList').then(function (response) {
