@@ -94,7 +94,9 @@
                     <input type="text" id="addProjectName" class="form-control mb-4" placeholder="Name">
                     <textarea id="addProjectDes" class="form-control mb-4" placeholder="Desc"></textarea>
                     <input type="text" id="addProjectLink" class="form-control mb-4" placeholder="Project link">
-                    <input type="text" id="addProjectImage" class="form-control mb-4" placeholder="Image link">
+                    <input type="file" id="inputProjectImage" class="form-control mb-4">
+                    <img id="imagePreview" src="{{asset('/image/loader/default-image.jpg')}}">
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -135,7 +137,7 @@
                         "<td>" + result[i].project_name + "</td>" +
                         "<td>" + result[i].project_des + "</td>" +
                         "<td>" + result[i].project_link + "</td>" +
-                        "<td>" + result[i].project_image + "</td>" +
+                        "<td>" +"<img height='100px' width='120px' src="+result[i].project_image+" alt=''>"+"</td>" +
                         "<td>" + "<a data-id=" + result[i].id + " class='btn btn-primary btn-sm projectEditButton'>Edit<a/>" + "</td>" +
                         "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger btn-sm projectDeleteButton'>Delete</a>" + "</td>"
                     ).appendTo('#projectTableBody');
@@ -166,11 +168,22 @@
                     }).then(function (response) {
                         if (response.data == 1) {
                             alert("Service has been deleted!");
+                            $('#deleteProjectConfrimModal').modal('hide');
                         }
                     }).catch(function (error) {
+                        $('#deleteProjectConfrimModal').modal('hide');
                         alert("Service failed to delete!");
                     });
                 }
+
+                $('#inputProjectImage').on('change', function () {
+                    let file = new FileReader();
+                    file.readAsDataURL(this.files[0]);
+                    file.onload = function (event) {
+                        let source = event.target.result;
+                        $('#imagePreview').attr('src', source);
+                    }
+                });
 
                 //Add project data
                 $('#addProjectButton').click(function () {
@@ -183,21 +196,32 @@
                     let addProjectName = $('#addProjectName').val();
                     let addProjectDes = $('#addProjectDes').val();
                     let addProjectLink = $('#addProjectLink').val();
-                    let addProjectImage = $('#addProjectImage').val();
-                    addProject(addProjectName, addProjectDes, addProjectLink, addProjectImage);
+                    addProject(addProjectName, addProjectDes, addProjectLink);
                 });
 
-                function addProject(addProjectName, addProjectDes, addProjectLink, addProjectImage) {
-                    axios.post('/addproject', {
-                        addProjectName: addProjectName,
-                        addProjectDes: addProjectDes,
-                        addProjectLink: addProjectLink,
-                        addProjectImage: addProjectImage
-                    }).then(function (response) {
+                function addProject(addProjectName, addProjectDes, addProjectLink) {
+                    let file = $('#inputProjectImage').prop('files')[0];
+                    let formData = new FormData();
+                    formData.append('addProjectName', addProjectName);
+                    formData.append('addProjectDes', addProjectDes);
+                    formData.append('addProjectLink', addProjectLink);
+                    formData.append('file', file);
+                    let config = {
+                        headers: {'content-type': 'multipart/form-data'}
+                    }
+                    axios.post('/addproject', formData, config).
+                    then(function (response) {
+                        console.log(response.data);
                         if (response.data == 1) {
                             alert('Project has been added!');
+                            $('#addProjectConfirmModal').modal('hide');
+                            $('#addProjectModal').modal('hide');
+
                         } else {
-                            alert('Project failed to added!');
+                            alert('Project failed to add!');
+                            $('#addProjectConfirmModal').modal('hide');
+                            $('#addProjectModal').modal('hide');
+
                         }
                     }).catch(function () {
                         console.log(response.data);
@@ -232,8 +256,12 @@
                         projectimageLinkId: projectimageLinkId
                     }).then(function (response) {
                         if (response.status == 200) {
+                            $('#editProjectConfrimModal').modal('hide');
+                            $('#projectEditModel').modal('hide');
                             alert("Data has been updated!");
                         } else {
+                            $('#editProjectConfrimModal').modal('hide');
+                            $('#projectEditModel').modal('hide');
                             alert("Data failed to update!");
                         }
                     }).catch(function () {
@@ -262,6 +290,13 @@
                 }
 
             }
+            //table pagination
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+                $('.dataTables_length').addClass('bs-select');
+            });
+
+
         }).catch(function () {
 
         });

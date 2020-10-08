@@ -44,7 +44,10 @@ class ServiceController extends Controller
         $addServiceName = $request->input('addServiceName');
         $addServiceDes = $request->input('addServiceDes');
         $addServiceLink = $request->input('addServiceLink');
-        $addServiceImage = $request->input('addServiceImage');
+        $file = $request->file('file')->store('public');
+        $fileName = (explode('/',$file))[1];
+        $host = $_SERVER['HTTP_HOST'];
+        $addServiceImage = 'http://'.$host.'/storage/'.$fileName;
         return DB::table('services')->insert(['service_name' => $addServiceName, 'service_des' => $addServiceDes, 'service_link' => $addServiceLink, 'service_image' => $addServiceImage]);
 
     }

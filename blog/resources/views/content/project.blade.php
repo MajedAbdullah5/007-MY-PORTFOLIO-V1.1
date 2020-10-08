@@ -3,27 +3,27 @@
 
     <div class="owl-carousel owl-theme">
         @foreach($projectKey as $project)
-        <div class="item">
-            <div class="testimonial">
+            <div class="item">
+                <div class="testimonial">
                     <div class="card">
                         <div class="card-body">
-                            <img alt="image/classroom.png" src="{{asset('/image/banner/classroom.png')}}">
+                            <img alt="image/classroom.png" src="{{$project->project_image}}">
                             <div class="card-title">
                                 <h1>{{$project->project_name}}</h1>
                             </div>
                             <div class="card-text">
                                 {{$project->project_des}}
                             </div>
-                            <button class="btn btn-outline-danger"><a href="  {{$project->project_link}}">View</a></button>
+                            <a href="{{url('/projectView')}}/{{$project->id}}" class="btn btn-outline-danger viewProject">View</a>
                         </div>
                     </div>
-
+                </div>
             </div>
-
-        </div>
         @endforeach
     </div>
 
 </div>
+@endsection
+
 
 

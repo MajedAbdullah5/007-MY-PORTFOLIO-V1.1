@@ -63,3 +63,9 @@ body{
 
 /*Portfolio*/
 
+/*project*/
+.project_image{
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}

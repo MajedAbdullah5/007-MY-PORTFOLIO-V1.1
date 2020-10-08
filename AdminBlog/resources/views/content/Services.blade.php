@@ -4,9 +4,9 @@
         <a id="addServices" class="btn btn-info">ADD SERVICES</a>
         <thead>
         <th>ID</th>
-        <th>IMAGE</th>
         <th>NAME</th>
         <th>DESCRIPTION</th>
+        <th>IMAGE</th>
         <th>LINK</th>
         <th>EDIT</th>
         <th>DELETE</th>
@@ -34,7 +34,8 @@
                     <input type="text" id="addServiceName" class="form-control mb-4" placeholder="Name">
                     <textarea id="addServiceDes" class="form-control mb-4" placeholder="Description"></textarea>
                     <input type="text" id="addServiceLink" class="form-control mb-4" placeholder="Service link">
-                    <input type="text" id="addServiceImage" class="form-control mb-4" placeholder="Image link">
+                    <input type="file" id="addServiceImage" class="form-control mb-4">
+                    <img  id="addServiceImagePreview" class="imagePreview" src="{{asset('/image/loader/default-image.jpg')}}" >
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -136,9 +137,9 @@
                     $.each(result, function (i) {
                         $("<tr>").html(
                             "<td>" + result[i].id + "</td>" +
-                            "<td>" + result[i].service_image + "</td>" +
                             "<td>" + result[i].service_name + "</td>" +
                             "<td>" + result[i].service_des + "</td>" +
+                            "<td>" + "<img height='100px' width='120px' src="+result[i].service_image+" alt=''>" + "</td>" +
                             "<td>" + result[i].service_link + "</td>" +
                             "<td>" + "<a data-id=" + result[i].id + " class='btn btn-primary btn-sm editButton'>Edit</a>" + "</td>" +
                             "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger  btn-sm deleteButton'>Delete</a>" + "</td>"
@@ -158,12 +159,25 @@
                         $('#serviceHiddenInput').html(id);
                         $('#deleteServiceModal').modal('show');
                     });
+                    $(document).ready(function () {
+                        $('#myTable').DataTable();
+                        $('.dataTables_length').addClass('bs-select');
+                    });
 
                 } else {
 
                 }
 
             }).catch(function (error) {
+        });
+        //image preview
+        $('#addServiceImage').change(function (){
+            let reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);
+            reader.onload = function (event){
+                let source = event.target.result;
+                $('#addServiceImagePreview').attr('src',source);
+            }
         });
 
         //Add Services
@@ -172,7 +186,6 @@
         });
 
         $('#addServiceButton').click(function () {
-
             $('#addServiceConfirmModal').modal('show');
         });
         $('#confirmServiceAdd').click(function () {
@@ -186,16 +199,26 @@
 
         // Add Services Method
         function addServices(addServiceName, addServiceDes, addServiceLink, addServiceImage) {
-            axios.post('/addServices', {
-                addServiceName: addServiceName,
-                addServiceDes: addServiceDes,
-                addServiceLink: addServiceLink,
-                addServiceImage: addServiceImage
-            }).then(function (response) {
+            let file = $('#addServiceImage').prop('files')[0];
+            let formData = new FormData();
+            formData.append('file',file);
+            formData.append('addServiceName',addServiceName);
+            formData.append('addServiceDes',addServiceDes);
+            formData.append('addServiceLink',addServiceLink);
+            formData.append('addServiceImage',addServiceImage);
+            let config = {headers:{
+                'content-type':'multipart/form-data'
+                }};
+            axios.post('/addServices',formData,config).
+            then(function (response) {
                 if (response.data == 1) {
                     alert('Data has been added');
+                    $('#addServiceConfirmModal').modal('hide');
+                    $('#addServiceModal').modal('hide');
                 } else {
                     alert('Data failed  to delete');
+                    $('#addServiceConfirmModal').modal('hide');
+                    $('#addServiceModal').modal('hide');
                 }
             })
                 .catch(function (error) {
@@ -218,9 +241,11 @@
             }).then(function (response) {
 
                 if (response.data == 1) {
-                    alert('Data Successfully Deleted');
+                    alert('Data Successfully Deleted!');
+                    $('#deleteServiceModal').modal('hide');
                 } else {
-                    alert('Data failed to delete');
+                    alert('Data failed to delete!');
+                    $('#deleteServiceModal').modal('hide');
                 }
             }).catch(function (error) {
 
@@ -234,19 +259,17 @@
             }).then(function (response) {
                 if (response.status == 200) {
                     let result = response.data;
-
                     $('#populateNameId').val(result.service_name);
                     $('#populateDesId').val(result.service_des);
                     $('#populateServiceLink').val(result.service_link);
                     $('#populateImageLink').val(result.service_image);
                 }
             }).catch(function () {
-                alert('From Service data failed to retreieve');
+                alert('From Service data failed to retrieve!');
             });
         }
 
         $('#updateServiceButton').click(function () {
-
             let id = $('#status').html();
             $('#confirmStatus').html(id);
             $('#editConfrimModal').modal('show');
@@ -271,13 +294,17 @@
                 updateImageLink: updateImageLink
             }).then(function (response) {
                 if (response.status == 200) {
-                    alert('Data updated Successfully');
+                    alert('Data updated Successfully!');
+                    $('#populateModal').modal('hide');
+                    $('#editConfrimModal').modal('hide');
                 } else {
-                    alert('Data failed to update');
+                    alert('Data failed to update!');
+                    $('#populateModal').modal('hide');
+                    $('#editConfrimModal').modal('hide');
                 }
             })
                 .catch(function (error) {
-
+                    alert('Server Error!');
                 });
         }
 

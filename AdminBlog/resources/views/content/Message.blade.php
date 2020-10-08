@@ -38,16 +38,22 @@
 <script>
     function getMessageList() {
         axios.get('/getMessageList').then(function (response) {
-            let result = response.data;
-            $.each(result, function (i) {
-                $('<tr>').html(
-                    "<td>" + result[i].id + "</td>" +
-                    "<td>" + result[i].message_name + "</td>" +
-                    "<td>" + result[i].message_email + "</td>" +
-                    "<td>" + result[i].message_message + "</td>" +
-                    "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger btn-sm messageDeleteButton'>Delete</a>" + "</td>"
-                ).appendTo('#messageTableBody');
-            });
+            if (response.status == 200) {
+                let result = response.data;
+                $.each(result, function (i) {
+                    $('<tr>').html(
+                        "<td>" + result[i].id + "</td>" +
+                        "<td>" + result[i].message_name + "</td>" +
+                        "<td>" + result[i].message_email + "</td>" +
+                        "<td>" + result[i].message_message + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger btn-sm messageDeleteButton'>Delete</a>" + "</td>"
+                    ).appendTo('#messageTableBody');
+                });
+                $(document).ready(function () {
+                    $('#myTable').DataTable();
+                    $('.dataTables_length').addClass('bs-select');
+                });
+            }
             $('.messageDeleteButton').click(function () {
                 let id = $(this).data('id');
                 $('#messgaeDeleteConfirmStatus').html(id);
@@ -67,9 +73,14 @@
             }).then(function (response) {
                 if (response.data == 1) {
                     alert("Message has been deleted!");
+                    $('#messgaeDeleteConfirmModal').modal('hide');
+                } else {
+                    alert("Message failed to delete!");
+                    $('#messgaeDeleteConfirmModal').modal('hide');
                 }
             }).catch(function () {
-                alert("Message failed to delete!");
+                alert("Server Error!");
+
             });
         }
 

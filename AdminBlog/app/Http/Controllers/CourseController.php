@@ -32,7 +32,10 @@ class CourseController extends Controller
         $courseTotalClass = $request->input('courseTotalClass');
         $courseEnroll = $request->input('courseEnroll');
         $courseLink = $request->input('courseLink');
-        $courseImage = $request->input('courseImage');
+        $file = $request->file('file')->store('public');
+        $fileName = (explode('/', $file))[1];
+        $host = $_SERVER['HTTP_HOST'];
+        $courseImage = 'http://' . $host . '/storage/' . $fileName;
         $courseDescription = $request->input('courseDescription');
         return DB::table('courses')->where('id', '=', $id)->update(['course_name' => $courseName, 'course_fee' => $courseFee, 'course_total_class' => $courseTotalClass, 'course_total_enroll' => $courseEnroll, 'course_link' => $courseLink, 'course_image' => $courseImage, 'course_des' => $courseDescription]);
 
@@ -50,7 +53,10 @@ class CourseController extends Controller
         $addCourseTotalClas = $request->input('addCourseTotalClass');
         $addCourseTotalEnroll = $request->input('addCourseTotalEnroll');
         $addCourseLink = $request->input('addCourseLink');
-        $addCourseImage = $request->input('addCourseImage');
+        $file = $request->file('file')->store('public');
+        $fileName = (explode('/', $file))[1];
+        $host = $_SERVER['HTTP_HOST'];
+        $addCourseImage = 'http://' . $host . '/storage/' . $fileName;
         $addCoursesDescription = $request->input('addCoursesDescription');
         return DB::table('courses')->insert(['course_name' => $addCourseName, 'course_fee' => $addCourseFee, 'course_total_class' => $addCourseTotalClas, 'course_total_enroll' => $addCourseTotalEnroll, 'course_link' => $addCourseLink, 'course_image' => $addCourseImage, 'course_des' => $addCoursesDescription]);
     }

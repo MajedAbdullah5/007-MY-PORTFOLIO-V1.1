@@ -20,3 +20,8 @@ Route::get('/app', 'HomeController@app');
 Route::get('/portfolio','PortfolioController@portfolioShowPage');
 
 
+//ViewPage
+//Route::get('/viewProject','HomeController@viewProject');
+Route::get('/projectView/{id}','HomeController@ProjectView');
+//Route::post('/getProject','HomeController@getProject');
+

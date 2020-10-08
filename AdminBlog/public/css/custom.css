@@ -72,3 +72,14 @@
     font-weight: bold;
     font-size: 30px;
 }
+.imagePreview{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+.imageOnScroll{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border: none !important;
+}

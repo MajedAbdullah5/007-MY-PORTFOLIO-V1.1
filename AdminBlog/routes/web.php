@@ -99,4 +99,7 @@ Route::get('/adminLoginPage','AdminController@adminLoginPage');
 Route::post('/login','AdminController@login');
 Route::get('/logout','AdminController@logout');
 
-
+//------------------------------------Photo Gallery-----------------------------------
+Route::get('/photo_gallery','PhotoController@photo_gallery');
+Route::post('/addPhotos','PhotoController@addPhotos');
+Route::get('/photoOnScroll','PhotoController@photoOnScroll');

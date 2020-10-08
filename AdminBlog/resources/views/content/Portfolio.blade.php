@@ -1,8 +1,8 @@
 @extends('Layout.app')
 @section('content')
-<!-- ------------------------------------------------------EMERGENCY CONTACT---------------------------------------- -->
-  <table id="myTable" class="table-bordered ">
-        <h6 class="p-3" style="font-weight: bold;">EMERGENCY CONTACT</h6>
+    <!-- ------------------------------------------------------EMERGENCY CONTACT---------------------------------------- -->
+    <table id="myTable" class="table-bordered ">
+        ` <h6 class="p-3" style="font-weight: bold;">EMERGENCY CONTACT</h6>`
         <h6 class="p-3"><a id="addContactButton" class="btn btn-outline-deep-purple">ADD EMERGENCY CONTACT</a></h6>
         <thead>
         <th>CONTACT STATUS</th>
@@ -14,76 +14,8 @@
         </tbody>
     </table>
     <!-- contact populate modal -->
-        <div class="modal fade" id="contactPopulateModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <h1 id="editId"></h1>
-            <div class="modal-body">
-                <h1 id="contactPopulateModalStatus" class="p-3"></h1>
-                <div id="header" class="mb-2"></div>
-
-                <input type="text" id="contactStatus" class="form-control mb-4"
-                       placeholder="Contact Status (ex:Phone)"/>
-                <textarea type="text" id="contactInformation" class="form-control mb-4"
-                          placeholder="Type Address (ex:01890312202)"></textarea>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                <button id="contactPopulateModalButton" type="button" class="btn btn-primary btn-sm">
-                    Save
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--contact update Confirm Modal -->
-<div class="modal fade" id="contactUpdateConfirmModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h1 id="contactUpdateConfirmModalStatus"></h1>
-                <h4 class="p-5">Do you want to Change?</h4>
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-                <button id="contactUpdateConfirmModalButton" type="button" class="btn btn-primary btn-sm">
-                    Yes
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{--    contact delete Confirm modal--}}
-<div class="modal fade" id="contactDeleteConfirmModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <input id="hiddenInput" type="hidden"/>
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h1 id="contactDeleteConfirmModalStatus"></h1>
-                <h4 class="p-5">Do you want to Delete?</h4>
-                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">No</button>
-                <button id="contactDeleteConfirmModalButton" type="button" class="btn btn-danger btn-sm">Yes
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
- {{--Education Add Modal--}}
-    <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="contactPopulateModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -95,13 +27,81 @@
                 </div>
                 <h1 id="editId"></h1>
                 <div class="modal-body">
+                    <h1 id="contactPopulateModalStatus" class="p-3"></h1>
+                    <div id="header" class="mb-2"></div>
+
+                    <input type="text" id="contactStatus" class="form-control mb-4"
+                           placeholder="Contact Status (ex:Phone)"/>
+                    <textarea type="text" id="contactInformation" class="form-control mb-4"
+                              placeholder="Type Address (ex:01890312202)"></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button id="contactPopulateModalButton" type="button" class="btn btn-primary btn-sm">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--contact update Confirm Modal -->
+    <div class="modal fade" id="contactUpdateConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="contactUpdateConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Change?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="contactUpdateConfirmModalButton" type="button" class="btn btn-primary btn-sm">
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--    contact delete Confirm modal--}}
+    <div class="modal fade" id="contactDeleteConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <input id="hiddenInput" type="hidden"/>
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h1 id="contactDeleteConfirmModalStatus"></h1>
+                    <h4 class="p-5">Do you want to Delete?</h4>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">No</button>
+                    <button id="contactDeleteConfirmModalButton" type="button" class="btn btn-danger btn-sm">Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--contact add Modal--}}
+    <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h1 id="editId"></h1>
+                <div class="modal-body">
                     <h1 id="addContactModalStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="contactAddStatus" class="form-control mb-4"
-                       placeholder="Contact Status (ex:Phone)">
-                <textarea type="text" id="contactAddInformation" class="form-control mb-4"
-                          placeholder="Type Address (ex:01890312202)"></textarea>
-                
+                           placeholder="Contact Status (ex:Phone)">
+                    <textarea type="text" id="contactAddInformation" class="form-control mb-4"
+                              placeholder="Type Address (ex:01890312202)"></textarea>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -112,23 +112,23 @@
     </div>
 
 
-{{-- address add confirm modal--}}
-<div class="modal fade" id="addAddressConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h4 class="p-5">Are you sure?</h4>
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-                <button id="addAddressConfirmModalButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+    {{-- contact add confirm modal--}}
+    <div class="modal fade" id="addContactConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 class="p-5">Are you sure?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addContactConfirmModalButton" type="button" class="btn btn-primary btn-sm">Yes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
-{{----------------------------------------------CAREER OBJECTIVES---------------------------------------------}}
+    {{----------------------------------------------CAREER OBJECTIVES---------------------------------------------}}
     <table id="myTable" class="table-bordered ">
         <h6 class="p-3" style="font-weight: bold;">CAREER OBJECTIVES</h6>
         <thead>
@@ -237,7 +237,8 @@
     </div>
 
     <!-- Education Edit Confirm Modal -->
-       <div class="modal fade" id="educationUpdateConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="educationUpdateConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -804,16 +805,31 @@
             </div>
         </div>
     </div>
-
+    {{--    personal information add confirm modal--}}
+    <div class="modal fade" id="addPersonalInformationConfirmModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <h4 class="p-5">Are you sure?</h4>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button id="addPersonalInformationConfirmModalButton" type="button" class="btn btn-primary btn-sm">
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     {{--    -----------------------------------------------ADDRESS---------------------------------------------------}}
     <table id="myTable" class="table-bordered">
         <h6 class="pt-5" style="font-weight: bold;">ADDRESS</h6>
         <h6 class="p-3"><a id="addAddressButton" class="btn btn-outline-deep-purple">ADD ADDRESS</a></h6>
         <thead>
-            <th>ADDRESS STATUS</th>
-            <th>ADDRESS</th>
-            <th>EDIT</th>
-            <th>DELETE</th>
+        <th>ADDRESS STATUS</th>
+        <th>ADDRESS</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
         </thead>
         <tbody id="addressTableBody">
         </tbody>
@@ -889,19 +905,19 @@
         </div>
     </div>
 
-    {{--    address  populate modal--}}
+    {{--    address add modal--}}
     <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Address</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <h1 id="editId"></h1>
+
                 <div class="modal-body">
                     <h1 id="addAddressModalStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
@@ -950,133 +966,135 @@
 @endsection
 <script>
     // -------------------------------------EMERGENCY CONTACT---------------------------------------
-    function getEmergencyContactList(){
-        axios.get('/getEmergencyContactList').
-        then(function(response){
-                if(response.status == 200){
-                    let result = response.data;
-                    $.each(result,function (i){
-                        $("<tr>").html(
-                            "<td>"+result[i].contactStatus+"</td>"+
-                            "<td>"+result[i].contactInformation+"</td>"+
-                            "<td>"+"<a class='btn btn-sm btn-outline-info contactEditButton' data-id="+result[i].id +">Edit</a>"+"</td>"+
-                            "<td>"+"<a class='btn btn-sm btn-outline-danger contactDeleteButton' data-id="+result[i].id +">Delete</a>"+"</td>"
-                        ).appendTo('#emergencyContactTableBody');
-                    });
-                    $('.contactEditButton').click(function (){
-                        let id = $(this).data('id'); 
-                        $('#contactPopulateModalStatus').html(id);
-                        $('#contactPopulateModal').modal('show');
-                         populateContact(id);
-                    });
-                    $('#contactPopulateModalButton').click(function(){
-                        let id =  $('#contactPopulateModalStatus').html();
-                        $('#contactUpdateConfirmModalStatus').html(id);
-                        $('#contactUpdateConfirmModal').modal('show');
-                    });
-                    $('#contactUpdateConfirmModalButton').click(function(){     
-                        let id =  $('#contactUpdateConfirmModalStatus').html();                  
-                        let contactStatus =    $('#contactStatus').val();
-                        let contactInformation = $('#contactInformation').val();
-                        updateContact(id,contactStatus,contactInformation);
-                     });
-                     $('.contactDeleteButton').click(function(){
-                         let id = $(this).data('id');
-                         $('#contactDeleteConfirmModalStatus').html(id);
-                         $('#contactDeleteConfirmModal').modal('show');
-                     });
-                      $('#contactDeleteConfirmModalButton').click(function(){
-                            let id =  $('#contactDeleteConfirmModalStatus').html();
-                            deleteContact(id);
-                      });
-                      $('#addContactButton').click(function(){
-                          $('#addContactModal').modal('show');
-                      });
-                      $('#addContactModalButton').click(function(){  
-                        $('#addAddressConfirmModal').modal('show');
-                      });
-                       $('#addAddressConfirmModalButton').click(function(){
-                        let contactStatus =    $('#contactAddStatus').val();
-                        let contactInformation = $('#contactAddInformation').val();
-                        addContact(contactStatus,contactInformation);
-                       });
-                      
-                }
-        }).catch(function(error){
+    function getEmergencyContactList() {
+        axios.get('/getEmergencyContactList').then(function (response) {
+            if (response.status == 200) {
+                let result = response.data;
+                $.each(result, function (i) {
+                    $("<tr>").html(
+                        "<td>" + result[i].contactStatus + "</td>" +
+                        "<td>" + result[i].contactInformation + "</td>" +
+                        "<td>" + "<a class='btn btn-sm btn-outline-info contactEditButton' data-id=" + result[i].id + ">Edit</a>" + "</td>" +
+                        "<td>" + "<a class='btn btn-sm btn-outline-danger contactDeleteButton' data-id=" + result[i].id + ">Delete</a>" + "</td>"
+                    ).appendTo('#emergencyContactTableBody');
+                });
+                $('.contactEditButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#contactPopulateModalStatus').html(id);
+                    $('#contactPopulateModal').modal('show');
+                    populateContact(id);
+                });
+                $('#contactPopulateModalButton').click(function () {
+                    let id = $('#contactPopulateModalStatus').html();
+                    $('#contactUpdateConfirmModalStatus').html(id);
+                    $('#contactUpdateConfirmModal').modal('show');
+                });
+                $('#contactUpdateConfirmModalButton').click(function () {
+                    let id = $('#contactUpdateConfirmModalStatus').html();
+                    let contactStatus = $('#contactStatus').val();
+                    let contactInformation = $('#contactInformation').val();
+                    updateContact(id, contactStatus, contactInformation);
+                });
+                $('.contactDeleteButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#contactDeleteConfirmModalStatus').html(id);
+                    $('#contactDeleteConfirmModal').modal('show');
+                });
+                $('#contactDeleteConfirmModalButton').click(function () {
+                    let id = $('#contactDeleteConfirmModalStatus').html();
+                    deleteContact(id);
+                });
+                $('#addContactButton').click(function () {
+                    $('#addContactModal').modal('show');
+                });
+                $('#addContactModalButton').click(function () {
+                    $('#addContactConfirmModal').modal('show');
+                });
+                $('#addContactConfirmModalButton').click(function () {
+                    let contactStatus = $('#contactAddStatus').val();
+                    let contactInformation = $('#contactAddInformation').val();
+                    addContact(contactStatus, contactInformation);
+                });
+
+            }
+        }).catch(function (error) {
 
         });
     }
+
     // Add Contact
-    function  addContact(contactStatus,contactInformation){
-        axios.post('/addContact',{
-            contactStatus:contactStatus,
-            contactInformation:contactInformation
-        }).then(function(response){
-                    if(response.data == 1){
-                        alert("Data has been added!");
-                    }
-                    else{
-                        alert("Data failed to delete!");
-                    }
-        }).catch(function(error){
+    function addContact(contactStatus, contactInformation) {
+        axios.post('/addContact', {
+            contactStatus: contactStatus,
+            contactInformation: contactInformation
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert("Data has been added!");
+                $('#addContactModal').modal('hide');
+                $('#addContactConfirmModal').modal('hide');
+            } else {
+                alert("Data failed to add!");
+                $('#addContactModal').modal('hide');
+                $('#addContactConfirmModal').modal('hide');
+            }
+        }).catch(function (error) {
 
         });
     }
 
     //delete contact
-    function   deleteContact(id){
-        axios.post('/deleteContact',{
-            id:id
-        }).
-        then(function(response){
-            if(response.data == 1){
+    function deleteContact(id) {
+        axios.post('/deleteContact', {
+            id: id
+        }).then(function (response) {
+            if (response.data == 1) {
                 alert("Data has been deleted!");
-            }
-            else{
+                $('#contactDeleteConfirmModal').modal('hide');
+            } else {
                 alert("Data failed to delete!");
+                $('#contactDeleteConfirmModal').modal('hide');
             }
 
-        }).catch(function(error){
+        }).catch(function (error) {
 
         });
     }
+
     //update Contact
-    function updateContact(id,contactStatus,contactInformation){
-        axios.post('/updateContact',{
+    function updateContact(id, contactStatus, contactInformation) {
+        axios.post('/updateContact', {
             id: id,
-          contactStatus: contactStatus,
-          contactInformation: contactInformation
-        }).
-        then(function(response){
-if(response.data == 1){
-    alert('Data has been updated!');
-}
-else{
-    alert("Data failed to update!");
-}
-        }).catch(function(error){
-
+            contactStatus: contactStatus,
+            contactInformation: contactInformation
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert('Data has been updated!');
+                $('#contactPopulateModal').modal('hide');
+                $('#contactUpdateConfirmModal').modal('hide');
+            } else {
+                alert("Data failed to update!");
+                $('#contactPopulateModal').modal('hide');
+                $('#contactUpdateConfirmModal').modal('hide');
+            }
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
+
     //populate Contact
-    function populateContact(id){
-        axios.post('/populateContact',{
-            id:id
-        }).
-        then(function(response){
-            if(response.status == 200){
+    function populateContact(id) {
+        axios.post('/populateContact', {
+            id: id
+        }).then(function (response) {
+            if (response.status == 200) {
                 let result = response.data;
                 $('#contactStatus').val(result.contactStatus);
                 $('#contactInformation').val(result.contactInformation);
             }
-        }).catch(function(error){
+        }).catch(function (error) {
 
         });
     }
-
-
-
-
 
 
     // ----------------------------------------------------ADDRESS-------------------------------------
@@ -1092,48 +1110,48 @@ else{
                         "<td>" + "<a data-id=" + result[i].id + " + class='btn btn-sm btn-outline-danger addressDeleteButton'>Delete</a>" + "</td>"
                     ).appendTo('#addressTableBody');
                 });
-                    //Delete
+                //Delete
                 $('.addressDeleteButton').click(function () {
                     let id = $(this).data('id');
                     $('#addressDeleteConfirmModalStatus').html(id);
                     $('#addressDeleteConfirmModal').modal('show');
                 });
-                $('#addressDeleteConfirmModalButton').click(function (){
-                   let id =  $('#addressDeleteConfirmModalStatus').html();
-                   deleteAddress(id);
+                $('#addressDeleteConfirmModalButton').click(function () {
+                    let id = $('#addressDeleteConfirmModalStatus').html();
+                    deleteAddress(id);
                 });
 
-                    //populate id
-                    $('.addressEditButton').click(function () {
-                        let id = $(this).data('id');
-                        $('#addressPopulateModalStatus').html(id);
-                        populateAddress(id);
-                        $('#addressPopulateModal').modal('show');
-                    });
-                    //update
-                    $('#addressPopulateModalButton').click(function () {
-                        let id = $('#addressPopulateModalStatus').html();
-                        $('#addressUpdateConfirmModalStatus').html(id);
-                        $('#addressUpdateConfirmModal').modal('show');
-                    });
+                //populate id
+                $('.addressEditButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#addressPopulateModalStatus').html(id);
+                    populateAddress(id);
+                    $('#addressPopulateModal').modal('show');
+                });
+                //update
+                $('#addressPopulateModalButton').click(function () {
+                    let id = $('#addressPopulateModalStatus').html();
+                    $('#addressUpdateConfirmModalStatus').html(id);
+                    $('#addressUpdateConfirmModal').modal('show');
+                });
                 $('#addressUpdateConfirmModalButton').click(function () {
                     let id = $('#addressUpdateConfirmModalStatus').html();
                     let addressInformationStatus = $('#addressInformationStatus').val();
                     let addressInformation = $('#addressInformation').val();
                     updateAddress(id, addressInformationStatus, addressInformation);
                 });
-                $('#addAddressButton').click(function(){
+                $('#addAddressButton').click(function () {
 
                     $('#addAddressModal').modal('show');
 
                 });
-                $('#addAddressModalButton').click(function(){
+                $('#addAddressModalButton').click(function () {
                     $('#addAddressConfirmModal').modal('show');
                 });
-                $('#addAddressConfirmModalButton').click(function(){
+                $('#addAddressConfirmModalButton').click(function () {
                     let addressInformationStatus = $('#addAddressInformationStatus').val();
                     let addressInformation = $('#addAddressInformation').val();
-                    addAddress( addressInformationStatus, addressInformation);
+                    addAddress(addressInformationStatus, addressInformation);
                 });
 
             }
@@ -1143,54 +1161,62 @@ else{
     }
 
     // add address
-    function addAddress( addressInformationStatus, addressInformation){
-        axios.post('/addAddress',{
-           addressInformationStatus: addressInformationStatus,
-           addressInformation:addressInformation
-        }).
-        then(function(response){
-            if(response.data == 1){
+    function addAddress(addressInformationStatus, addressInformation) {
+        axios.post('/addAddress', {
+            addressInformationStatus: addressInformationStatus,
+            addressInformation: addressInformation
+        }).then(function (response) {
+            if (response.data == 1) {
                 alert("Data has been added!");
-            }
-            else{
-                alert("Data failed to add!");
-            }
-        }).catch(function(error){
+                $('#addAddressModal').modal('hide');
+                $('#addAddressConfirmModal').modal('hide');
 
+            } else {
+                alert("Data failed to add!");
+                $('#addAddressModal').modal('hide');
+                $('#addAddressConfirmModal').modal('hide');
+
+            }
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
     //delete
-    function deleteAddress(id){
-        axios.post('/deleteAddress',{
-            id:id
-        }).then(function(response){
-            if(response.data == 1){
+    function deleteAddress(id) {
+        axios.post('/deleteAddress', {
+            id: id
+        }).then(function (response) {
+            if (response.data == 1) {
                 alert('Data has been deleted!');
-            }
-            else{
+                $('#addressDeleteConfirmModal').modal('hide');
+            } else {
                 alert('Data failed to delete!');
+                $('#addressDeleteConfirmModal').modal('hide');
             }
-        }).catch(function(error){
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
     //update
     function updateAddress(id, addressInformationStatus, addressInformation) {
-        axios.post('/updateAddress',{
+        axios.post('/updateAddress', {
             id: id,
             addressInformationStatus: addressInformationStatus,
             addressInformation: addressInformation
         }).then(function (response) {
-            if(response.data == 1){
+            if (response.data == 1) {
                 alert("Data has been updated!");
-            }
-            else{
+                $('#addressPopulateModal').modal('hide');
+                $('#addressUpdateConfirmModal').modal('hide');
+            } else {
                 alert('Data failed to update!');
+                $('#addressPopulateModal').modal('hide');
+                $('#addressUpdateConfirmModal').modal('hide');
             }
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
     }
 
@@ -1205,7 +1231,7 @@ else{
                 $('#addressInformation').val(result.Address);
             }
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
     }
 
@@ -1255,15 +1281,16 @@ else{
                     $('#addPersonalInformationModal').modal('show');
                 });
                 $('#addPersonalInformationModalButton').click(function () {
+                    $('#addPersonalInformationConfirmModal').modal('show');
+                });
+                $('#addPersonalInformationConfirmModalButton').click(function () {
                     let addInformationStatus = $('#addInformationStatus').val();
                     let addInformation = $('#addInformation').val();
                     addPersonalInformation(addInformationStatus, addInformation);
                 });
-
-
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1275,12 +1302,16 @@ else{
         }).then(function (response) {
             if (response.status == 200) {
                 alert("Data has been added!");
+                $('#addPersonalInformationModal').modal('hide');
+                $('#addPersonalInformationConfirmModal').modal('hide');
             } else {
                 alert("Data failed to add!");
+                $('#addPersonalInformationModal').modal('hide');
+                $('#addPersonalInformationConfirmModal').modal('hide');
             }
 
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
     }
 
@@ -1292,11 +1323,13 @@ else{
             console.log(response.data);
             if (response.data == 1) {
                 alert('Data has been deleted!');
+                $('#personalDeleteConfirmModal').modal('hide');
             } else {
                 alert('Data failed to delete!');
+                $('#personalDeleteConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1309,12 +1342,16 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert("Data has been updated successfully!")
+                $('#populatePersonalInformationModal').modal('hide');
+                $('#informationUpdateConfirmationModal').modal('hide');
             } else {
                 alert("Data failed to update!")
+                $('#populatePersonalInformationModal').modal('hide');
+                $('#informationUpdateConfirmationModal').modal('hide');
             }
 
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1330,8 +1367,8 @@ else{
             }
 
 
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1409,11 +1446,15 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert("Data added successfully!");
+                $('#jobSkillsAddModal').modal('hide');
+                $('#addJobSkillsConfirmModal').modal('hide');
             } else {
                 alert("Data failed to add");
+                $('#jobSkillsAddModal').modal('hide');
+                $('#addJobSkillsConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error");
         });
     }
 
@@ -1425,12 +1466,14 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert("Data has been deleted!");
+                $('#jobSkillsDeleteConfirmModal').modal('hide');
             } else {
                 alert("Data failed to delete!");
+                $('#jobSkillsDeleteConfirmModal').modal('hide');
             }
 
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1446,11 +1489,15 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert("Data has been updated!");
+                $('#jobSkillsPopulateModal').modal('hide');
+                $('#jobSkillsConfirmModal').modal('hide');
             } else {
                 alert("Data failed to update");
+                $('#jobSkillsPopulateModal').modal('hide');
+                $('#jobSkillsConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert('Server Error!');
         });
     }
 
@@ -1465,8 +1512,8 @@ else{
                 $('#jobSkillsPopulateInstitute').val(result.workplace);
                 $('#jobSkillsPopulatePosition').val(result.position);
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1529,7 +1576,7 @@ else{
                 });
             }
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
     }
 
@@ -1541,12 +1588,16 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Data has been added!');
+                $('#addSkillsModal').modal('hide');
+                $('#addSkillsConfirmModal').modal('hide');
             } else {
                 alert('Data failed to add!');
+                $('#addSkillsModal').modal('hide');
+                $('#addSkillsConfirmModal').modal('hide');
             }
 
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1558,11 +1609,13 @@ else{
             console.log(response.data);
             if (response.data == 1) {
                 alert("Data has been deleted!");
+                $('#skillsDeleteConfirmModal').modal('hide');
             } else {
                 alert("Data failed to delete!");
+                $('#skillsDeleteConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1580,8 +1633,8 @@ else{
                 alert('Data failed to fetched');
             }
 
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1594,12 +1647,16 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Data has been updated successfully!');
+                $('#skillsPopulateModal').modal('hide');
+                $('#skillsConfirmModal').modal('hide');
             } else {
                 alert('Data failed to update!');
+                $('#skillsPopulateModal').modal('hide');
+                $('#skillsConfirmModal').modal('hide');
             }
 
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1661,7 +1718,7 @@ else{
 
             }
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
 
     }
@@ -1674,11 +1731,15 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert("Data has been added!");
+                $('#addLanguageModal').modal('hide');
+                $('#addLanguageConfirmModal').modal('hide');
             } else {
                 alert("Data failed to add!");
+                $('#addLanguageModal').modal('hide');
+                $('#addLanguageConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1689,11 +1750,13 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert("Data has been deleted!");
+                $('#languageDeleteConfirmModal').modal('hide');
             } else {
                 alert("Data failed to delete!");
+                $('#languageDeleteConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1706,11 +1769,15 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Language has been updated!');
+                $('#languagePopulateModal').modal('hide');
+                $('#editLanguageConfirmModal').modal('hide');
             } else {
                 alert('Language failed to update!');
+                $('#languagePopulateModal').modal('hide');
+                $('#editLanguageConfirmModal').modal('hide');
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!")
         });
     }
 
@@ -1725,7 +1792,7 @@ else{
                 $('#languageProficiency').val(result.language_proficiency);
             }
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
     }
 
@@ -1799,8 +1866,8 @@ else{
                     addEducation(educationDuration, educationInstitute, educationCertificate, educationMajor, educationCgpa, educationBoard);
                 });
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1816,11 +1883,15 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Data Added successfully!');
+                $('#educationAddModal').modal('hide');
+                $('#addConfrimModal').modal('hide');
             } else {
                 alert('Data failed to add!');
+                $('#educationAddModal').modal('hide');
+                $('#addConfrimModal').modal('hide');
             }
         }).catch(function () {
-
+            alert("Server Error!");
         });
     }
 
@@ -1831,12 +1902,14 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Data deleted successfully!');
+                $('#educationDeleteConfirmModal').modal('hide');
             } else {
                 alert('Data failed to delete!');
+                $('#educationDeleteConfirmModal').modal('hide');
             }
 
         }).catch(function () {
-
+            alert("Server Error!")
         });
     }
 
@@ -1853,8 +1926,18 @@ else{
 
         }).then(function (response) {
             console.log(response.data);
-        }).catch(function () {
+            if (response.status == 200 && response.data == 1) {
+                alert("Data has been updated!");
+                $('#eduacationEditModal').modal('hide');
+                $('#educationUpdateConfirmModal').modal('hide');
+            } else {
+                alert("Data failed to update!");
+                $('#eduacationEditModal').modal('hide');
+                $('#educationUpdateConfirmModal').modal('hide');
 
+            }
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1872,8 +1955,8 @@ else{
                 $('#educationCgpa').val(result.education_gpa);
                 $('#educationBoard').val(result.education_board);
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 
@@ -1906,7 +1989,7 @@ else{
                 });
             }
         }).catch(function (error) {
-
+            alert("Server Error!");
         });
     }
 
@@ -1918,12 +2001,16 @@ else{
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Data has been updated successfully!');
+                $('#populateObjectives').modal('hide');
+                $('#objectiveUpdateModal').modal('hide');
             } else {
                 alert('Data failed to update!');
+                $('#populateObjectives').modal('hide');
+                $('#objectiveUpdateModal').modal('hide');
             }
 
         }).catch(function () {
-
+            alert("Server Error");
         });
     }
 
@@ -1934,8 +2021,8 @@ else{
                 let result = response.data;
                 $('#objectivesId').val(result.objectives);
             }
-        }).catch(function () {
-
+        }).catch(function (error) {
+            alert("Server Error!");
         });
     }
 

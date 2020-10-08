@@ -33,6 +33,7 @@
                     <li><a href="{{url('/courses')}}"><i class="fas fa-book-open"></i>&emsp;COURSES</a></li>
                     <li><a href="{{url('/project')}}"><i class="fas fa-code"></i>&emsp;PROJECTS</a></li>
                     <li><a href="{{url('/messages')}}"><i class="fas fa-envelope"></i>&emsp;MESSAGES</a></li>
+                    <li><a href="{{url('/photo_gallery')}}"><i class="fas fa-photo-video"></i>&emsp;PHOTO GALLERY</a></li>
                     <li><a class="btn btn-danger btn-sm signout" href="{{url('/logout')}}"><i class="fas fa-sign-out-alt signout" ></i>&emsp;LOGOUT</a></li>
                 </ul>
             </div>

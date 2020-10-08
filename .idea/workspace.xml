@@ -20,22 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="403ceed6-f007-419a-be77-2cf087fcc38b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/AdminTableMigration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Middleware/loginMiddleware.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/app/emergency_contact.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_04_161456_emergency_migration.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_05_142852_admin_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/database/migrations/2020_10_04_161625_emergency_migration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/PhotoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/app/photo_gallery_model.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_06_162449_photo_migration.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/public/image/loader/default-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/photo_gallery.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog/resources/views/content/ViewProject.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/PortfolioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/CourseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/CourseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ServiceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/public/css/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/Layout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/Layout/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Course.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Course.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Message.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Portfolio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Portfolio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Projects.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Projects.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Services.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/public/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/Layout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/Layout/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/content/Portfolio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/content/Portfolio.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/resources/views/content/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/content/project.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,18 +183,18 @@
     <property name="Constants" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog/public" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public" />
       <recent name="C:\Users\User\Desktop\PORTFOLIO\AdminBlog\app" />
       <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\app" />
       <recent name="D:\LaravelProject\PORTFOLIO\AdminBlog\app" />
       <recent name="D:\LaravelProject\PORTFOLIO\blog\app" />
-      <recent name="D:\LaravelProject\PORTFOLIO\AdminBlog\public\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public\image\banner" />
@@ -249,6 +255,13 @@
       <workItem from="1601912850527" duration="1081000" />
       <workItem from="1601915496857" duration="2000" />
       <workItem from="1601919024145" duration="1151000" />
+      <workItem from="1601962676592" duration="5243000" />
+      <workItem from="1602000729593" duration="7503000" />
+      <workItem from="1602043770512" duration="5124000" />
+      <workItem from="1602065324742" duration="23543000" />
+      <workItem from="1602129519473" duration="10020000" />
+      <workItem from="1602143961930" duration="9100000" />
+      <workItem from="1602170587973" duration="491000" />
     </task>
     <servers />
   </component>
@@ -327,10 +340,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="388" y="23" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1601478674516" />
-    <state x="557" y="317" key="NewPhpFileDialog" timestamp="1601655384802">
+    <state x="557" y="317" key="NewPhpFileDialog" timestamp="1602051834355">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="557" y="317" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1601655384802" />
+    <state x="557" y="317" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1602051834355" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1601919543038">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -339,10 +352,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="746" height="596" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1601448596246" />
-    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601919620900">
+    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602155491200">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1601919620900" />
+    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1602155491200" />
     <state x="358" y="127" width="1483" height="786" key="dock-window-1" timestamp="1601094129275">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -355,10 +368,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="900" height="642" key="javadoc.popup/0.0.1536.824@0.0.1536.824" timestamp="1600960712269" />
-    <state x="257" y="178" key="run.anything.popup" timestamp="1601738688394">
+    <state x="257" y="178" key="run.anything.popup" timestamp="1602138486969">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="257" y="178" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1601738688394" />
+    <state x="257" y="178" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1602138486969" />
     <state x="347" y="-1" width="1009" height="1034" key="search.everywhere.popup" timestamp="1601908159657">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

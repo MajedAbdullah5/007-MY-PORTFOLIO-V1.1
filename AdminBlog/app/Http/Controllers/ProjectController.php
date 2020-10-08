@@ -43,7 +43,11 @@ class ProjectController extends Controller
         $addProjectName = $request->input('addProjectName');
         $addProjectDes = $request->input('addProjectDes');
         $addProjectLink = $request->input('addProjectLink');
-        $addProjectImage = $request->input('addProjectImage');
-        return DB::table('projects')->insert(['project_name' => $addProjectName, 'project_des' => $addProjectDes, 'project_link' => $addProjectLink, 'project_image' => $addProjectImage]);
+        $addProjectImage = $request->file('file')->store('public');
+        $fileName = (explode('/', $addProjectImage))[1];
+        $host = $_SERVER['HTTP_HOST'];
+        $projectImage = 'http://' . $host . '/storage/' . $fileName;
+        return DB::table('projects')->insert(['project_name' => $addProjectName, 'project_des' => $addProjectDes, 'project_link' => $addProjectLink, 'project_image' => $projectImage]);
+
     }
 }
