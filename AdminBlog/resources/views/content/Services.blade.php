@@ -35,7 +35,8 @@
                     <textarea id="addServiceDes" class="form-control mb-4" placeholder="Description"></textarea>
                     <input type="text" id="addServiceLink" class="form-control mb-4" placeholder="Service link">
                     <input type="file" id="addServiceImage" class="form-control mb-4">
-                    <img  id="addServiceImagePreview" class="imagePreview" src="{{asset('/image/loader/default-image.jpg')}}" >
+                    <img id="addServiceImagePreview" class="imagePreview"
+                         src="{{asset('/image/loader/default-image.jpg')}}">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -63,8 +64,9 @@
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="populateNameId" class="form-control mb-4" placeholder="Name">
                     <textarea id="populateDesId" class="form-control mb-4" placeholder="Desc"></textarea>
-                    <input type="text" id="populateImageLink" class="form-control mb-4" placeholder="Image link">
                     <input type="text" id="populateServiceLink" class="form-control mb-4" placeholder="Service link">
+                    <input type="file" id="populateImageLink" class="form-control mb-4" placeholder="Image link">
+                    <img src="" id="serviceImagePreview" class="imagePreview" alt="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -139,7 +141,7 @@
                             "<td>" + result[i].id + "</td>" +
                             "<td>" + result[i].service_name + "</td>" +
                             "<td>" + result[i].service_des + "</td>" +
-                            "<td>" + "<img height='100px' width='120px' src="+result[i].service_image+" alt=''>" + "</td>" +
+                            "<td>" + "<img height='100px' width='120px' src=" + result[i].service_image + " alt=''>" + "</td>" +
                             "<td>" + result[i].service_link + "</td>" +
                             "<td>" + "<a data-id=" + result[i].id + " class='btn btn-primary btn-sm editButton'>Edit</a>" + "</td>" +
                             "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger  btn-sm deleteButton'>Delete</a>" + "</td>"
@@ -171,12 +173,12 @@
             }).catch(function (error) {
         });
         //image preview
-        $('#addServiceImage').change(function (){
+        $('#addServiceImage').change(function () {
             let reader = new FileReader();
             reader.readAsDataURL(this.files[0]);
-            reader.onload = function (event){
+            reader.onload = function (event) {
                 let source = event.target.result;
-                $('#addServiceImagePreview').attr('src',source);
+                $('#addServiceImagePreview').attr('src', source);
             }
         });
 
@@ -201,16 +203,17 @@
         function addServices(addServiceName, addServiceDes, addServiceLink, addServiceImage) {
             let file = $('#addServiceImage').prop('files')[0];
             let formData = new FormData();
-            formData.append('file',file);
-            formData.append('addServiceName',addServiceName);
-            formData.append('addServiceDes',addServiceDes);
-            formData.append('addServiceLink',addServiceLink);
-            formData.append('addServiceImage',addServiceImage);
-            let config = {headers:{
-                'content-type':'multipart/form-data'
-                }};
-            axios.post('/addServices',formData,config).
-            then(function (response) {
+            formData.append('file', file);
+            formData.append('addServiceName', addServiceName);
+            formData.append('addServiceDes', addServiceDes);
+            formData.append('addServiceLink', addServiceLink);
+            formData.append('addServiceImage', addServiceImage);
+            let config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            };
+            axios.post('/addServices', formData, config).then(function (response) {
                 if (response.data == 1) {
                     alert('Data has been added');
                     $('#addServiceConfirmModal').modal('hide');
@@ -262,7 +265,7 @@
                     $('#populateNameId').val(result.service_name);
                     $('#populateDesId').val(result.service_des);
                     $('#populateServiceLink').val(result.service_link);
-                    $('#populateImageLink').val(result.service_image);
+                    $('#serviceImagePreview').attr('src', result.service_image);
                 }
             }).catch(function () {
                 alert('From Service data failed to retrieve!');
@@ -275,24 +278,39 @@
             $('#editConfrimModal').modal('show');
 
         });
+        //Image preview
+        $('#populateImageLink').change(function () {
+            let fileReader = new FileReader();
+            fileReader.readAsDataURL(this.files[0]);
+            fileReader.onload = function (event) {
+                let src = event.target.result;
+                $('#serviceImagePreview').attr('src', src);
+            }
+        });
+
+
         $('#confirmUpdate').click(function () {
             let id = $('#confirmStatus').html();
             let updateName = $('#populateNameId').val();
             let updateDes = $('#populateDesId').val();
             let updateServiceLink = $('#populateServiceLink').val();
-            let updateImageLink = $('#populateImageLink').val();
-            updateServiceData(id, updateName, updateDes, updateServiceLink, updateImageLink);
+            updateServiceData(id, updateName, updateDes, updateServiceLink);
         });
 
         //Update Service Data
-        function updateServiceData(id, updateName, updateDes, updateServiceLink, updateImageLink) {
-            axios.post('/updateServiceData', {
-                id: id,
-                updateName: updateName,
-                updateDes: updateDes,
-                updateServiceLink: updateServiceLink,
-                updateImageLink: updateImageLink
-            }).then(function (response) {
+        function updateServiceData(id, updateName, updateDes, updateServiceLink) {
+            let updateFile = $('#populateImageLink').prop('files')[0];
+            let formData = new FormData();
+            formData.append('id',id);
+            formData.append('file',updateFile);
+            formData.append('updateName',updateName);
+            formData.append('updateDes',updateDes);
+            formData.append('updateServiceLink',updateServiceLink);
+            let config = {headers:{
+                'content-type':'multipart/form-data'
+                }};
+            axios.post('/updateServiceData',formData,config).then(function (response) {
+                console.log(response.data);
                 if (response.status == 200) {
                     alert('Data updated Successfully!');
                     $('#populateModal').modal('hide');

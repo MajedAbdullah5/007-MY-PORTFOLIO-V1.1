@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2020 at 07:53 PM
+-- Generation Time: Oct 08, 2020 at 06:34 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -102,12 +102,8 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `course_name`, `course_des`, `course_fee`, `course_total_class`, `course_total_enroll`, `course_image`, `course_link`) VALUES
-(1, 'Java', 'Learn for the best', '2000', '300', '200', 'java.png', 'sadasasasasasasas'),
-(3, 'Java', 'Learn for the best', '2000', '300', '200', 'java.png', 'sadasasasasasasas'),
-(4, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeg', 'asdasasa'),
-(8, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeg', 'asdasasa'),
-(9, 'Java', 'Learn for the best', '2000', '300', '200', 'java.png', 'sadasasasasasasas'),
-(10, 'PHP', 'learn php', '3000', '400', '100', 'php.jpeghg', 'asdasasa');
+(23, 'ABDULLA AL JABER', 'eswe', '1212', '1212', '212', 'http://127.0.0.1:8000/storage/0KBcbHU3jFUUlwSQDzxWD4KwHf9J4yHQFvtLoXOZ.png', 'ss'),
+(24, 'sd', 'sd', 'sd', 'sd', 'sd', 'http://127.0.0.1:8000/storage/jEVrXxFs77f3e3XcygMiiWzeiBFXNVMp7ZvUc7aY.png', 'sd');
 
 -- --------------------------------------------------------
 
@@ -244,7 +240,6 @@ INSERT INTO `messages` (`id`, `message_name`, `message_email`, `message_message`
 (10, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!'),
 (11, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!'),
 (12, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!'),
-(13, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!'),
 (14, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!'),
 (15, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!'),
 (16, 'Majed Abdullah', 'Majedabdullah635@gmail.com', 'Hei Jaber!');
@@ -289,7 +284,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (26, '2020_10_02_151259_address_migration', 20),
 (27, '2020_10_04_161625_emergency_migration', 21),
 (28, '2020_10_04_161456_emergency_migration', 22),
-(29, '2020_10_05_142852_admin_table', 22);
+(29, '2020_10_05_142852_admin_table', 22),
+(30, '2020_10_06_162449_photo_migration', 23);
 
 -- --------------------------------------------------------
 
@@ -319,8 +315,61 @@ INSERT INTO `personal_infomation` (`id`, `information_status`, `information`) VA
 (18, 'Height', '5’-9’’'),
 (21, 'Phone No          ', '+8615651730150'),
 (22, 'National ID       ', '19983012556000091'),
-(23, 'Blood Group', 'O+'),
-(27, 'wsw', 'ws');
+(23, 'Blood Group', 'O+');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photo_gallery`
+--
+
+CREATE TABLE `photo_gallery` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `photo_gallery`
+--
+
+INSERT INTO `photo_gallery` (`id`, `location`) VALUES
+(11, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(12, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(13, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(14, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(15, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(16, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(17, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(18, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(19, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(20, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(21, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(22, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(23, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(24, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(25, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(26, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(27, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(28, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(29, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(30, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(31, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(32, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(33, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(34, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(35, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(36, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(37, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(38, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(39, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(40, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(41, 'http://127.0.0.1:8000/storage/SJI3ERfvysw1pmXpPoUmeYFICw0zDoJSL7C09v3r.png'),
+(42, 'http://127.0.0.1:8000/storage/cePlhzNYcNH9kNvFYhei0ZvIqalJiM9lZG8lx6xm.png'),
+(43, 'http://127.0.0.1:8000/storage/HUPltQ9LYV0A5MgvHRRN0vr7acp02YgwzyPpZvjP.png'),
+(44, 'http://127.0.0.1:8000/storage/Y6gYxsHhsOwfuGl19hAZrdaba5NojWIC2hUbNmHG.png'),
+(45, 'http://127.0.0.1:8000/storage/PAlNR8RTRY6Ixnzi72ZrRKcNzfYuTgzh1zpoXWlC.png'),
+(46, 'http://127.0.0.1:8000/storage/TTusjuvKN7hqD7Vmae00Qq4q8VN2kAYTXLXSRpza.png'),
+(47, 'http://127.0.0.1:8000/storage/srfEpjNRPtk67xU7DwJRKi18ovCOgSNkv0TRTdtf.png');
 
 -- --------------------------------------------------------
 
@@ -359,7 +408,7 @@ INSERT INTO `programming_skills` (`id`, `programming_language`, `programming_lev
 CREATE TABLE `projects` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `project_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `project_des` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_des` varchar(3000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `project_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `project_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -369,39 +418,11 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `project_name`, `project_des`, `project_link`, `project_image`) VALUES
-(1, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(2, 'Mosque_Management Alhamdulillah', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(3, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(4, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(6, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(7, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(8, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(9, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(10, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(11, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(12, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(14, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(15, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(16, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(17, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(18, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(19, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(20, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(21, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(22, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(23, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(24, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(25, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(26, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(27, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(28, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(29, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(30, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(31, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(32, 'Mosque_Management', 'skjkjfksfdgsdfg', 'fsdfgsdfg', 'sdfgsdfgdfgsdf'),
-(33, 'dfd', 'fd', 'fd', 'df'),
-(34, 'sd', 'sd', 'sd', 'sd'),
-(35, 'Majed Abdullah', 'dsds', 'sdsd', 'sdsds121212');
+(38, 'Majed', 'Hello', 'Does it work?', 'http://127.0.0.1:8000/storage/qA5rs3970eUscb8gBsxgfagVcI9IPChuJxqgL0Tj.png'),
+(39, 'Java', 'Hello', 'dsd', 'http://127.0.0.1:8000/storage/Asw11JAsxZmmm5THZ5nfl1txAGF6qKdPQUnhDDDC.png'),
+(40, 'Majed', 'ww', 'wsw', 'http://127.0.0.1:8000/storage/HHLPyqb0DoT6SKXSsRRBPmVibEcjufvdclazZcCS.png'),
+(41, 'Majed', 'Hei', 'as', 'http://127.0.0.1:8000/storage/fBOrLJrbWaAL7MLqT33ZkOToleGbIw8yxO6bpv75.png'),
+(42, 'Majed', 'erere', 'sws', 'http://127.0.0.1:8000/storage/QaPimpSVEUrIbQAnBAYVgD2eGqGR3teWn1VX31Ti.png');
 
 -- --------------------------------------------------------
 
@@ -422,10 +443,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `service_name`, `service_des`, `service_link`, `service_image`) VALUES
-(1, 'Majed Khan', 'sasas', 'asasasa', 'sasasas'),
-(2, 'Majed', 'Abdullah', 'asasasa', 'sasasas'),
-(3, 'Majed', 'sasas', 'asasasa', 'sasasas'),
-(4, 'Majed', 'sasas', 'asasasa', 'sasasas');
+(32, 'ABDULLA AL JABER', 'sd', 'sd', 'http://127.0.0.1:8000/storage/Ga4rR0ITpXpGlja8Eh8SdHXmO5ZvfqQOG2ISpNAu.png');
 
 -- --------------------------------------------------------
 
@@ -637,7 +655,74 @@ INSERT INTO `visitors` (`id`, `ip_Address`, `visit_time`) VALUES
 (174, '127.0.0.1', '2020-10-05 01:00:45am'),
 (175, '127.0.0.1', '2020-10-05 01:24:12am'),
 (176, '127.0.0.1', '2020-10-05 01:39:48am'),
-(177, '127.0.0.1', '2020-10-05 01:55:11am');
+(177, '127.0.0.1', '2020-10-05 01:55:11am'),
+(178, '127.0.0.1', '2020-10-07 12:04:28pm'),
+(179, '127.0.0.1', '2020-10-07 12:07:48pm'),
+(180, '127.0.0.1', '2020-10-07 12:10:11pm'),
+(181, '127.0.0.1', '2020-10-07 12:10:43pm'),
+(182, '127.0.0.1', '2020-10-07 12:13:09pm'),
+(183, '127.0.0.1', '2020-10-07 12:13:24pm'),
+(184, '127.0.0.1', '2020-10-07 12:13:30pm'),
+(185, '127.0.0.1', '2020-10-07 12:14:10pm'),
+(186, '127.0.0.1', '2020-10-07 12:24:40pm'),
+(187, '127.0.0.1', '2020-10-07 12:28:55pm'),
+(188, '127.0.0.1', '2020-10-07 12:30:45pm'),
+(189, '127.0.0.1', '2020-10-07 12:31:06pm'),
+(190, '127.0.0.1', '2020-10-07 12:31:21pm'),
+(191, '127.0.0.1', '2020-10-07 12:33:39pm'),
+(192, '127.0.0.1', '2020-10-07 12:33:56pm'),
+(193, '127.0.0.1', '2020-10-07 12:40:08pm'),
+(194, '127.0.0.1', '2020-10-07 12:42:49pm'),
+(195, '127.0.0.1', '2020-10-07 12:43:40pm'),
+(196, '127.0.0.1', '2020-10-07 12:44:34pm'),
+(197, '127.0.0.1', '2020-10-07 12:47:59pm'),
+(198, '127.0.0.1', '2020-10-07 12:54:35pm'),
+(199, '127.0.0.1', '2020-10-07 12:55:12pm'),
+(200, '127.0.0.1', '2020-10-07 12:55:28pm'),
+(201, '127.0.0.1', '2020-10-07 12:55:52pm'),
+(202, '127.0.0.1', '2020-10-07 12:56:23pm'),
+(203, '127.0.0.1', '2020-10-07 12:56:32pm'),
+(204, '127.0.0.1', '2020-10-07 12:56:47pm'),
+(205, '127.0.0.1', '2020-10-07 12:57:05pm'),
+(206, '127.0.0.1', '2020-10-07 01:00:06pm'),
+(207, '127.0.0.1', '2020-10-07 01:00:24pm'),
+(208, '127.0.0.1', '2020-10-07 01:09:40pm'),
+(209, '127.0.0.1', '2020-10-07 01:13:18pm'),
+(210, '127.0.0.1', '2020-10-07 01:14:54pm'),
+(211, '127.0.0.1', '2020-10-07 04:13:35pm'),
+(212, '127.0.0.1', '2020-10-07 04:14:06pm'),
+(213, '127.0.0.1', '2020-10-07 04:14:50pm'),
+(214, '127.0.0.1', '2020-10-07 04:20:55pm'),
+(215, '127.0.0.1', '2020-10-07 04:26:05pm'),
+(216, '127.0.0.1', '2020-10-07 04:27:20pm'),
+(217, '127.0.0.1', '2020-10-07 04:29:25pm'),
+(218, '127.0.0.1', '2020-10-07 04:30:04pm'),
+(219, '127.0.0.1', '2020-10-07 04:31:57pm'),
+(220, '127.0.0.1', '2020-10-07 04:37:23pm'),
+(221, '127.0.0.1', '2020-10-07 04:40:58pm'),
+(222, '127.0.0.1', '2020-10-07 04:42:18pm'),
+(223, '127.0.0.1', '2020-10-07 04:43:37pm'),
+(224, '127.0.0.1', '2020-10-07 04:45:36pm'),
+(225, '127.0.0.1', '2020-10-07 04:48:51pm'),
+(226, '127.0.0.1', '2020-10-07 04:49:44pm'),
+(227, '127.0.0.1', '2020-10-07 04:50:36pm'),
+(228, '127.0.0.1', '2020-10-07 04:50:52pm'),
+(229, '127.0.0.1', '2020-10-07 04:52:12pm'),
+(230, '127.0.0.1', '2020-10-07 04:53:52pm'),
+(231, '127.0.0.1', '2020-10-07 04:54:11pm'),
+(232, '127.0.0.1', '2020-10-07 04:56:23pm'),
+(233, '127.0.0.1', '2020-10-07 04:59:00pm'),
+(234, '127.0.0.1', '2020-10-07 04:59:44pm'),
+(235, '127.0.0.1', '2020-10-07 05:19:53pm'),
+(236, '127.0.0.1', '2020-10-07 05:20:36pm'),
+(237, '127.0.0.1', '2020-10-07 09:07:37pm'),
+(238, '127.0.0.1', '2020-10-07 09:09:25pm'),
+(239, '127.0.0.1', '2020-10-07 11:04:54pm'),
+(240, '127.0.0.1', '2020-10-07 11:40:07pm'),
+(241, '127.0.0.1', '2020-10-07 11:42:50pm'),
+(242, '127.0.0.1', '2020-10-07 11:46:40pm'),
+(243, '127.0.0.1', '2020-10-07 11:50:17pm'),
+(244, '127.0.0.1', '2020-10-07 11:52:00pm');
 
 --
 -- Indexes for dumped tables
@@ -716,6 +801,12 @@ ALTER TABLE `personal_infomation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `photo_gallery`
+--
+ALTER TABLE `photo_gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `programming_skills`
 --
 ALTER TABLE `programming_skills`
@@ -754,7 +845,7 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `admin_table`
@@ -772,19 +863,19 @@ ALTER TABLE `career_objectives`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `emergency_contact`
 --
 ALTER TABLE `emergency_contact`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -796,13 +887,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `job_skill`
 --
 ALTER TABLE `job_skill`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `language`
 --
 ALTER TABLE `language`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -814,31 +905,37 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `personal_infomation`
 --
 ALTER TABLE `personal_infomation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `photo_gallery`
+--
+ALTER TABLE `photo_gallery`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `programming_skills`
 --
 ALTER TABLE `programming_skills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -850,7 +947,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

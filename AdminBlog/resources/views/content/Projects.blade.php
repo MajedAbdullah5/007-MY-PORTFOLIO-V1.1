@@ -34,8 +34,8 @@
                     <input type="text" id="projectnameId" class="form-control mb-4" placeholder="Name">
                     <textarea id="projectdesId" class="form-control mb-4" placeholder="Desc"></textarea>
                     <input type="text" id="projectLinkId" class="form-control mb-4" placeholder="Project link">
-                    <input type="file" id="projectimageLinkId" class="form-control mb-4" placeholder="Image link">
-                    <img  id="projectImageReview" src="{{asset('/image/loader/default-image.jpg')}}" class="form-control mb-4 imagePreview">
+                    <input type="file" id="projectimageLinkId" class="form-control mb-4">
+                    <img  id="projectImageReview" src="{{asset('/image/loader/default-image.jpg')}}" class="imagePreview">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>

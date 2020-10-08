@@ -30,7 +30,10 @@ class ServiceController extends Controller
         $updateName = $request->input('updateName');
         $updateDes = $request->input('updateDes');
         $updateServiceLink = $request->input('updateServiceLink');
-        $updateImageLink = $request->input('updateImageLink');
+        $file  = $request->file('file')->store('public');
+        $fileName = (explode('/',$file))[1];
+        $host = $_SERVER['HTTP_HOST'];
+        $updateImageLink ='http://'.$host.'/storage/'.$fileName;
         return DB::table('services')->where('id', '=', $id)->update(['service_name' => $updateName, 'service_des' => $updateDes, 'service_link' => $updateServiceLink, 'service_image' => $updateImageLink]);
     }
 
