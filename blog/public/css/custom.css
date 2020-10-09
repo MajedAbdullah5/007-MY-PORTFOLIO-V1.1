@@ -27,14 +27,11 @@ body{
     border-radius: 0;
     text-align: center;
     margin: 10px;
+}
 
-}
-.item{
-    display: inline-block;
-}
 #testimonial{
     background-color: #f63854;
-    padding: 40px;
+    padding: 70px;
 }
 /*Message Layout*/
 .messagePage{
@@ -68,4 +65,15 @@ body{
     height: 400px;
     width: 100%;
     object-fit: cover;
+}
+
+/*Home Quote*/
+.des-text{
+    color: #636363!important;
+    font-size: 14px;
+    font-weight: 300;
+}
+.quoteImage{
+    width: 70px;
+    height: 70px;
 }

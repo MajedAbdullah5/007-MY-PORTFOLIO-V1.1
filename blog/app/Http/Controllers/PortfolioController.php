@@ -11,6 +11,7 @@ use App\programming_skill_model;
 use App\jobSkillModel;
 use App\personal_informationModel;
 use App\AddressModel;
+use App\PortfolioPhotoModel;
 
 class PortfolioController extends Controller
 {
@@ -23,6 +24,7 @@ class PortfolioController extends Controller
          $jobSkillModel = jobSkillModel::all();
          $personal_informationModel = personal_informationModel::all();
          $AddressModel =AddressModel::all();
+        $PortfolioPhotoModel = PortfolioPhotoModel::all();
         return view('/content/Portfolio',[
             'emergencyKey'=>$emergency,
             'objectivesKey'=>$career_objectives,
@@ -31,7 +33,8 @@ class PortfolioController extends Controller
             'programming_skill_modelKey'=>$programming_skill_model,
             'jobSkillModel'=>$jobSkillModel,
             'personal_informationModel'=>$personal_informationModel,
-            'AddressModel'=>$AddressModel
+            'AddressModel'=>$AddressModel,
+            'PortfolioPhotoModel'=>$PortfolioPhotoModel
 
 
         ]);

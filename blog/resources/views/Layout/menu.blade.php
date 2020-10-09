@@ -7,14 +7,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">HOME <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('/')}}">HOME <span class="sr-only">(current)</span></a>
                 </li> <li class="nav-item active">
                     <a class="nav-link" href="{{url('/portfolio')}}">PORTFOLIO <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">COURSE <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('/fullCourseList')}}">COURSE <span class="sr-only">(current)</span></a>
                 </li><li class="nav-item active">
-                    <a class="nav-link" href="#">PROJECT <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('/fullProjectList')}}">PROJECT <span class="sr-only">(current)</span></a>
                 </li><li class="nav-item active">
                     <a class="nav-link" href="#">BLOG <span class="sr-only">(current)</span></a>
                 </li><li class="nav-item active">

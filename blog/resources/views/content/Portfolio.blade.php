@@ -39,10 +39,11 @@
             <h6>{{$data->contactInformation}}</h6>
             </div>
             @endforeach
+                @foreach($PortfolioPhotoModel as $data)
             <div class="col col-md-2">
-                <img height="150px" width="180px" src="{{asset('/image/banner/classroom.png')}}" alt="">
+                <img height="150px" width="180px" src="{{$data->photo}}" alt="">
             </div>
-             
+                 @endforeach
             </div>
             <h6 style="font-weight: bold;">CAREER OBJECTIVES</h6>
             <hr>

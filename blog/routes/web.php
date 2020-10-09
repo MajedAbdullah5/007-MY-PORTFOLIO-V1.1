@@ -25,3 +25,9 @@ Route::get('/portfolio','PortfolioController@portfolioShowPage');
 Route::get('/projectView/{id}','HomeController@ProjectView');
 //Route::post('/getProject','HomeController@getProject');
 
+
+//get Full Course List
+Route::get('/fullCourseList','FullCourse@fullCourseList');
+
+//getFull Project List
+Route::get('/fullProjectList','FullProject@fullProjectList');
