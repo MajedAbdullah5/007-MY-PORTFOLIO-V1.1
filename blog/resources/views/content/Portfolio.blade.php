@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <h6 style="font-weight: bold;">EMERGENCY CONTACT</h6>
+            <span><i style="color: #f63854;" class="fas fa-blender-phone"></i>&emsp;<h6 style="font-weight: bold; display: inline-block">EMERGENCY CONTACT</h6></span>
             <hr>
             <!-- <div class="row">
                 @foreach($emergencyKey as $data)
@@ -45,14 +45,15 @@
             </div>
                  @endforeach
             </div>
-            <h6 style="font-weight: bold;">CAREER OBJECTIVES</h6>
+            <span><i style="color: #f63854;" class="fab fa-angellist"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">CAREER OBJECTIVES</h6></span>
             <hr>
             <div class="row">
                 <div class="col col-md-12">
                     <p>{{$objectivesKey->objectives}}</p>
                 </div>
             </div>
-            <h6 style="font-weight: bold;">EDUCATION</h6>
+            <span><i style="color: #f63854;" class="fas fa-user-graduate"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">EDUCATION</h6></span>
+
             <hr>
             <div class="row p-3">
                 @foreach($education_modelKey as $data)
@@ -70,7 +71,7 @@
                     </div>
                 @endforeach
             </div>
-            <h6 style="font-weight: bold;">LANGUAGE</h6>
+            <span><i style="color: #f63854;" class="fas fa-language"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">LANGUAGE</h6></span>
             <hr>
             <div class="row p-2 ">
                 @foreach($language_modelKey as $data)
@@ -87,7 +88,7 @@
                     </div>
                 @endforeach
             </div>
-            <h6 style="font-weight: bold;">SKILLS</h6>
+            <span><i style="color: #f63854;" class="fas fa-cogs"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">SKILLS</h6></span>
             <hr>
             <div class="row p-2">
                 @foreach($programming_skill_modelKey as $data)
@@ -108,7 +109,9 @@
                     </div>
                 @endforeach
             </div>
-            <h6 style="font-weight: bold;">JOB SKILL</h6>
+            <h6 style="font-weight: bold;"></h6>
+            <span><i style="color: #f63854;" class="fas fa-user-cog"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">JOB SKILL</h6></span>
+
             <hr>
             <div class="row">
                 @foreach($jobSkillModel as $data)
@@ -125,7 +128,7 @@
                     </div>
                 @endforeach
             </div>
-            <h6 style="font-weight: bold;">PERSONAL INFORMATION</h6>
+            <span><i style="color: #f63854;" class="fas fa-user-alt"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">PERSONAL INFORMATION</h6></span>
             <hr>
             <div class="row pb-3">
                 @foreach($personal_informationModel as $data)
@@ -140,7 +143,8 @@
                     </div>
                 @endforeach
             </div>
-            <h6 style="font-weight: bold;">ADDRESS</h6>
+            <span><i style="color: #f63854;" class="fas fa-map-marker-alt"></i>&emsp;<h6 style="font-weight: bold; display: inline-block;">ADDRESS</h6></span>
+
             <hr>
             <div class="row">
                 @foreach($AddressModel as $data)

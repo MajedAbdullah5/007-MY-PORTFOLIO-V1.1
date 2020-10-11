@@ -77,3 +77,15 @@ body{
     width: 70px;
     height: 70px;
 }
+
+/*navbar*/
+navbar.navbar-light .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
+     background-color: rgba(0,0,0,0)!important;
+}
+.nav-item{
+    padding: 20px;
+}
+.nav-link:hover{
+   color: #f63854 !important;
+    transition: .35s;
+}

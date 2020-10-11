@@ -21,7 +21,7 @@
         <div class="col col-md-4">
             <ul>
                 <h5 class="footerHeader">INFORMATION</h5>
-                <li><a class="footerClass" href="#"><i class="fas fa-user"></i>&emsp;About Me</a></li>
+                <li><a class="footerClass" href="/portfolio"><i class="fas fa-user"></i>&emsp;About Me</a></li>
                 <li><a class="footerClass" href="#"><i class=""></i>&emsp;</a></li>
                 <li><a class="footerClass" href="#"><i class=""></i>&emsp;</a></li>
                 <li><a class="footerClass" href="#"><i class=""></i>&emsp;</a></li>
