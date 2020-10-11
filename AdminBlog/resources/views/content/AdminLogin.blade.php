@@ -1,27 +1,23 @@
    @extends('Layout.app2')
    @section('content')
-   <div class="container text-center adminContainer">
-       <div class=" adminSecondContainer">
-           <h3>ADMIN LOGIN</h3>
-           <div class="row adminRow">
-               <form action=" " class='loginForm'>
-                   <div class="col col-md-6">
-                       <img height="170px" src="{{asset('image/banner/contact.jpg')}}">
-                   </div>
-                   <div class="col col-md-6">
-                       <div class="form-group">
-                           <input name="userName" value="" class="form-control" type="text" id="adminName"
-                               placeholder="NAME" required>
-                           <input name="userPass" value="" class="form-control" type="text" id="adminPass"
-                               placeholder="PASSWORD" required>
-                           <button name="submit" type="submit"
-                               class=" form-control d-block btn btn-danger">LOGIN</button>
-                       </div>
-                   </div>
-               </form>
+       <div class="jumbotron mt-5" >
+           <div class="row " style="max-width: 940px; margin: auto;  border:1px solid #f63854">
+               <div class="col-md-6">
+                   <img width="100%" src="{{asset('/image/loader/admin.jpg')}}" alt="">
+               </div>
+               <div class="col-md-6 form-group my-lg-5">
+                   <form action=" " class='loginForm'>
+                   <h6 class="mb-5 mt-2 font-weight-bold">ADMIN LOGIN</h6>
+                   <input id="adminName" name="userName" value="" class="form-control mb-3" type="text" placeholder="Username" required>
+                   <input id="adminPass" name="userPass" value="" class="form-control mb-5" type="password" placeholder="Password" required>
+                   <small><a   href="{{url('/forgotPassword')}}">Forgot password?</a></small>
+                   <button name ="submit" class="form-control text-center btn-danger mt-3" type="submit">LOGIN</button>
+                   </form>
+               </div>
+
            </div>
        </div>
-   </div>
+
    @endsection
    @section('script')
    <script type="text/javascript">

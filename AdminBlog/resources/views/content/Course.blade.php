@@ -37,17 +37,17 @@
                     <div id="header" class="mb-2"></div>
                     <div class="row p-3">
                         <div class="col col-md-6">
-                            <input type="text" id="courseName" class="form-control mb-4" placeholder="Name">
-                            <input type="text" id="courseFee" class="form-control mb-4" placeholder="Fee">
+                            <input type="text" id="courseName" class="form-control mb-4" placeholder="Name" required>
+                            <input type="text" id="courseFee" class="form-control mb-4" placeholder="Fee" required>
                             <input type="text" id="courseTotalClass" class="form-control mb-4"
-                                   placeholder="Total Class">
+                                   placeholder="Total Class" required>
                         </div>
                         <div class="col col-md-6">
-                            <input type="text" id="courseEnroll" class="form-control mb-4" placeholder="Enroll">
-                            <input type="text" id="courseLink" class="form-control mb-4" placeholder="Link">
+                            <input type="text" id="courseEnroll" class="form-control mb-4" placeholder="Enroll" required>
+                            <input type="text" id="courseLink" class="form-control mb-4" placeholder="Link" required>
                         </div>
                         <textarea id="courseDescription" class="form-control mb-4 "
-                                  placeholder="Description"></textarea>
+                                  placeholder="Description" required></textarea>
                         <input type="file" id="courseEditImage" class="form-control mb-4">
                         <img id="courseEditImagePreview" src="{{asset('/image/loader/default-image.jpg')}}" class="imagePreview" alt="">
                     </div>
@@ -111,19 +111,19 @@
                     <div id="header" class="mb-2"></div>
                     <div class="row p-3">
                         <div class="col col-md-6">
-                            <input type="text" id="addCourseName" class="form-control mb-4" placeholder="Name"/>
-                            <input type="text" id="addCourseFee" class="form-control mb-4" placeholder="Fee"/>
+                            <input type="text" id="addCourseName" class="form-control mb-4" placeholder="Name" required/>
+                            <input type="text" id="addCourseFee" class="form-control mb-4" placeholder="Fee" required/>
                             <input type="text" id="addCourseTotalClass" class="form-control mb-4"
-                                   placeholder="Total Class"/>
+                                   placeholder="Total Class" required/>
                         </div>
 
                         <div class="col col-md-6">
                             <input type="text" id="addCourseTotalEnroll" class="form-control mb-4"
-                                   placeholder="Total Enroll"/>
-                            <input type="text" id="addCourseLink" class="form-control mb-4" placeholder="Course Link"/>
+                                   placeholder="Total Enroll" required/>
+                            <input type="text" id="addCourseLink" class="form-control mb-4" placeholder="Course Link" required/>
                         </div>
-                        <textarea id="addCoursesDescription" class="form-control mb-4" placeholder="Desc"></textarea>
-                        <input type="file" id="addCourseImage" class="form-control mb-4">
+                        <textarea id="addCoursesDescription" class="form-control mb-4" placeholder="Desc" required></textarea>
+                        <input type="file" id="addCourseImage" class="form-control mb-4" required>
                         <img id="addImagePreview" class="imagePreview"
                              src="{{asset('/image/loader/default-image.jpg')}}">
                     </div>

@@ -31,10 +31,10 @@
                 <div class="modal-body">
                     <h1 id="status" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
-                    <input type="text" id="addServiceName" class="form-control mb-4" placeholder="Name">
-                    <textarea id="addServiceDes" class="form-control mb-4" placeholder="Description"></textarea>
-                    <input type="text" id="addServiceLink" class="form-control mb-4" placeholder="Service link">
-                    <input type="file" id="addServiceImage" class="form-control mb-4">
+                    <input type="text" id="addServiceName" class="form-control mb-4" placeholder="Name" required>
+                    <textarea id="addServiceDes" class="form-control mb-4" placeholder="Description" required></textarea>
+                    <input type="text" id="addServiceLink" class="form-control mb-4" placeholder="Service link" required>
+                    <input type="file" id="addServiceImage" class="form-control mb-4" required>
                     <img id="addServiceImagePreview" class="imagePreview"
                          src="{{asset('/image/loader/default-image.jpg')}}">
                 </div>
@@ -62,10 +62,10 @@
                 <div class="modal-body">
                     <h1 id="status" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
-                    <input type="text" id="populateNameId" class="form-control mb-4" placeholder="Name">
-                    <textarea id="populateDesId" class="form-control mb-4" placeholder="Desc"></textarea>
-                    <input type="text" id="populateServiceLink" class="form-control mb-4" placeholder="Service link">
-                    <input type="file" id="populateImageLink" class="form-control mb-4" placeholder="Image link">
+                    <input type="text" id="populateNameId" class="form-control mb-4" placeholder="Name" required>
+                    <textarea id="populateDesId" class="form-control mb-4" placeholder="Desc" required></textarea>
+                    <input type="text" id="populateServiceLink" class="form-control mb-4" placeholder="Service link" required>
+                    <input type="file" id="populateImageLink" class="form-control mb-4" placeholder="Image link" required>
                     <img src="" id="serviceImagePreview" class="imagePreview" alt="">
                 </div>
                 <div class="modal-footer">

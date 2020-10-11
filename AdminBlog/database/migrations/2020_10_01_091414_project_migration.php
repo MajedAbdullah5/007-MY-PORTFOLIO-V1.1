@@ -19,6 +19,16 @@ class ProjectMigration extends Migration
            $blueprint->string('project_des');
            $blueprint->string('project_link');
            $blueprint->string('project_image');
+           $blueprint->string('project_image1');
+           $blueprint->string('project_image2');
+           $blueprint->string('project_image3');
+           $blueprint->string('project_image4');
+           $blueprint->string('project_image5');
+           $blueprint->string('project_image6');
+           $blueprint->string('project_image7');
+           $blueprint->string('project_image8');
+           $blueprint->string('project_image9');
+           $blueprint->string('project_image10');
        });
     }
 

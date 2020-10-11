@@ -16,7 +16,7 @@
                 <div class="modal-body">
                     <div id="header" class="mb-2"></div>
                     <input type="file" id="imageInput" class="form-control mb-4"
-                           placeholder="Select image"/>
+                           placeholder="Select image" required/>
                            <img id="imagePreview" class="imagePreview" src="{{asset('/image/loader/default-image.jpg')}}" alt="">
                 </div>
                 <div class="modal-footer">

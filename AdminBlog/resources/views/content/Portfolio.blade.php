@@ -28,7 +28,7 @@
                     <h1 id="updateProfilePictureModalStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
 
-                    <input type="file" id="updateProfilePicture" class="form-control mb-4"/>
+                    <input type="file" id="updateProfilePicture" class="form-control mb-4" required/>
                     <img id="updateProfilePicturePreview" src="{{asset('/image/loader/default-image.jpg')}}"
                          class="imagePreview">
 
@@ -92,9 +92,9 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="contactStatus" class="form-control mb-4"
-                           placeholder="Contact Status (ex:Phone)"/>
+                           placeholder="Contact Status (ex:Phone)" required/>
                     <textarea type="text" id="contactInformation" class="form-control mb-4"
-                              placeholder="Type Address (ex:01890312202)"></textarea>
+                              placeholder="Type Address (ex:01890312202)" required></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -159,9 +159,9 @@
                     <h1 id="addContactModalStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="contactAddStatus" class="form-control mb-4"
-                           placeholder="Contact Status (ex:Phone)">
+                           placeholder="Contact Status (ex:Phone)" required>
                     <textarea type="text" id="contactAddInformation" class="form-control mb-4"
-                              placeholder="Type Address (ex:01890312202)"></textarea>
+                              placeholder="Type Address (ex:01890312202)" required></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -216,7 +216,7 @@
                     <h1 id="objectiveStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <textarea type="text" style="min-height: 200px;" id="objectivesId" class="form-control mb-4"
-                              placeholder="Type your career objectives here..."></textarea>
+                              placeholder="Type your career objectives here..." required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -277,17 +277,17 @@
                     <h1 id="eduacationEditStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="educationDuration" class="form-control mb-4"
-                           placeholder="Education duration (ex:Since 2017-2019)">
+                           placeholder="Education duration (ex:Since 2017-2019)" required>
                     <input type="text" id="educationInstitute" class="form-control mb-4"
-                           placeholder="Education institute (ex:Govt. Iqbal Memorial College)">
+                           placeholder="Education institute (ex:Govt. Iqbal Memorial College)" required>
                     <input type="text" id="educationCertificate" class="form-control mb-4"
-                           placeholder="Education certificate (ex:Higher Secondary Certificate)">
+                           placeholder="Education certificate (ex:Higher Secondary Certificate)" required>
                     <input type="text" id="educationMajor" class="form-control mb-4"
-                           placeholder="Education major (ex:Group of science)">
+                           placeholder="Education major (ex:Group of science)" required>
                     <input type="text" id="educationCgpa" class="form-control mb-4"
-                           placeholder="CGPA (ex:GPA 3.78 out of 5)">
+                           placeholder="CGPA (ex:GPA 3.78 out of 5)" required>
                     <input type="text" id="educationBoard" class="form-control mb-4"
-                           placeholder="Education board (ex:Higher Board of Comilla)">
+                           placeholder="Education board (ex:Higher Board of Comilla)" required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -344,17 +344,17 @@
                     <h1 id="educationAddModalStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="educationAddDuration" class="form-control mb-4"
-                           placeholder="Education duration (ex:Since 2017-2019)">
+                           placeholder="Education duration (ex:Since 2017-2019)" required>
                     <input type="text" id="educationAddInstitute" class="form-control mb-4"
-                           placeholder="Education institute (ex:Govt. Iqbal Memorial College)">
+                           placeholder="Education institute (ex:Govt. Iqbal Memorial College)" required>
                     <input type="text" id="educationAddCertificate" class="form-control mb-4"
-                           placeholder="Education certificate (ex:Higher Secondary Certificate)">
+                           placeholder="Education certificate (ex:Higher Secondary Certificate)" required>
                     <input type="text" id="educationAddMajor" class="form-control mb-4"
-                           placeholder="Education major (ex:Group of science)">
+                           placeholder="Education major (ex:Group of science)" required>
                     <input type="text" id="educationAddCgpa" class="form-control mb-4"
-                           placeholder="CGPA (ex:GPA 3.78 out of 5)">
+                           placeholder="CGPA (ex:GPA 3.78 out of 5)" required>
                     <input type="text" id="educationAddBoard" class="form-control mb-4"
-                           placeholder="Education board (ex:Higher Board of Comilla)">
+                           placeholder="Education board (ex:Higher Board of Comilla)" required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -409,8 +409,8 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="populateLanguage" class="form-control mb-4"
-                           placeholder="Type Language (ex:Chinese)">
-                    <select class="form-control mb-4" name="proficiency" id="languageProficiency">
+                           placeholder="Type Language (ex:Chinese)" required>
+                    <select class="form-control mb-4" name="proficiency" id="languageProficiency" required>
                         <option value="Select">Select Proficiency</option>
                         <option value="Native">Native</option>
                         <option value="Intermediate">Intermediate</option>
@@ -477,8 +477,8 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="addLanguageInputId" class="form-control mb-4"
-                           placeholder="Type Language (ex:Chinese)"/>
-                    <select class="form-control mb-4" name="proficiency" id="addLanguageProficiency">
+                           placeholder="Type Language (ex:Chinese)" required/>
+                    <select class="form-control mb-4" name="proficiency" id="addLanguageProficiency" required>
                         <option value="Select" {{ old('proficiency') =='Select' ? selected: '' }}>Select Proficiency
                         </option>
                         <option value="Native" {{ old('proficiency') =='Native' ? selected: '' }}>Native</option>
@@ -541,9 +541,9 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="skillsProgrammingLanguage" class="form-control mb-4"
-                           placeholder="Type Language (ex:Java)">
+                           placeholder="Type Language (ex:Java)" required>
                     <input type="text" id="skillsProgrammingLanguageLevel" class="form-control mb-4"
-                           placeholder="Type Level (ex: 70% )">
+                           placeholder="Type Level (ex: 70% )" required>
 
                 </div>
                 <div class="modal-footer">
@@ -602,9 +602,9 @@
                     <h1 id="addSkillsModalStatus" class="p-3"></h1>
                     <div id="header" class="mb-2"></div>
                     <input type="text" id="addSkillsProgrammingLanguage" class="form-control mb-4"
-                           placeholder="Type Language (ex:Java)">
+                           placeholder="Type Language (ex:Java)" required>
                     <input type="text" id="addSkillsProgrammingLanguageLevel" class="form-control mb-4"
-                           placeholder="Type Level (ex: 70% )">
+                           placeholder="Type Level (ex: 70% )" required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -658,11 +658,11 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="jobSkillsPopulateJob" class="form-control mb-4"
-                           placeholder="Type Your Status (ex:Facebook,Google)"/>
+                           placeholder="Type Your Status (ex:Facebook,Google)" required/>
                     <input type="text" id="jobSkillsPopulateInstitute" class="form-control mb-4"
-                           placeholder="Type Your Institute (ex:Back-End Developer,Assistant Director)"/>
+                           placeholder="Type Your Institute (ex:Back-End Developer,Assistant Director)" required/>
                     <input type="text" id="jobSkillsPopulatePosition" class="form-control mb-4"
-                           placeholder="Type Your Position (ex:Instructor,Back-End developer)"/>
+                           placeholder="Type Your Position (ex:Instructor,Back-End developer)" required/>
 
                 </div>
                 <div class="modal-footer">
@@ -725,11 +725,11 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="jobSkillsAddJob" class="form-control mb-4"
-                           placeholder="Type Your Status (ex:Facebook,Google)"/>
+                           placeholder="Type Your Status (ex:Facebook,Google)" required/>
                     <input type="text" id="jobSkillsAddInstitute" class="form-control mb-4"
-                           placeholder="Type Your Institute (ex:Back-End Developer,Assistant Director)"/>
+                           placeholder="Type Your Institute (ex:Back-End Developer,Assistant Director)" required/>
                     <input type="text" id="jobSkillsAddPosition" class="form-control mb-4"
-                           placeholder="Type Your Position (ex:Instructor,Back-End developer)"/>
+                           placeholder="Type Your Position (ex:Instructor,Back-End developer)" required/>
 
                 </div>
                 <div class="modal-footer">
@@ -787,9 +787,9 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="personalInformationStatus" class="form-control mb-4"
-                           placeholder="Type Your Status (ex:Father)"/>
+                           placeholder="Type Your Status (ex:Father)" required/>
                     <input type="text" id="personalInformation" class="form-control mb-4"
-                           placeholder="Type Your Institute (ex:Fakhrul Islam)"/>
+                           placeholder="Type Your Institute (ex:Fakhrul Islam)" required/>
 
                 </div>
                 <div class="modal-footer">
@@ -853,9 +853,9 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="addInformationStatus" class="form-control mb-4"
-                           placeholder="Type Your Status (ex:Father)"/>
+                           placeholder="Type Your Status (ex:Father)" required/>
                     <input type="text" id="addInformation" class="form-control mb-4"
-                           placeholder="Type Your Institute (ex:Fakhrul Islam)"/>
+                           placeholder="Type Your Institute (ex:Fakhrul Islam)" required/>
 
                 </div>
                 <div class="modal-footer">
@@ -915,9 +915,9 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="addressInformationStatus" class="form-control mb-4"
-                           placeholder="Address Status (ex:Present Address)"/>
+                           placeholder="Address Status (ex:Present Address)" required/>
                     <textarea type="text" id="addressInformation" class="form-control mb-4"
-                              placeholder="Type Address (ex:Dagonbhuiyan,Feni,Bangladesh)"></textarea>
+                              placeholder="Type Address (ex:Dagonbhuiyan,Feni,Bangladesh)" required></textarea>
 
                 </div>
                 <div class="modal-footer">
@@ -984,9 +984,9 @@
                     <div id="header" class="mb-2"></div>
 
                     <input type="text" id="addAddressInformationStatus" class="form-control mb-4"
-                           placeholder="Address Status (ex:Present Address)"/>
+                           placeholder="Address Status (ex:Present Address)" required/>
                     <textarea type="text" id="addAddressInformation" class="form-control mb-4"
-                              placeholder="Type Address (ex:Dagonbhuiyan,Feni,Bangladesh)"></textarea>
+                              placeholder="Type Address (ex:Dagonbhuiyan,Feni,Bangladesh)" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>

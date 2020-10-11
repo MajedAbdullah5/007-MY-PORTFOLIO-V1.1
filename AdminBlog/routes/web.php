@@ -30,7 +30,7 @@ Route::get('/getProjectsList', 'ProjectController@getProjectsList')->middleware(
 Route::post('/populateProjectData', 'ProjectController@populateProjectData')->middleware('loginMiddleware');
 Route::post('/updateProjectData', 'ProjectController@updateProjectData')->middleware('loginMiddleware');
 Route::post('/deleteService', 'ProjectController@deleteService')->middleware('loginMiddleware');
-Route::post('/addproject', 'ProjectController@addproject')->middleware('loginMiddleware');
+Route::post('/addProject', 'ProjectController@addProject')->middleware('loginMiddleware');
 
 //mesasges
 Route::get('/messages', 'MessageController@showMessagePage')->middleware('loginMiddleware');
@@ -102,7 +102,16 @@ Route::get('/adminLoginPage','AdminController@adminLoginPage');
 Route::post('/login','AdminController@login');
 Route::get('/logout','AdminController@logout');
 
+//Change password
+Route::get('/change_password','AdminController@changePassword');
+Route::post('/changeAdminPassword','AdminController@changeAdminPassword');
+
 //------------------------------------Photo Gallery-----------------------------------
 Route::get('/photo_gallery','PhotoController@photo_gallery');
 Route::post('/addPhotos','PhotoController@addPhotos');
 Route::get('/photoOnScroll','PhotoController@photoOnScroll');
+
+
+//Forgot password
+Route::get('/forgotPassword','AdminController@forgotPassword');
+Route::post('/resetPass','AdminController@resetPass');

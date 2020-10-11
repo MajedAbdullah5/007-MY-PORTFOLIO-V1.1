@@ -14,7 +14,6 @@
                                 <div>
                                     <h5 class="pink-text"><i class="fas fa-project-diagram"></i></h5>
                                     <h3 class="card-title pt-2"><strong> {{$project->project_name}}</strong></h3>
-                                    <p>{{$project->project_des}}</p>
                                     <a href="{{url('/projectView')}}/{{$project->id}}" class="btn btn-pink"><i
                                             class="fas fa-clone left"></i> View project</a>
                                 </div>
