@@ -38,7 +38,7 @@ $('.loginForm').on('submit', function(event) {
                 alert("No user found!")
             }
     }).catch(function(error) {
-
+        alert(error);
     });
 
 

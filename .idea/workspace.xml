@@ -20,25 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="403ceed6-f007-419a-be77-2cf087fcc38b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/image/loader/admin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/public/image/loader/reset.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/changePassword.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/resetForm.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/app/Http/Controllers/ProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_01_091414_project_migration.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/database/migrations/2020_10_01_091414_project_migration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/public/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/Home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/Home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/Layout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/Layout/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/AdminLogin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/AdminLogin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Course.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Course.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Portfolio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Portfolio.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Projects.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Projects.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/Services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/Services.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/content/photo_gallery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/content/photo_gallery.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdminBlog/resources/views/visitor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/resources/views/visitor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdminBlog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/AdminBlog/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/content/ViewProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/content/ViewProject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/resources/views/content/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/resources/views/content/project.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/blog/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,19 +175,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Desktop\PORTFOLIO\AdminBlog\public\image\loader" />
-      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\app" />
-      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public\image\banner" />
-      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public" />
-      <recent name="C:\Users\User\Desktop\PORTFOLIO\AdminBlog\app" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public\image\banner" />
       <recent name="D:\LaravelProject\PORTFOLIO\AdminBlog\app\Http\Controllers" />
       <recent name="D:\LaravelProject\PORTFOLIO\AdminBlog\app" />
       <recent name="D:\LaravelProject\PORTFOLIO\AdminBlog\database\migrations" />
       <recent name="D:\LaravelProject\PORTFOLIO\AdminBlog\public\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\PORTFOLIO\AdminBlog\public\image\loader" />
+      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\app" />
+      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public\image\banner" />
+      <recent name="C:\Users\User\Desktop\PORTFOLIO\blog\public" />
+      <recent name="C:\Users\User\Desktop\PORTFOLIO\AdminBlog\app" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -264,6 +253,8 @@
       <workItem from="1602305026431" duration="7818000" />
       <workItem from="1602316049522" duration="7033000" />
       <workItem from="1602346564194" duration="10922000" />
+      <workItem from="1602392652758" duration="7497000" />
+      <workItem from="1602407654354" duration="1931000" />
     </task>
     <servers />
   </component>
@@ -358,10 +349,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="746" height="596" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1601448596246" />
-    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602353401701">
+    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602409200366">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1602353401701" />
+    <state x="181" y="0" width="1139" height="777" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1602409200366" />
     <state x="358" y="127" width="1483" height="786" key="dock-window-1" timestamp="1601094129275">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

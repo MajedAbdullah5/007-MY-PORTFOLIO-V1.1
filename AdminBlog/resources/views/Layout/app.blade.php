@@ -22,24 +22,34 @@
 <body>
     <div class="row">
         <div class="col col-md-2">
+                <h4 class="header">DASHBOARD</h4>
             <div class="sidebar">
-                <header>DASHBOARD</header>
                 <ul class="list-ul">
                     <li><a href="{{url('/')}}"><i class="fas fa-home"></i>&emsp;HOME</a></li>
                     <li><a href="{{url('/portfolio')}}"><i class="fas fa-user-cog"></i>&emsp;PORTFOLIO</a></li>
                     <li><a href="{{url('/visitors')}}"><i class="fas fa-users"></i>&emsp;VISITORS</a></li>
                     <li><a href="{{url('/services')}}"><i class="fas fa-globe"></i>&emsp;SERVICES</a></li>
-                    <li><a href="{{url('/courses')}}"><i class="fas fa-book-open"></i>&emsp;COURSES</a></li>
+{{--                    <li><a href="{{url('/courses')}}"><i class="fas fa-book-open"></i>&emsp;COURSES</a></li>--}}
                     <li><a href="{{url('/project')}}"><i class="fas fa-code"></i>&emsp;PROJECTS</a></li>
                     <li><a href="{{url('/messages')}}"><i class="fas fa-envelope"></i>&emsp;MESSAGES</a></li>
-                    <li><a href="{{url('/photo_gallery')}}"><i class="fas fa-photo-video"></i>&emsp;PHOTO GALLERY</a></li>
+{{--                    <li><a href="{{url('/photo_gallery')}}"><i class="fas fa-photo-video"></i>&emsp;PHOTO GALLERY</a></li>--}}
                     <li><a href="{{url('/change_password')}}"><i class="fas fa-key"></i>&emsp;CHANGE PASSWORD</a></li>
-                    <li><a class="btn btn-danger btn-sm signout" href="{{url('/logout')}}"><i class="fas fa-sign-out-alt signout" ></i>&emsp;LOGOUT</a></li>
                 </ul>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <span>&emsp;<a class="btn btn-danger signout" href="{{url('/logout')}}"><i class="fas fa-sign-out-alt fa-1x" ></i>&emsp;LOGOUT</a></span>
             </div>
         </div>
 
-        <div class="col col-md-10 mw-100">
+        <div class="col-md-10 mw-100">
             @yield('content')
             <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
             <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>

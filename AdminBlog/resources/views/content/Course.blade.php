@@ -37,19 +37,21 @@
                     <div id="header" class="mb-2"></div>
                     <div class="row p-3">
                         <div class="col col-md-6">
-                            <input type="text" id="courseName" class="form-control mb-4" placeholder="Name" required>
-                            <input type="text" id="courseFee" class="form-control mb-4" placeholder="Fee" required>
+                            <input type="text" id="courseName" class="form-control mb-4" placeholder="Name" >
+                            <input type="text" id="courseFee" class="form-control mb-4" placeholder="Fee" >
                             <input type="text" id="courseTotalClass" class="form-control mb-4"
                                    placeholder="Total Class" required>
                         </div>
                         <div class="col col-md-6">
-                            <input type="text" id="courseEnroll" class="form-control mb-4" placeholder="Enroll" required>
-                            <input type="text" id="courseLink" class="form-control mb-4" placeholder="Link" required>
+                            <input type="text" id="courseEnroll" class="form-control mb-4" placeholder="Enroll"
+                                   >
+                            <input type="text" id="courseLink" class="form-control mb-4" placeholder="Link" >
                         </div>
                         <textarea id="courseDescription" class="form-control mb-4 "
-                                  placeholder="Description" required></textarea>
+                                  placeholder="Description" ></textarea>
                         <input type="file" id="courseEditImage" class="form-control mb-4">
-                        <img id="courseEditImagePreview" src="{{asset('/image/loader/default-image.jpg')}}" class="imagePreview" alt="">
+                        <img id="courseEditImagePreview" src="{{asset('/image/loader/default-image.jpg')}}"
+                             class="imagePreview" alt="">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -111,7 +113,8 @@
                     <div id="header" class="mb-2"></div>
                     <div class="row p-3">
                         <div class="col col-md-6">
-                            <input type="text" id="addCourseName" class="form-control mb-4" placeholder="Name" required/>
+                            <input type="text" id="addCourseName" class="form-control mb-4" placeholder="Name"
+                                   required/>
                             <input type="text" id="addCourseFee" class="form-control mb-4" placeholder="Fee" required/>
                             <input type="text" id="addCourseTotalClass" class="form-control mb-4"
                                    placeholder="Total Class" required/>
@@ -120,9 +123,11 @@
                         <div class="col col-md-6">
                             <input type="text" id="addCourseTotalEnroll" class="form-control mb-4"
                                    placeholder="Total Enroll" required/>
-                            <input type="text" id="addCourseLink" class="form-control mb-4" placeholder="Course Link" required/>
+                            <input type="text" id="addCourseLink" class="form-control mb-4" placeholder="Course Link"
+                                   required/>
                         </div>
-                        <textarea id="addCoursesDescription" class="form-control mb-4" placeholder="Desc" required></textarea>
+                        <textarea id="addCoursesDescription" class="form-control mb-4" placeholder="Desc"
+                                  required></textarea>
                         <input type="file" id="addCourseImage" class="form-control mb-4" required>
                         <img id="addImagePreview" class="imagePreview"
                              src="{{asset('/image/loader/default-image.jpg')}}">
@@ -165,7 +170,7 @@
                         "<td>" + result[i].course_fee + "</td>" +
                         "<td>" + result[i].course_total_class + "</td>" +
                         "<td>" + result[i].course_total_enroll + "</td>" +
-                        "<td>" +"<img height='100px' width='120px' src="+result[i].course_image+" alt=''>" + "</td>" +
+                        "<td>" + "<img height='100px' width='120px' src=" + result[i].course_image + " alt=''>" + "</td>" +
                         "<td>" + result[i].course_link + "</td>" +
                         "<td>" + "<a data-id=" + result[i].id + " class='btn btn-primary btn-sm courseEditButton'   >Edit</a>" + "</td>" +
                         "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger btn-sm courseDeleteButton'  >Delete</a>" + "</td>"
@@ -186,8 +191,8 @@
                     $('#courseDeleteConfrimModel').modal('show');
                 });
 
-                    // $('#myTable').DataTable();
-                    // $('.dataTables_length').addClass('bs-select');
+                // $('#myTable').DataTable();
+                // $('.dataTables_length').addClass('bs-select');
 
             }
         }).catch(function (error) {
@@ -224,33 +229,41 @@
 
         function addCoursesData(addCourseName, addCourseFee, addCourseTotalClass, addCourseTotalEnroll, addCourseLink, addCourseImage, addCoursesDescription) {
             let file = $('#addCourseImage').prop('files')[0];
-            let formData = new FormData();
-            formData.append('file', file);
-            formData.append('addCourseName', addCourseName);
-            formData.append('addCourseFee', addCourseFee);
-            formData.append('addCourseTotalClass', addCourseTotalClass);
-            formData.append('addCourseTotalEnroll', addCourseTotalEnroll);
-            formData.append('addCourseLink', addCourseLink);
-            formData.append('addCourseImage', addCourseImage);
-            formData.append('addCoursesDescription', addCoursesDescription);
-            let config = {
-                header: {
-                    'content-type': 'multipart/form-data'
-                }
-            };
-            axios.post('/addCoursesData', formData, config).then(function (response) {
-                if (response.data == 1) {
-                    $('#addCourseConfirmModal').modal('hide');
-                    $('#addCoursesModal').modal('hide');
-                    alert("Course Successfully Added!")
-                } else {
-                    $('#addCourseConfirmModal').modal('hide');
-                    $('#addCoursesModal').modal('hide');
-                    alert("Course failed to Add!")
-                }
-            }).catch(function (error) {
-                alert("Server Error!");
-            });
+            // let fileName = file.name;
+            // let extension = fileName.split('.').pop();
+            // let lowarCase = extension.toLowerCase();
+            // if (!(lowarCase == 'jpg' || lowarCase == 'png' || lowarCase == 'jpeg' || lowarCase == 'svg')) {
+            //     alert("This file extension can't be allowed!");
+            //     $('#addCourseConfirmModal').modal('hide');
+            // } else {
+                let formData = new FormData();
+                formData.append('file', file);
+                formData.append('addCourseName', addCourseName);
+                formData.append('addCourseFee', addCourseFee);
+                formData.append('addCourseTotalClass', addCourseTotalClass);
+                formData.append('addCourseTotalEnroll', addCourseTotalEnroll);
+                formData.append('addCourseLink', addCourseLink);
+                formData.append('addCourseImage', addCourseImage);
+                formData.append('addCoursesDescription', addCoursesDescription);
+                let config = {
+                    header: {
+                        'content-type': 'multipart/form-data'
+                    }
+                };
+                axios.post('/addCoursesData', formData, config).then(function (response) {
+                    if (response.data == 1) {
+                        $('#addCourseConfirmModal').modal('hide');
+                        $('#addCoursesModal').modal('hide');
+                        alert("Course Successfully Added!")
+                    } else {
+                        $('#addCourseConfirmModal').modal('hide');
+                        $('#addCoursesModal').modal('hide');
+                        alert("Course failed to Add!")
+                    }
+                }).catch(function (error) {
+                    alert("Server Error!");
+                });
+            // }
         }
 
         // Delete Courses
@@ -287,19 +300,20 @@
                     $('#courseTotalClass').val(result.course_total_class);
                     $('#courseEnroll').val(result.course_total_enroll);
                     $('#courseLink').val(result.course_link);
-                    $('#courseEditImagePreview').attr('src',result.course_image);
+                    $('#courseEditImagePreview').attr('src', result.course_image);
                     $('#courseDescription').val(result.course_des);
                 }
             }).catch(function (error) {
-                    alert("Server Error!")
+                alert("Server Error!")
             });
         }
-        $('#courseEditImage').change(function(){
+
+        $('#courseEditImage').change(function () {
             let fileReader = new FileReader();
             fileReader.readAsDataURL(this.files[0]);
-            fileReader.onload = function (event){
-               let source  = event.target.result;
-               $('#courseEditImagePreview').attr('src',source);
+            fileReader.onload = function (event) {
+                let source = event.target.result;
+                $('#courseEditImagePreview').attr('src', source);
             }
         });
 
@@ -321,33 +335,34 @@
 
         function updateCourseData(id, courseName, courseFee, courseTotalClass, courseEnroll, courseLink, courseDescription) {
             let file = $('#courseEditImage').prop('files')[0];
-            let formData = new FormData();
-            formData.append('id',id);
-            formData.append('file',file);
-            formData.append('courseName',courseName);
-            formData.append('courseFee',courseFee);
-            formData.append('courseTotalClass',courseTotalClass);
-            formData.append('courseEnroll',courseEnroll);
-            formData.append('courseLink',courseLink);
-            formData.append('courseDescription',courseDescription);
-            let config = {
-                headers:{'content-type':'multipart/form-data'}
-            };
-            axios.post('/updateCourseData',formData,config).
-            then(function (response) {
-                console.log(response.data);
-                if (response.data == 1) {
+                let formData = new FormData();
+                formData.append('id', id);
+                formData.append('file', file);
+                formData.append('courseName', courseName);
+                formData.append('courseFee', courseFee);
+                formData.append('courseTotalClass', courseTotalClass);
+                formData.append('courseEnroll', courseEnroll);
+                formData.append('courseLink', courseLink);
+                formData.append('courseDescription', courseDescription);
+                let config = {
+                    headers: {'content-type': 'multipart/form-data'}
+                }
+                axios.post('/updateCourseData', formData, config).then(function (response) {
+                    console.log(response.data);
+                    if (response.data == 1) {
+                        $('#courseConfirmModal').modal('hide');
+                        $('#courseEditModal').modal('hide');
+                        alert('Data Updated Successfully!');
+                    }
+                }).catch(function (error) {
                     $('#courseConfirmModal').modal('hide');
                     $('#courseEditModal').modal('hide');
-                    alert('Data Updated Successfully!');
-                }
-            }).catch(function (error) {
-                $('#courseConfirmModal').modal('hide');
-                $('#courseEditModal').modal('hide');
-                alert('Data failed to update!');
-            });
+                    alert('Data failed to update!');
+                });
+            }
         }
-    }
+
+
 </script>
 @section('script')
     <script>

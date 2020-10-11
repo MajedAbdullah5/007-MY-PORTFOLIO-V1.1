@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 //HomePage
 Route::get('/', 'HomeController@homePage')->middleware('loginMiddleware');
+//Visitors
+Route::get('/visitors','visitorController@home');
 //Profile Picture
 Route::get('/showProfilePic','PortfolioController@showProfilePic');
 Route::post('/populateProfilePicture','PortfolioController@populateProfilePicture');
