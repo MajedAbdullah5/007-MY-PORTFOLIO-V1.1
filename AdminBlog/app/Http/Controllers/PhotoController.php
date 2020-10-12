@@ -19,6 +19,6 @@ class PhotoController extends Controller
         return DB::table('photo_gallery')->insert(['location'=>$result]);
     }
     function photoOnScroll(){
-        return photo_gallery_model::all();
+        return photo_gallery_model::orderBy('id','desc')->get();
     }
 }

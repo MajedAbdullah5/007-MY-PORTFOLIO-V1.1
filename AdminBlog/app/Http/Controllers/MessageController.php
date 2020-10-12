@@ -15,7 +15,7 @@ class MessageController extends Controller
 
     function getMessageList()
     {
-        return MessageModel::all();
+        return MessageModel::orderBy('id','desc')->get();
     }
 
     function deleteMessage(Request $request)

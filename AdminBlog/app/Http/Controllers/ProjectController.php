@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\projectModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use function Sodium\add;
 
 class ProjectController extends Controller
 {
@@ -16,7 +15,7 @@ class ProjectController extends Controller
 
     function getProjectsList()
     {
-        return projectModel::all();
+        return projectModel::orderBy('id', 'desc')->get();
     }
 
     function populateProjectData(Request $request)
@@ -32,34 +31,34 @@ class ProjectController extends Controller
         $projectLinkId = $request->input('projectLinkId');
 
 
-        if($request->hasFile('Updatefiles')){
+        if ($request->hasFile('Updatefiles')) {
             $array = array();
-            foreach ($request->file('Updatefiles') as $file){
+            foreach ($request->file('Updatefiles') as $file) {
                 $allFiles = $file->store('public');
-                $fileName = (explode('/',$allFiles))[1];
+                $fileName = (explode('/', $allFiles))[1];
                 $host = $_SERVER['HTTP_HOST'];
-                $filesLink = 'http://'.$host.'/storage/'.$fileName;
-                array_push($array,$filesLink);
+                $filesLink = 'http://' . $host . '/storage/' . $fileName;
+                array_push($array, $filesLink);
             }
 
-            return  DB::table('projects')->where('id', '=', $id)->update([
-            'project_name' => $projectnameId,
-            'project_des' => $projectdesId,
-            'project_link' => $projectLinkId,
-            'project_image' => $array[0],
-            'project_image1' => $array[1],
-            'project_image2' => $array[2],
-            'project_image3' => $array[3],
-            'project_image4' => $array[4],
-            'project_image5' => $array[5],
-            'project_image6' => $array[6],
-            'project_image7' => $array[7],
-            'project_image8' => $array[8],
-            'project_image9' => $array[9],
-            'project_image10' => $array[10]
+            return DB::table('projects')->where('id', '=', $id)->update([
+                'project_name' => $projectnameId,
+                'project_des' => $projectdesId,
+                'project_link' => $projectLinkId,
+                'project_image' => $array[0],
+                'project_image1' => $array[1],
+                'project_image2' => $array[2],
+                'project_image3' => $array[3],
+                'project_image4' => $array[4],
+                'project_image5' => $array[5],
+                'project_image6' => $array[6],
+                'project_image7' => $array[7],
+                'project_image8' => $array[8],
+                'project_image9' => $array[9],
+                'project_image10' => $array[10]
 
-        ]);
-    }
+            ]);
+        }
     }
 
 
@@ -75,21 +74,21 @@ class ProjectController extends Controller
         $addProjectLink = $request->input('addProjectLink');
 
 
-        if($request->hasFile('files')){
-            $array=array();
+        if ($request->hasFile('files')) {
+            $array = array();
             foreach ($request->file('files') as $file) {
-                $files =  $file->store('public');
-                $fileName =  (explode('/',$files))[1];
+                $files = $file->store('public');
+                $fileName = (explode('/', $files))[1];
                 $host = $_SERVER['HTTP_HOST'];
-                $projectImage = 'http://'.$host.'/storage/'.$fileName;
-                array_push($array,$projectImage);
+                $projectImage = 'http://' . $host . '/storage/' . $fileName;
+                array_push($array, $projectImage);
             }
 
-              return  DB::table('projects')->insert([
+            return DB::table('projects')->insert([
                 'project_name' => $addProjectName,
                 'project_des' => $addProjectDes,
                 'project_link' => $addProjectLink,
-                'project_image' =>  $array[0],
+                'project_image' => $array[0],
                 'project_image1' => $array[1],
                 'project_image2' => $array[2],
                 'project_image3' => $array[3],
@@ -99,25 +98,11 @@ class ProjectController extends Controller
                 'project_image7' => $array[7],
                 'project_image8' => $array[8],
                 'project_image9' => $array[9],
-                'project_image10' =>$array[10]
+                'project_image10' => $array[10]
             ]);
         }
     }
-
-
-
 }
-
-
-
-
-//        $fileName = (explode('/', $addProjectImage))[1];
-
-
-//        $host = $_SERVER['HTTP_HOST'];
-
-
-//         $projectImage = 'http://' . $host . '/storage/' . $fileName;
 
 
 

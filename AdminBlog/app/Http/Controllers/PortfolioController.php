@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\AddressModel;
 use App\career_objectives;
 use App\education_model;
-use App\language_model;
-use App\programming_skill_model;
-use App\jobSkillModel;
-use App\personal_informationModel;
-use App\AddressModel;
 use App\emergency_contact;
+use App\jobSkillModel;
+use App\language_model;
+use App\personal_informationModel;
 use App\PortfolioPhotoModel;
+use App\programming_skill_model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PortfolioController extends Controller
 {
@@ -22,43 +22,59 @@ class PortfolioController extends Controller
     {
         return view('/content/Portfolio');
     }
-    function showProfilePic(){
-        return PortfolioPhotoModel::all();
+
+    function showProfilePic()
+    {
+        return PortfolioPhotoModel::orderBy('id', 'desc')->get();
     }
-    function populateProfilePicture(Request $request){
-        return PortfolioPhotoModel::where('id','=',$request->id)->get();
+
+    function populateProfilePicture(Request $request)
+    {
+        return PortfolioPhotoModel::where('id', '=', $request->id)->get();
     }
-    function updateProfilepicture(Request $request){
+
+    function updateProfilepicture(Request $request)
+    {
         $id = $request->input('id');
         $file = $request->file('file')->store('public');
         $host = $_SERVER['HTTP_HOST'];
-        $fileName = (explode('/',$file))[1];
-        $photo = 'http://'.$host.'/storage/'.$fileName;
-        DB::table('portfolio_photo')->where('id','=',$id)->update(['photo'=>$photo]);
+        $fileName = (explode('/', $file))[1];
+        $photo = 'http://' . $host . '/storage/' . $fileName;
+        DB::table('portfolio_photo')->where('id', '=', $id)->update(['photo' => $photo]);
     }
 
-    function getEmergencyContactList(){
-        return emergency_contact::all();
+    function getEmergencyContactList()
+    {
+        return emergency_contact::orderBy('id', 'desc')->get();
     }
-    function populateContact(Request $request){
-        return emergency_contact::where('id','=',$request->id)->get()->first();
+
+    function populateContact(Request $request)
+    {
+        return emergency_contact::where('id', '=', $request->id)->get()->first();
     }
-    function updateContact(Request $request){
-          $id=$request->input('id');
-          $contactStatus=$request->input('contactStatus');
-          $contactInformation=$request->input('contactInformation');
-          return DB::table('emergency_contact')->where('id', '=', $id)->update(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
+
+    function updateContact(Request $request)
+    {
+        $id = $request->input('id');
+        $contactStatus = $request->input('contactStatus');
+        $contactInformation = $request->input('contactInformation');
+        return DB::table('emergency_contact')->where('id', '=', $id)->update(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
 
     }
-    function deleteContact(Request $request){
-        return emergency_contact::where('id','=',$request->id)->delete();
+
+    function deleteContact(Request $request)
+    {
+        return emergency_contact::where('id', '=', $request->id)->delete();
     }
-    function addContact(Request $request){
-        $contactStatus= $request->input('contactStatus');
-        $contactInformation= $request->input('contactInformation');
+
+    function addContact(Request $request)
+    {
+        $contactStatus = $request->input('contactStatus');
+        $contactInformation = $request->input('contactInformation');
         return DB::table('emergency_contact')->insert(['contactStatus' => $contactStatus, 'contactInformation' => $contactInformation]);
 
     }
+
     function getObjetiveList()
     {
         return career_objectives::get()->first();
@@ -77,7 +93,7 @@ class PortfolioController extends Controller
     //Education
     function getEducationList()
     {
-        return education_model::all();
+        return education_model::orderBy('id', 'desc')->get();
     }
 
     function populateEducationId(Request $request)
@@ -87,13 +103,14 @@ class PortfolioController extends Controller
 
     function educationUpdate(Request $request)
     {
-        $id = $request->input('id');$educationDuration = $request->input('educationDuration');
+        $id = $request->input('id');
+        $educationDuration = $request->input('educationDuration');
         $educationInstitute = $request->input('educationInstitute');
         $educationCertificate = $request->input('educationCertificate');
         $educationMajor = $request->input('educationMajor');
         $educationCgpa = $request->input('educationCgpa');
         $educationBoard = $request->input('educationBoard');
-        return   DB::table('education')->where('id', '=', $id)->update(['education_duration' => $educationDuration, 'education_institute' => $educationInstitute, 'education_certificate' => $educationCertificate, 'education_major' => $educationMajor, 'education_gpa' => $educationCgpa, 'education_board' => $educationBoard]);
+        return DB::table('education')->where('id', '=', $id)->update(['education_duration' => $educationDuration, 'education_institute' => $educationInstitute, 'education_certificate' => $educationCertificate, 'education_major' => $educationMajor, 'education_gpa' => $educationCgpa, 'education_board' => $educationBoard]);
     }
 
     function deleteEducation(Request $request)
@@ -115,7 +132,7 @@ class PortfolioController extends Controller
     //Language
     function getLanguageList()
     {
-        return language_model::all();
+        return language_model::orderBy('id', 'desc')->get();
     }
 
     function languagePopulateModal(Request $request)
@@ -146,7 +163,7 @@ class PortfolioController extends Controller
     //programming skills
     function getSkillsList()
     {
-        return programming_skill_model::all();
+        return programming_skill_model::orderBy('id', 'desc')->get();
     }
 
     function populateSkills(Request $request)
@@ -177,7 +194,7 @@ class PortfolioController extends Controller
     //job skills
     function getJobSkillsList()
     {
-        return jobSkillModel::all();
+        return jobSkillModel::orderBy('id', 'desc')->get();
     }
 
     function populateJobSkills(Request $request)
@@ -210,7 +227,7 @@ class PortfolioController extends Controller
 //    personal information
     function getPersonalInformationList()
     {
-        return personal_informationModel::all();
+        return personal_informationModel::orderBy('id', 'desc')->get();
     }
 
     function populatePersonalInformation(Request $request)
@@ -240,25 +257,33 @@ class PortfolioController extends Controller
     }
 
     //Address
-    function getAddressList(){
-        return AddressModel::all();
-    }
-    function populateAddress(Request $request){
-        return AddressModel::where('id','=',$request->id)->first();
-    }
-    function updateAddress(Request $request){
-            $addressInformationStatus = $request->input('addressInformationStatus');
-            $addressInformation = $request->input('addressInformation') ;
-            return DB::table('address')->where('id','=',$request->id)->update(['address_status'=>$addressInformationStatus,'Address'=>$addressInformation]);
-    }
-    function deleteAddress(Request $request){
-       return AddressModel::where('id','=',$request->id)->delete();
+    function getAddressList()
+    {
+        return AddressModel::orderBy('id', 'desc')->get();
     }
 
-    function addAddress(Request $request){
-           $addressInformationStatus=$request->input('addressInformationStatus');
-           $addressInformation=$request->input('addressInformation');
-            return DB::table('address')->where('id','=',$request->id)->insert(['address_status'=>$addressInformationStatus,'Address'=>$addressInformation]);
+    function populateAddress(Request $request)
+    {
+        return AddressModel::where('id', '=', $request->id)->first();
+    }
+
+    function updateAddress(Request $request)
+    {
+        $addressInformationStatus = $request->input('addressInformationStatus');
+        $addressInformation = $request->input('addressInformation');
+        return DB::table('address')->where('id', '=', $request->id)->update(['address_status' => $addressInformationStatus, 'Address' => $addressInformation]);
+    }
+
+    function deleteAddress(Request $request)
+    {
+        return AddressModel::where('id', '=', $request->id)->delete();
+    }
+
+    function addAddress(Request $request)
+    {
+        $addressInformationStatus = $request->input('addressInformationStatus');
+        $addressInformation = $request->input('addressInformation');
+        return DB::table('address')->where('id', '=', $request->id)->insert(['address_status' => $addressInformationStatus, 'Address' => $addressInformation]);
 
     }
 

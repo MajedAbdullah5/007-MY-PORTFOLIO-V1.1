@@ -19,9 +19,9 @@ class HomeController extends Controller
         VisitorsModel::insert(['ip_Address' => $user_ip, 'visit_time' => $getDate]);
 
 
-        $service = json_decode(serviceModel::offset(0)->limit(4)->get());
-        $course = json_decode(courseModel::offset(0)->limit(3)->get());
-        $project = json_decode(projectModel::all());
+        $service = json_decode(serviceModel::offset(0)->limit(4)->orderBy('id','desc')->get());
+        $course = json_decode(courseModel::offset(0)->limit(3)->orderBy('id','desc')->get());
+        $project = json_decode(projectModel::orderBy('id','desc')->get());
 
         return view('Home', ["ServiceKey" => $service, 'courseKey' => $course, 'projectKey' => $project]);
 

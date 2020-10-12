@@ -15,7 +15,7 @@ class ServiceController extends Controller
 
     function getServicesList()
     {
-        return serviceModel::all();
+        return serviceModel::orderBy('id','desc')->get();
     }
 
     function populateData(Request $request)
@@ -24,7 +24,7 @@ class ServiceController extends Controller
 
     }
 
-    function updateServiceData(Request $request)
+    function updateService(Request $request)
     {
         $id = $request->input('id');
         $updateName = $request->input('updateName');
@@ -37,7 +37,7 @@ class ServiceController extends Controller
         return DB::table('services')->where('id', '=', $id)->update(['service_name' => $updateName, 'service_des' => $updateDes, 'service_link' => $updateServiceLink, 'service_image' => $updateImageLink]);
     }
 
-    function deleteServiceData(Request $request)
+    function deleteService(Request $request)
     {
         return serviceModel::where('id', '=', $request->id)->delete();
     }

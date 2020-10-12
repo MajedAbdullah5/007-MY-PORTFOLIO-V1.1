@@ -1,10 +1,228 @@
+// --------------------------------------------Services-------------------------------------
+
+function getServicesList() {
+    $('#serviceLoader').removeClass('d-none');
+    axios.get('/getServicesList')
+        .then(function (response) {
+            if (response.status == 200) {
+                $('#serviceLoader').addClass('d-none');
+                $('#serviceTableBody').empty();
+                let result = response.data;
+                $.each(result, function (i) {
+                    $("<tr>").html(
+                        "<td>" + result[i].id + "</td>" +
+                        "<td>" + result[i].service_name + "</td>" +
+                        "<td>" + result[i].service_des + "</td>" +
+                        "<td>" + "<img height='100px' width='120px' src=" + result[i].service_image + " alt=''>" + "</td>" +
+                        "<td>" + result[i].service_link + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-primary btn-sm editButton'>Edit</a>" + "</td>" +
+                        "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger  btn-sm deleteButton'>Delete</a>" + "</td>"
+                    ).appendTo("#serviceTableBody");
+                });
+
+                //Edit Button
+                $(".editButton").click(function () {
+                    let id = $(this).data('id');
+                    populateData(id);
+                    $('#status').html(id);
+                    $('#populateModal').modal('show');
+                });
+                $('#updateServiceButton').click(function () {
+                    let id = $('#status').html();
+                    $('#confirmStatus').html(id);
+                    $('#editConfrimModal').modal('show');
+
+                });
+                //Delete Button
+                $('.deleteButton').click(function () {
+                    let id = $(this).data('id');
+                    $('#serviceHiddenInput').html(id);
+                    $('#deleteServiceModal').modal('show');
+                });
+                $(document).ready(function () {
+                    $('#myTable').DataTable();
+                    $('.dataTables_length').addClass('bs-select');
+                });
+
+            } else {
+
+            }
+
+        }).catch(function (error) {
+    });
+}
+
+//image preview
+$('#addServiceImage').change(function () {
+    let reader = new FileReader();
+    reader.readAsDataURL(this.files[0]);
+    reader.onload = function (event) {
+        let source = event.target.result;
+        $('#addServiceImagePreview').attr('src', source);
+    }
+});
+
+//Add Services
+$('#addServices').click(function () {
+    $('#addServiceModal').modal('show');
+});
+
+$('#addServiceButton').click(function () {
+    $('#addServiceConfirmModal').modal('show');
+});
+$('#confirmServiceAdd').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
+    let addServiceName = $('#addServiceName').val();
+    let addServiceDes = $('#addServiceDes').val();
+    let addServiceLink = $('#addServiceLink').val();
+    let addServiceImage = $('#addServiceImage').val();
+    addServices(addServiceName, addServiceDes, addServiceLink, addServiceImage);
+});
+
+
+// Add Services Method
+function addServices(addServiceName, addServiceDes, addServiceLink, addServiceImage) {
+    let file = $('#addServiceImage').prop('files')[0];
+    let formData = new FormData();
+    formData.append('file', file);
+    formData.append('addServiceName', addServiceName);
+    formData.append('addServiceDes', addServiceDes);
+    formData.append('addServiceLink', addServiceLink);
+    formData.append('addServiceImage', addServiceImage);
+    let config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    axios.post('/addServices', formData, config).then(function (response) {
+        if (response.data == 1) {
+            alert('Data has been added!');
+            $('#addServiceConfirmModal').modal('hide');
+            $('#addServiceModal').modal('hide');
+            getServicesList();
+        } else {
+            alert('Data failed  to delete!');
+            $('#addServiceConfirmModal').modal('hide');
+            $('#addServiceModal').modal('hide');
+            getServicesList();
+        }
+    })
+        .catch(function (error) {
+
+        });
+}
+
+
+//Delete Confrim Service
+$('#confirmServiceDelete').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
+    let id = $('#serviceHiddenInput').html();
+    deleteServiceData(id);
+});
+
+//Delete Service Method
+function deleteServiceData(id) {
+    axios.post('/deleteServiceData', {
+        id: id
+    }).then(function (response) {
+
+        if (response.data == 1) {
+            alert('Data Successfully Deleted!');
+            $('#deleteServiceModal').modal('hide');
+            getServicesList();
+        } else {
+            alert('Data failed to delete!');
+            $('#deleteServiceModal').modal('hide');
+            getServicesList();
+        }
+    }).catch(function (error) {
+
+    })
+}
+
+//Populate Data in modal
+function populateData(id) {
+    axios.post('/populateData', {
+        id: id
+    }).then(function (response) {
+        if (response.status == 200) {
+            let result = response.data;
+            $('#populateNameId').val(result.service_name);
+            $('#populateDesId').val(result.service_des);
+            $('#populateServiceLink').val(result.service_link);
+            $('#serviceImagePreview').attr('src', result.service_image);
+        }
+    }).catch(function () {
+        alert('From Service data failed to retrieve!');
+    });
+}
+
+//Image preview
+$('#populateImageLink').change(function () {
+    let fileReader = new FileReader();
+    fileReader.readAsDataURL(this.files[0]);
+    fileReader.onload = function (event) {
+        let src = event.target.result;
+        $('#serviceImagePreview').attr('src', src);
+    }
+});
+//confirm Update
+$('#confirmUpdate').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
+    let id = $('#confirmStatus').html();
+    let updateName = $('#populateNameId').val();
+    let updateDes = $('#populateDesId').val();
+    let updateServiceLink = $('#populateServiceLink').val();
+    updateServiceData(id, updateName, updateDes, updateServiceLink);
+});
+
+//Update Service Data
+function updateServiceData(id, updateName, updateDes, updateServiceLink) {
+    let updateFile = $('#populateImageLink').prop('files')[0];
+    let formData = new FormData();
+    formData.append('id', id);
+    formData.append('file', updateFile);
+    formData.append('updateName', updateName);
+    formData.append('updateDes', updateDes);
+    formData.append('updateServiceLink', updateServiceLink);
+    let config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    axios.post('/updateServiceData', formData, config).then(function (response) {
+        console.log(response.data);
+        if (response.status == 200) {
+            alert('Data updated Successfully!');
+            $('#populateModal').modal('hide');
+            $('#editConfrimModal').modal('hide');
+            getServicesList();
+        } else {
+            alert('Data failed to update!');
+            $('#populateModal').modal('hide');
+            $('#editConfrimModal').modal('hide');
+            getServicesList();
+        }
+    }).catch(function (error) {
+        alert('Server Error!');
+    });
+
+}
+
+
 // ---------------------------------------portfolio----------------------------------
-
-
 // ---------------------------------------PROFILE PICTURE-------------------------
 function showProfilePic() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/showProfilePic').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#profilePictureTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -28,7 +246,12 @@ function showProfilePic() {
             });
         }
     }).catch(function (error) {
-        alert('Server Error!');
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
 
@@ -58,6 +281,9 @@ $('#updateProfilePicture').change(function () {
 
 //Update picture confirm modal buttton
 $('#profilePictureUpdateConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#profilePictureUpdateConfirmModalStatus').html();
     updateProfilepicture(id);
 });
@@ -85,11 +311,12 @@ function updateProfilepicture(id) {
     });
 }
 
-
 // -------------------------------------EMERGENCY CONTACT---------------------------------------
 function getEmergencyContactList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getEmergencyContactList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#emergencyContactTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -125,12 +352,20 @@ function getEmergencyContactList() {
             });
         }
     }).catch(function (error) {
-
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
 
 //addContactConfirmModalButton
 $('#addContactConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let contactStatus = $('#contactAddStatus').val();
     let contactInformation = $('#contactAddInformation').val();
     addContact(contactStatus, contactInformation);
@@ -160,6 +395,9 @@ function addContact(contactStatus, contactInformation) {
 
 //contactDeleteConfirmModalButton
 $('#contactDeleteConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#contactDeleteConfirmModalStatus').html();
     deleteContact(id);
 });
@@ -186,6 +424,9 @@ function deleteContact(id) {
 
 //contactUpdateConfirmModalButton
 $('#contactUpdateConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#contactUpdateConfirmModalStatus').html();
     let contactStatus = $('#contactStatus').val();
     let contactInformation = $('#contactInformation').val();
@@ -233,8 +474,10 @@ function populateContact(id) {
 
 // ----------------------------------------------------ADDRESS-------------------------------------
 function getAddressList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getAddressList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#addressTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -273,15 +516,25 @@ function getAddressList() {
 
         }
     }).catch(function (error) {
-
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
+
 //addAddressConfirmModalButton
 $('#addAddressConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let addressInformationStatus = $('#addAddressInformationStatus').val();
     let addressInformation = $('#addAddressInformation').val();
     addAddress(addressInformationStatus, addressInformation);
 });
+
 // add address
 function addAddress(addressInformationStatus, addressInformation) {
     axios.post('/addAddress', {
@@ -305,11 +558,16 @@ function addAddress(addressInformationStatus, addressInformation) {
         alert("Server Error!");
     });
 }
+
 //addressDeleteConfirmModalButton
 $('#addressDeleteConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#addressDeleteConfirmModalStatus').html();
     deleteAddress(id);
 });
+
 //delete
 function deleteAddress(id) {
     axios.post('/deleteAddress', {
@@ -331,6 +589,9 @@ function deleteAddress(id) {
 
 //addressUpdateConfirmModalButton
 $('#addressUpdateConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#addressUpdateConfirmModalStatus').html();
     let addressInformationStatus = $('#addressInformationStatus').val();
     let addressInformation = $('#addressInformation').val();
@@ -374,10 +635,13 @@ function populateAddress(id) {
         alert("Server Error!");
     });
 }
+
 // -------------------------------------------------PERSONAL INFORMATION-----------------------------
 function getPersonalInformationList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getPersonalInformationList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#personalInformationTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -414,15 +678,25 @@ function getPersonalInformationList() {
             });
         }
     }).catch(function (error) {
-        alert("Server Error!");
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
+
 //addPersonalInformationConfirmModalButton
 $('#addPersonalInformationConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let addInformationStatus = $('#addInformationStatus').val();
     let addInformation = $('#addInformation').val();
     addPersonalInformation(addInformationStatus, addInformation);
 });
+
 //add information
 function addPersonalInformation(addInformationStatus, addInformation) {
     axios.post('/addPersonalInformation', {
@@ -445,11 +719,16 @@ function addPersonalInformation(addInformationStatus, addInformation) {
         alert("Server Error!");
     });
 }
+
 //personalDeleteConfirmButton
 $('#personalDeleteConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#personalDeleteConfirmModalStatus').html();
     deletePersonalInformation(id);
 });
+
 // delete information
 function deletePersonalInformation(id) {
     axios.post('/deletePersonalInformation', {
@@ -472,11 +751,15 @@ function deletePersonalInformation(id) {
 
 //informationUpdateConfirmationModalButton
 $('#informationUpdateConfirmationModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#informationUpdateConfirmationModalStatus').html();
     let personalInformationStatus = $('#personalInformationStatus').val();
     let personalInformation = $('#personalInformation').val();
     updatePersonalInformation(id, personalInformationStatus, personalInformation);
 });
+
 //update information
 function updatePersonalInformation(id, personalInformationStatus, personalInformation) {
     axios.post('/updatePersonalInformation', {
@@ -520,8 +803,10 @@ function populatePersonalInformation(id) {
 // -------------------------------------------------JOB SKILLS---------------------------------------
 
 function getJobSkillsList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getJobSkillsList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#jobSkillsTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -562,11 +847,20 @@ function getJobSkillsList() {
             });
         }
     }).catch(function () {
-
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
+
 //addJobSkillsConfirmModalButton
 $('#addJobSkillsConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let jobSkillsAddJob = $('#jobSkillsAddJob').val();
     let jobSkillsAddInstitute = $('#jobSkillsAddInstitute').val();
     let jobSkillsAddPosition = $('#jobSkillsAddPosition').val();
@@ -595,11 +889,16 @@ function addJobSkills(jobSkillsAddJob, jobSkillsAddInstitute, jobSkillsAddPositi
         alert("Server Error");
     });
 }
+
 //jobSkillsDeleteConfirmModalButton
 $('#jobSkillsDeleteConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#jobSkillsDeleteConfirmModalStatus').html();
     deleteJobSkills(id);
 });
+
 //delete
 function deleteJobSkills(id) {
     axios.post('/deleteJobSkills', {
@@ -619,14 +918,19 @@ function deleteJobSkills(id) {
         alert("Server Error!");
     });
 }
+
 //updateJobSkillsConfirmModalButton
 $('#jobSkillsConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#jobSkillsConfirmModalStatus').html();
     let jobSkillsPopulateJob = $('#jobSkillsPopulateJob').val();
     let jobSkillsPopulateInstitute = $('#jobSkillsPopulateInstitute').val();
     let jobSkillsPopulatePosition = $('#jobSkillsPopulatePosition').val();
     updateJobSkills(id, jobSkillsPopulateJob, jobSkillsPopulateInstitute, jobSkillsPopulatePosition);
 });
+
 //Update Id
 function updateJobSkills(id, jobSkillsPopulateJob, jobSkillsPopulateInstitute, jobSkillsPopulatePosition) {
     axios.post('/updateJobSkills', {
@@ -671,8 +975,10 @@ function populateJobSkills(id) {
 
 // ------------------------------------------------------SKILLS--------------------------------------------
 function getSkillsList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getSkillsList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#skillTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -713,12 +1019,20 @@ function getSkillsList() {
             });
         }
     }).catch(function (error) {
-        alert("Server Error!");
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
 
 //addSkillsConfirmModalButton
 $('#addSkillsConfirmModalButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let skillsProgrammingLanguage = $('#addSkillsProgrammingLanguage').val();
     let skillsProgrammingLanguageLevel = $('#addSkillsProgrammingLanguageLevel').val();
     addSkills(skillsProgrammingLanguage, skillsProgrammingLanguageLevel);
@@ -749,6 +1063,9 @@ function addSkills(skillsProgrammingLanguage, skillsProgrammingLanguageLevel) {
 
 //skillsDeleteConfirmButton
 $('#skillsDeleteConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#skillsDeleteConfirmModalStatus').html();
     deleteSkills(id);
 });
@@ -793,6 +1110,9 @@ function populateSkills(id) {
 
 //skills update ConfirmButton
 $('#skillsConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#skillsConfirmModalStatus').html();
     let skillsProgrammingLanguage = $('#skillsProgrammingLanguage').val();
     let skillsProgrammingLanguageLevel = $('#skillsProgrammingLanguageLevel').val();
@@ -826,8 +1146,10 @@ function updateSkills(id, skillsProgrammingLanguage, skillsProgrammingLanguageLe
 
 // --------------------------------------------LANGUAGE-------------------------------------------
 function getLanguageList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getLanguageList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#languageTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -867,13 +1189,21 @@ function getLanguageList() {
 
         }
     }).catch(function (error) {
-        alert("Server Error!");
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 
 }
 
 //addLanguageConfirmButton
 $('#addLanguageConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let AddLanguage = $('#addLanguageInputId').val();
     let AddLanguageProficiency = $('#addLanguageProficiency').val();
     addLanguage(AddLanguage, AddLanguageProficiency);
@@ -903,6 +1233,9 @@ function addLanguage(AddLanguage, AddLanguageProficiency) {
 
 //languageDeleteConfirmButton
 $('#languageDeleteConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#languageDeleteConfirmModalStatus').html();
     deleteLanguage(id);
 });
@@ -926,8 +1259,11 @@ function deleteLanguage(id) {
     });
 }
 
-//editLanguageConfirmButton
+//eupdateLanguageConfirmButton
 $('#editLanguageConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#editLanguageConfirmModalStatus').html();
     let populateLanguage = $('#populateLanguage').val();
     let languageProficiency = $('#languageProficiency').val();
@@ -975,8 +1311,10 @@ function languagePopulateModal(id) {
 
 // ---------------------------------------------EDUCATION-------------------------------------------
 function getEducationList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getEducationList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#educationTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -1020,12 +1358,20 @@ function getEducationList() {
             });
         }
     }).catch(function (error) {
-        alert("Server Error!");
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
 
 //addConfirmButton
 $('#addConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let educationDuration = $('#educationAddDuration').val();
     let educationInstitute = $('#educationAddInstitute').val();
     let educationCertificate = $('#educationAddCertificate').val();
@@ -1063,6 +1409,9 @@ function addEducation(educationDuration, educationInstitute, educationCertificat
 
 //educationDeleteConfirmButton
 $('#educationDeleteConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#educationDeleteConfirmModalStatus').html();
     deleteEducation(id);
 });
@@ -1089,6 +1438,9 @@ function deleteEducation(id) {
 
 //educationUpdateConfirmButton
 $('#educationUpdateConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#educationUpdateConfirmModalStatus').html();
     let educationDuration = $('#educationDuration').val();
     let educationInstitute = $('#educationInstitute').val();
@@ -1149,8 +1501,10 @@ function populateEducationId(id) {
 
 // ---------------------------------------------CAREER OBJECTIVES -----------------------------------
 function getObjetiveList() {
+    $('#portfolioImageLoader').removeClass('d-none');
     axios.get('/getObjetiveList').then(function (response) {
         if (response.status == 200) {
+            $('#portfolioImageLoader').addClass('d-none');
             $('#myObjectiveTableBody').empty();
             let result = response.data;
             $("<tr>").html(
@@ -1172,12 +1526,20 @@ function getObjetiveList() {
             });
         }
     }).catch(function (error) {
-        alert("Server Error!");
+        $('#portfolioImageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#portfolioImageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
 
 //objectiveUpdateButton
 $('#objectiveUpdateButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#objectiveStatus').html();
     let objectives = $('#objectivesId').val();
     updateObjectives(id, objectives);
@@ -1208,7 +1570,9 @@ function updateObjectives(id, objectives) {
 
 //populate Objectives
 function populateObjectives(id) {
-    axios.post('/populateObjectives', {id: id}).then(function (response) {
+    axios.post('/populateObjectives', {
+        id: id
+    }).then(function (response) {
         if (response.status == 200) {
             let result = response.data;
             $('#objectivesId').val(result.objectives);
@@ -1224,8 +1588,10 @@ function populateObjectives(id) {
 // ---------------------------------------Projects-----------------------------------------
 
 function getProjectsList() {
+    $('#projectLoader').removeClass('d-none');
     axios.get('/getProjectsList').then(function (response) {
         if (response.status == 200) {
+            $('#projectLoader').addClass('d-none');
             $('#projectTableBody').empty();
             let result = response.data;
             $.each(result, function (i) {
@@ -1262,12 +1628,20 @@ function getProjectsList() {
         }
 
     }).catch(function (error) {
-
+        $('#projectLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#projectLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
     });
 }
 
 //Delete confirm Button
 $('#confirmProjectDeleteButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#deleteProjectConfrimModalStatus').html();
     deleteService(id);
 
@@ -1307,6 +1681,9 @@ $('#addProjectModalButton').click(function () {
     $('#addProjectConfirmModal').modal('show');
 });
 $('#addProjectConfirmButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let addProjectName = $('#addProjectName').val();
     let addProjectDes = $('#addProjectDes').val();
     let addProjectLink = $('#addProjectLink').val();
@@ -1354,6 +1731,9 @@ function addProject(addProjectName, addProjectDes, addProjectLink) {
 
 //Update project data
 $('#updateProjectButton').click(function () {
+    $(this).html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+    );
     let id = $('#projectModalStatus').html();
     $('#editProjectConfrimModalStatus').html(id);
     $('#editProjectConfrimModal').modal('show');
@@ -1434,4 +1814,65 @@ function populateProjectData(id) {
     }).catch(function (error) {
 
     });
+}
+
+// -------------------------------------------Message--------------------------------------------
+function getMessageList() {
+    $('#messageLoader').removeClass('d-none');
+    axios.get('/getMessageList').then(function (response) {
+        if (response.status == 200) {
+            $('#messageLoader').addClass('d-none');
+            let result = response.data;
+            $.each(result, function (i) {
+                $('<tr>').html(
+                    "<td>" + result[i].id + "</td>" +
+                    "<td>" + result[i].message_name + "</td>" +
+                    "<td>" + result[i].message_email + "</td>" +
+                    "<td>" + result[i].message_message + "</td>" +
+                    "<td>" + "<a data-id=" + result[i].id + " class='btn btn-danger btn-sm messageDeleteButton'>Delete</a>" + "</td>"
+                ).appendTo('#messageTableBody');
+            });
+            $(document).ready(function () {
+                $('#myTable').DataTable();
+                $('.dataTables_length').addClass('bs-select');
+            });
+        }
+        $('.messageDeleteButton').click(function () {
+            let id = $(this).data('id');
+            $('#messgaeDeleteConfirmStatus').html(id);
+            $('#messgaeDeleteConfirmModal').modal('show');
+        });
+        $('#messgaeDeleteConfirmButton').click(function () {
+            $(this).html(
+                `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span>Loading...`
+            );
+            let id = $('#messgaeDeleteConfirmStatus').html();
+            deleteMessage(id);
+        });
+    }).catch(function () {
+        $('#messageLoader').removeClass('d-none');
+        setTimeout(function () {
+            $('#messageLoader').addClass('d-none');
+            alert("Something went wrong!");
+            clearInterval();
+        }, 5000);
+    });
+
+    function deleteMessage(id) {
+        axios.post('/deleteMessage', {
+            id: id
+        }).then(function (response) {
+            if (response.data == 1) {
+                alert("Message has been deleted!");
+                $('#messgaeDeleteConfirmModal').modal('hide');
+            } else {
+                alert("Message failed to delete!");
+                $('#messgaeDeleteConfirmModal').modal('hide');
+            }
+        }).catch(function () {
+            alert("Server Error!");
+
+        });
+    }
+
 }

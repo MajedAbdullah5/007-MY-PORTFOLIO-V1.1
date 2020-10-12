@@ -125,7 +125,15 @@
             </div>
         </div>
     </div>
-
+    {{--//loader--}}
+    <div id="projectLoader" class="loader d-none">
+        <div class="card text-center m-auto">
+            <img src="{{asset('/image/loader/loader.svg')}}" alt="">
+            <div class="card-text">
+                <h2>Please wait...</h2>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>

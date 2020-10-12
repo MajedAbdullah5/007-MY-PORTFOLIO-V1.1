@@ -8,7 +8,7 @@ use App\CourseModel;
 class FullCourse extends Controller
 {
     function fullCourseList(){
-        $result = CourseModel::all();
+        $result = CourseModel::orderBy('id','desc')->get();
         return view('/content/CourseList',['result'=>$result]);
     }
 }

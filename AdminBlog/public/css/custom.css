@@ -38,8 +38,8 @@
     margin-top: 10px;
     width: 99.9%;
 }
-#myTable td{
-    padding: 3px;
+#myTable td,th{
+    padding: 5px;
 }
 #myTable tr{
     height: 40px;
@@ -107,4 +107,20 @@
     background-color: #7e57c2;
     color: white;
     font-weight: bold;
+}
+
+ /*//loader*/
+ .loader{
+     padding: 30px;
+     max-width: 400px;
+     margin: auto;
+     position: fixed;
+     left: 40%;
+     right: 30%;
+     top: 20%;
+
+ }
+.loader img{
+    max-width: 25%;
+    margin: auto;
 }

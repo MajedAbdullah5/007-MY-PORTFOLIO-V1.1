@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@homePage')->middleware('loginMiddleware');
 //Visitors
 Route::get('/visitors','visitorController@home');
+Route::get('/deleteAllVisitor','visitorController@deleteAllVisitor');
 //Profile Picture
 Route::get('/showProfilePic','PortfolioController@showProfilePic');
 Route::post('/populateProfilePicture','PortfolioController@populateProfilePicture');
@@ -14,8 +15,8 @@ Route::post('/updateProfilepicture','PortfolioController@updateProfilepicture');
 Route::get('/services', 'ServiceController@showServicePage')->middleware('loginMiddleware');
 Route::get('/getServicesList', 'ServiceController@getServicesList')->middleware('loginMiddleware');
 Route::post('/populateData', 'ServiceController@populateData')->middleware('loginMiddleware');
-Route::post('/updateServiceData', 'ServiceController@updateServiceData')->middleware('loginMiddleware');
-Route::post('/deleteServiceData', 'ServiceController@deleteServiceData')->middleware('loginMiddleware');
+Route::post('/updateServiceData', 'ServiceController@updateService')->middleware('loginMiddleware');
+Route::post('/deleteServiceData', 'ServiceController@deleteService')->middleware('loginMiddleware');
 Route::post('/addServices', 'ServiceController@addServices')->middleware('loginMiddleware');
 
 //Courses

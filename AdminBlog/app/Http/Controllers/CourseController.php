@@ -15,7 +15,7 @@ class CourseController extends Controller
 
     function getCourseList()
     {
-        return CourseModel::all();
+        return CourseModel::orderBy('id','desc')->get();
     }
 
     function populateCourseId(Request $request)
