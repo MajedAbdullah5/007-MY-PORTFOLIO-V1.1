@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <title>Document</title>
+    <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">

@@ -3,13 +3,6 @@
     padding: 0;
     margin: 0;
 }
-/*.sidebar{*/
-/*    position: fixed;*/
-/*    min-width: 15%;*/
-/*    height: 100vh;*/
-/*    background: #1C1D21;*/
-/*    display: inline-block;*/
-/*}*/
 .sidebar{
     background-color: #0d0d0d;
     height: 100vh;
@@ -43,8 +36,10 @@
 
 #myTable{
     margin-top: 10px;
-    text-align: center;
     width: 99.9%;
+}
+#myTable td{
+    padding: 3px;
 }
 #myTable tr{
     height: 40px;

@@ -1,5 +1,5 @@
 @extends('Layout.app')
-
+@section('title','Portfolio')
 @section('content')
     <div class="container-fluid">
         <div class="container">

@@ -1,4 +1,5 @@
 @extends('Layout.app')
+@section('title','View Projects')
 @section('content')
 @foreach($result as $data)
 {{--    <h1> {{$data->project_link}}</h1>--}}

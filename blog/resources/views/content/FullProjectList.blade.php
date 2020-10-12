@@ -1,4 +1,5 @@
 @extends('Layout.app')
+@section('title','Projects')
 @section('content')
     <div class="container-fluid">
         <h5 class="p-2">LIST OF PROJECTS</h5>
